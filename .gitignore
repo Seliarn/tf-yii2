@@ -1,0 +1,12 @@
+assets/*
+!assets/.gitignore
+protected/runtime/*
+!protected/runtime/.gitignore
+protected/data/*.db
+themes/classic/views/
+# composer vendor dir
+/vendor
+# phpstorm project files
+.idea
+# composer itself is not needed
+composer.phar
