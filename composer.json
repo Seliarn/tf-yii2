@@ -55,6 +55,9 @@
             "generateCookieValidationKey": [
                 "config/web.php"
             ]
+        },
+        "asset-installer-paths": {
+            "bower-asset-library": "vendor/bower-assets"
         }
     },
     "repositories": [
