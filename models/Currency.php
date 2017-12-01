@@ -1,0 +1,76 @@
+<?php
+
+namespace app\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "Currency".
+ *
+ * @property integer $id
+ * @property integer $code
+ * @property integer $title
+ * @property string $created
+ * @property string $updated
+ * @property integer $status
+ * @property string $note
+ *
+ * @property Account[] $accounts
+ */
+class Currency extends \yii\db\ActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'Currency';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['code', 'title', 'status'], 'required'],
+            [['code', 'title', 'status'], 'integer'],
+            [['created', 'updated'], 'safe'],
+            [['note'], 'string', 'max' => 255],
+            [['code'], 'unique'],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'code' => 'Code',
+            'title' => 'Title',
+            'created' => 'Created',
+            'updated' => 'Updated',
+            'status' => 'Status',
+            'note' => 'Note',
+        ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAccounts()
+    {
+        return $this->hasMany(Account::className(), ['currency_id' => 'id']);
+    }
+
+    /**
+     * @inheritdoc
+     * @return \app\models\aq\CurrencyQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new \app\models\aq\CurrencyQuery(get_called_class());
+    }
+}
