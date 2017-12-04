@@ -61,16 +61,16 @@ class IncomeCashboxOrder extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'code' => 'Code',
-            'operation_id' => 'Operation ID',
-            'account_id' => 'Account ID',
-            'cash_flow_statement_id' => 'Cash Flow Statement ID',
-            'note' => 'Note',
-            'subcount_id' => 'Subcount ID',
-            'amount' => 'Amount',
-            'created' => 'Created',
-            'updated' => 'Updated',
-            'status' => 'Status',
+            'code' => '№',
+            'operation_id' => 'Операция',
+            'account_id' => 'Счет',
+            'cash_flow_statement_id' => 'Статья ДДС',
+            'note' => 'Примечание',
+            'subcount_id' => 'Субконто',
+            'amount' => 'Сумма',
+            'created' => 'Создан',
+            'updated' => 'Изменен',
+            'status' => 'Статус',
         ];
     }
 

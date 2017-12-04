@@ -60,36 +60,85 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 		<div id = "sidebar-menu" class = "main_menu_side hidden-print main_menu">
 
 			<div class = "menu_section">
-				<?=(Yii::$app->user->isGuest)?'':
-				\yiister\gentelella\widgets\Menu::widget(
-					[
-						"items" => [
-							["label" => "Главная", "url" => "/", "icon" => "home"],
-							["label" => "Gii", "url" => ["/gii"], "icon" => "files-o"],
-							[
-								"label" => "Документы",
-								"url" => "#",
-								"icon" => "table",
-								"items" => [
-									[
-										"label" => "Касса",
-										"url" => "#",
-										"items" => [
-											[
-												"label" => "Приходный кассовый ордер",
-												"url" => "income-cashbox-order/index"
-											],
-											[
-												"label" => "Расходный кассовый ордер",
-												"url" => "#"
+				<?=
+				(Yii::$app->user->isGuest) ? '' :
+					\yiister\gentelella\widgets\Menu::widget(
+						[
+							"items" => [
+								["label" => "Главная", "url" => "/", "icon" => "home"],
+								["label" => "Gii", "url" => ["/gii"], "icon" => "files-o"],
+								[
+									"label" => "Документы",
+									"url" => "#",
+									"icon" => "book",
+									"items" => [
+										[
+											"label" => "Касса",
+											"url" => "#",
+											"items" => [
+												[
+													"label" => "Приходный кассовый ордер",
+//													"icon" => "sign-in",
+													"url" => "/income-cashbox-order/index"
+												],
+												[
+													"label" => "Расходный кассовый ордер",
+//													"icon" => "sign-out",
+													"url" => "/outgoing-cashbox-order/index"
+												],
 											],
 										],
 									],
 								],
+								[
+									"label" => "Кадры",
+									"url" => "#",
+									"icon" => "users",
+									"items" => [
+										[
+											"label" => "Сотрудники",
+											"url" => "/staff-employee/index",
+										],
+										[
+											"label" => "Должности",
+											"url" => "/staff-position/index",
+										],
+										[
+											"label" => "Подразделения",
+											"url" => "/staff-department/index",
+										],
+										[
+											"label" => "Офисы",
+											"url" => "/office",
+										],
+									],
+								],
+								[
+									"label" => "Настройки",
+									"url" => "#",
+									"icon" => "cogs",
+									"items" => [
+										[
+											"label" => "Счета",
+											"url" => "/account/index",
+										],
+										[
+											"label" => "Операции",
+											"url" => "/operation/index",
+										],
+										[
+											"label" => "Валюты",
+											"url" => "/currency/index",
+										],
+										[
+											"label" => "Статьи ДДС",
+											"url" => "/cash-flow-statement/index",
+										],
+									],
+								],
 							],
-						],
-					]
-				)
+						]
+					)
 				?>
 			</div>
 
@@ -126,9 +175,20 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 
 			<ul class = "nav navbar-nav navbar-right">
 				<li class = "">
+
+						<?php
+						if (Yii::$app->user->isGuest) {
+							?>
+							<a href = "/site/login">Sign in</a>
+						<?php
+						} else {
+							?>
 					<a href = "javascript:;" class = "user-profile dropdown-toggle" data-toggle = "dropdown" aria-expanded = "false">
-						<img src = "http://placehold.it/128x128" alt = "">John Doe
+						<img src = "http://placehold.it/128x128" alt = "">
+							<?=Yii::$app->user->identity->username?>
 						<span class = " fa fa-angle-down"></span>
+						<?php
+						} ?>
 					</a>
 					<ul class = "dropdown-menu dropdown-usermenu pull-right">
 						<li><a href = "javascript:;"> Profile</a>
@@ -148,10 +208,10 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 				</li>
 
 				<li role = "presentation" class = "dropdown">
-					<a href = "javascript:;" class = "dropdown-toggle info-number" data-toggle = "dropdown" aria-expanded = "false">
+					<!--a href = "javascript:;" class = "dropdown-toggle info-number" data-toggle = "dropdown" aria-expanded = "false">
 						<i class = "fa fa-envelope-o"></i>
 						<span class = "badge bg-green">6</span>
-					</a>
+					</a-->
 					<ul id = "menu1" class = "dropdown-menu list-unstyled msg_list" role = "menu">
 						<li>
 							<a>

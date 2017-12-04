@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\controllers\search\AccountSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Accounts';
+$this->title = 'Счета';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="account-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Account', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать счет', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

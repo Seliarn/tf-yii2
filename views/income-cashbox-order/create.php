@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\IncomeCashboxOrder */
 
-$this->title = 'Create Income Cashbox Order';
-$this->params['breadcrumbs'][] = ['label' => 'Income Cashbox Orders', 'url' => ['index']];
+$this->title = 'Создать приходный кассовый ордер';
+$this->params['breadcrumbs'][] = ['label' => 'Приходные кассовые ордеры', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="income-cashbox-order-create">

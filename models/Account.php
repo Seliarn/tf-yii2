@@ -47,9 +47,9 @@ class Account extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'description' => 'Description',
-            'currency_id' => 'Currency ID',
+            'title' => 'Название',
+            'description' => 'Описание',
+            'currency_id' => 'Валюта',
         ];
     }
 

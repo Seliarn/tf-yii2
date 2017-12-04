@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\IncomeCashboxOrder */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Income Cashbox Orders', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Приходные кассовые ордеры', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="income-cashbox-order-view">

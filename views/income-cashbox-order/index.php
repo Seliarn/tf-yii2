@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\controllers\search\IncomeCashboxOrderSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Income Cashbox Orders';
+$this->title = 'Приходные кассовые ордеры';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="income-cashbox-order-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Income Cashbox Order', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать приходный кассовый ордер', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
