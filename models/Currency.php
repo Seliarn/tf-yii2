@@ -8,8 +8,8 @@ use Yii;
  * This is the model class for table "Currency".
  *
  * @property integer $id
- * @property integer $code
- * @property integer $title
+ * @property string $code
+ * @property string $title
  * @property string $created
  * @property string $updated
  * @property integer $status
@@ -34,9 +34,11 @@ class Currency extends \yii\db\ActiveRecord
     {
         return [
             [['code', 'title', 'status'], 'required'],
-            [['code', 'title', 'status'], 'integer'],
+            [['status'], 'integer'],
             [['created', 'updated'], 'safe'],
             [['note'], 'string', 'max' => 255],
+            [['title'], 'string', 'max' => 100],
+            [['code'], 'string', 'max' => 50],
             [['code'], 'unique'],
         ];
     }
@@ -48,12 +50,12 @@ class Currency extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'code' => 'Code',
-            'title' => 'Title',
-            'created' => 'Created',
-            'updated' => 'Updated',
-            'status' => 'Status',
-            'note' => 'Note',
+            'code' => 'Код',
+            'title' => 'Название',
+            'created' => 'Создан',
+            'updated' => 'Обновлен',
+            'status' => 'Статус',
+            'note' => 'Примечание',
         ];
     }
 

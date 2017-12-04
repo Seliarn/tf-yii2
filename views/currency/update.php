@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Currency */
 
-$this->title = 'Update Currency: ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Currencies', 'url' => ['index']];
+$this->title = 'Изменить валюту: ' . $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Валюты', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Изменить';
 ?>
 <div class="currency-update">
 

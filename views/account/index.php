@@ -10,26 +10,34 @@ use yii\grid\GridView;
 $this->title = 'Счета';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="account-index">
+<div class = "account-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+	<h1><?= Html::encode($this->title) ?></h1>
+	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Создать счет', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+	<p>
+		<?= Html::a('Создать счет', ['create'], ['class' => 'btn btn-success']) ?>
+	</p>
+	<?=
+	GridView::widget([
+		'dataProvider' => $dataProvider,
+		'filterModel' => $searchModel,
+		'columns' => [
+			['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'title',
-            'description:ntext',
-            'currency_id',
+			'id',
+			'title',
+			'description:ntext',
+			[
+				'attribute' => 'parent_id',
+				'label' => 'Валюта',
+				'content' => function ($data) {
+					return $data->getCurrency()->one()->title;
+					}
+			],
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+			['class' => 'yii\grid\ActionColumn'],
+		],
+	]); ?>
 </div>
+;

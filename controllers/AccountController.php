@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Currency;
 use Yii;
 use app\models\Account;
 use app\controllers\search\AccountSearch;
@@ -68,8 +69,10 @@ class AccountController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+			$currency = Currency::find()->all();
             return $this->render('create', [
                 'model' => $model,
+				'currency' => $currency
             ]);
         }
     }
@@ -87,8 +90,10 @@ class AccountController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
+			$currency = Currency::find()->all();
             return $this->render('update', [
                 'model' => $model,
+				'currency' => $currency
             ]);
         }
     }

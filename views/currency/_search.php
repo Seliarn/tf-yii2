@@ -8,32 +8,27 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="currency-search">
+<div class = "currency-search">
 
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-    ]); ?>
+	<?php $form = ActiveForm::begin([
+		'action' => ['index'],
+		'method' => 'get',
+	]); ?>
 
-    <?= $form->field($model, 'id') ?>
+	<?php
+	echo $form->field($model, 'code');
+	echo $form->field($model, 'title');
+//	echo $form->field($model, 'created');
+//	echo $form->field($model, 'updated');
+	// echo $form->field($model, 'status')
+	// echo $form->field($model, 'note')
+	?>
 
-    <?= $form->field($model, 'code') ?>
+	<div class = "form-group">
+		<?= Html::submitButton('Поиск', ['class' => 'btn btn-primary']) ?>
+		<?= Html::resetButton('Сбросить', ['class' => 'btn btn-default']) ?>
+	</div>
 
-    <?= $form->field($model, 'title') ?>
-
-    <?= $form->field($model, 'created') ?>
-
-    <?= $form->field($model, 'updated') ?>
-
-    <?php // echo $form->field($model, 'status') ?>
-
-    <?php // echo $form->field($model, 'note') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
+	<?php ActiveForm::end(); ?>
 
 </div>
