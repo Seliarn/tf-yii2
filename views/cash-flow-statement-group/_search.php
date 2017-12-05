@@ -30,8 +30,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'note') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::$app->params['translate']['rus']['btn-search'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton(Yii::$app->params['translate']['rus']['btn-reset'], ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

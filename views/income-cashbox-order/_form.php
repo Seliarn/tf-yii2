@@ -8,34 +8,34 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="income-cashbox-order-form">
+<div class = "income-cashbox-order-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+	<?php $form = ActiveForm::begin();
 
-    <?= $form->field($model, 'code')->textInput(['maxlength' => true]) ?>
+	echo $form->field($model, 'code')->textInput(['maxlength' => true]);
 
-    <?= $form->field($model, 'operation_id')->textInput() ?>
+	$operationItems = ArrayHelper::map($operations, 'id', 'title');
+	echo $form->field($model, 'operation_id')->dropDownList($operationItems, ['prompt' => 'Операция']);
 
-    <?= $form->field($model, 'account_id')->textInput() ?>
+	$accountItems = ArrayHelper::map($accounts, 'id', 'title');
+	echo $form->field($model, 'account_id')->dropDownList($accountItems, ['prompt' => 'Счет']);
 
-    <?= $form->field($model, 'cash_flow_statement_id')->textInput() ?>
+	$cfsItems = ArrayHelper::map($cfs, 'id', 'title');
+	echo $form->field($model, 'cash_flow_statement_id')->dropDownList($accountItems, ['prompt' => 'Статья ДДС']);
 
-    <?= $form->field($model, 'note')->textarea(['rows' => 6]) ?>
+	echo $form->field($model, 'note')->textarea(['rows' => 6]);
 
-    <?= $form->field($model, 'subcount_id')->textInput() ?>
+	$employerItems = ArrayHelper::map($employers, 'id', 'username');
+	echo $form->field($model, 'subcount_id')->dropDownList($accountItems, ['prompt' => 'Субконто']);
 
-    <?= $form->field($model, 'amount')->textInput() ?>
+	echo $form->field($model, 'amount')->textInput();
 
-    <?= $form->field($model, 'created')->textInput() ?>
+	?>
 
-    <?= $form->field($model, 'updated')->textInput() ?>
+	<div class = "form-group">
+		<?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Изменить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+	</div>
 
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Изменить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
+	<?php ActiveForm::end(); ?>
 
 </div>

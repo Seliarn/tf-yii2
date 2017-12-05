@@ -24,8 +24,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'currency_id') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Искать', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Сбросить', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::$app->params['translate']['rus']['btn-search'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton(Yii::$app->params['translate']['rus']['btn-reset'], ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

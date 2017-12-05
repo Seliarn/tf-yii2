@@ -30,15 +30,30 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'code',
-            'operation_id',
-            'account_id',
-            'cash_flow_statement_id',
+			[
+				'label' => 'Операция',
+				'value' => $model->getOperation()->one()->title
+			],
+			[
+				'label' => 'Счет',
+				'value' => $model->getAccount()->one()->title
+			],
+			[
+				'label' => 'Статья ДДС',
+				'value' => $model->getCashFlowStatement()->one()->title
+			],
             'note:ntext',
-            'subcount_id',
+			[
+				'label' => 'Субконто',
+				'value' => $model->getSubcount()->one()->username
+			],
             'amount',
-            'created',
-            'updated',
-            'status',
+            'created:date',
+            'updated:date',
+			[
+				'label' => 'Субконто',
+				'value' => $model->getSubcount()->one()->username
+			],
         ],
     ]) ?>
 

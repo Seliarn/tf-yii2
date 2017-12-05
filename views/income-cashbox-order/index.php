@@ -26,15 +26,45 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'code',
-            'operation_id',
-            'account_id',
-            'cash_flow_statement_id',
+			[
+				'attribute' => 'operation_id',
+				'label' => 'Операция',
+				'content' => function ($data) {
+						return $data->getOperation()->one()->title;
+					}
+			],
+			[
+				'attribute' => 'account_id',
+				'label' => 'Счет',
+				'content' => function ($data) {
+						return $data->getAccount()->one()->title;
+					}
+			],
+			[
+				'attribute' => 'cash_flow_statement_id',
+				'label' => 'Статья ДДС',
+				'content' => function ($data) {
+						return $data->getCashFlowStatement()->one()->title;
+					}
+			],
+			[
+				'attribute' => 'subcount_id',
+				'label' => 'Субконто',
+				'content' => function ($data) {
+						return $data->getSubcount()->one()->username;
+					}
+			],
             // 'note:ntext',
-            // 'subcount_id',
-            // 'amount',
-            // 'created',
-            // 'updated',
-            // 'status',
+             'amount',
+             'created:date',
+             'updated:date',
+			[
+				'attribute' => 'status',
+				'label' => 'Статус',
+				'content' => function ($data) {
+						return $data->getStateAlias();
+					}
+			],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

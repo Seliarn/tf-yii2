@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\controllers\search\CashFlowStatementSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cash Flow Statements';
+$this->title = 'Статьи ДДС';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cash-flow-statement-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Cash Flow Statement', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать статью ДДС', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\CashFlowStatementGroup */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Cash Flow Statement Groups', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Группы статей ДДС', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cash-flow-statement-group-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a(Yii::$app->params['translate']['rus']['btn-update'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::$app->params['translate']['rus']['btn-delete'], ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => Yii::$app->params['translate']['rus']['dialog-are-you-sure'],
                 'method' => 'post',
             ],
         ]) ?>

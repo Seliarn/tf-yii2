@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CashFlowStatement */
 
-$this->title = 'Create Cash Flow Statement';
-$this->params['breadcrumbs'][] = ['label' => 'Cash Flow Statements', 'url' => ['index']];
+$this->title = 'Создать статью ДДС';
+$this->params['breadcrumbs'][] = ['label' => 'Статьи ДДС', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cash-flow-statement-create">

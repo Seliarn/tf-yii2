@@ -43,4 +43,13 @@ abstract class LoggedActiveRecord extends \yii\db\ActiveRecord
 		$this->on(self::EVENT_AFTER_INSERT, [$this->_loggerChangeInfo, 'saveLog']);
 		$this->on(self::EVENT_AFTER_DELETE, [$this->_loggerChangeInfo, 'saveLog']);
 	}
+
+
+	/**
+	 * @return mixed
+	 */
+	public function getStateAlias()
+	{
+		return $this->_stateAlias[$this->state];
+	}
 } 

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\controllers\search\CashFlowStatementGroupSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cash Flow Statement Groups';
+$this->title = 'Группы статей ДДС';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cash-flow-statement-group-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Cash Flow Statement Group', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать группу статей ДДС', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

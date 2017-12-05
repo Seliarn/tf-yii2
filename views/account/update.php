@@ -8,7 +8,7 @@ use yii\helpers\Html;
 $this->title = 'Редактировать счет: ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Счета', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Изменить';
+$this->params['breadcrumbs'][] = Yii::$app->params['translate']['rus']['btn-update'];
 ?>
 <div class="account-update">
 

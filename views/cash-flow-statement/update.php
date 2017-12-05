@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CashFlowStatement */
 
-$this->title = 'Update Cash Flow Statement: ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Cash Flow Statements', 'url' => ['index']];
+$this->title = 'Редактировать статью ДДС: ' . $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Статьи ДДС', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = Yii::$app->params['translate']['rus']['btn-update'];
 ?>
 <div class="cash-flow-statement-update">
 
