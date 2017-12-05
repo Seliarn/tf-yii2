@@ -17,7 +17,7 @@ use Yii;
  *
  * @property Account[] $accounts
  */
-class Currency extends \yii\db\ActiveRecord
+class Currency extends LoggedActiveRecord
 {
     /**
      * @inheritdoc

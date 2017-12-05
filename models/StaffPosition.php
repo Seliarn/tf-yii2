@@ -12,7 +12,7 @@ use Yii;
  *
  * @property StaffEmployee[] $staffEmployees
  */
-class StaffPosition extends \yii\db\ActiveRecord
+class StaffPosition extends LoggedActiveRecord
 {
     /**
      * @inheritdoc

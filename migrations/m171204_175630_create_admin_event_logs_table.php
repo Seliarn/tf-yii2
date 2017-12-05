@@ -3,7 +3,7 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `Admin_Event_Log`.
+ * Handles the creation of table `Admin_Event_Logs`.
  * ./yii migrate/create create_admin_event_logs_table --fields="event:string(100):notNull,sender:string(255):notNull,params:string(255),description:text,authorId:integer(11),authorObject:string(255),authorName:string(255),timestamp:timestamp"
  */
 class m171204_175630_create_admin_event_logs_table extends Migration
@@ -13,7 +13,7 @@ class m171204_175630_create_admin_event_logs_table extends Migration
      */
     public function up()
     {
-        $this->createTable('Admin_Event_Log', [
+        $this->createTable('Admin_Event_Logs', [
             'id' => $this->primaryKey(),
             'event' => $this->string(100)->notNull(),
             'sender' => $this->string(255)->notNull(),
@@ -31,6 +31,6 @@ class m171204_175630_create_admin_event_logs_table extends Migration
      */
     public function down()
     {
-        $this->dropTable('Admin_Event_Log');
+        $this->dropTable('Admin_Event_Logs');
     }
 }

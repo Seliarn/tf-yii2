@@ -24,7 +24,7 @@ use Yii;
  * @property CashFlowStatement $cashFlowStatement
  * @property StaffEmployee $subcount
  */
-class OutgoingCashboxOrder extends \yii\db\ActiveRecord
+class OutgoingCashboxOrder extends LoggedActiveRecord
 {
     /**
      * @inheritdoc

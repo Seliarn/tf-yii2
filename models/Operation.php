@@ -17,7 +17,7 @@ use Yii;
  * @property IncomeCashboxOrder[] $incomeCashboxOrders
  * @property OutgoingCashboxOrder[] $outgoingCashboxOrders
  */
-class Operation extends \yii\db\ActiveRecord
+class Operation extends LoggedActiveRecord
 {
     /**
      * @inheritdoc

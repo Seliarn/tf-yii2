@@ -16,7 +16,7 @@ use Yii;
  *
  * @property StaffDepartment[] $staffDepartments
  */
-class Office extends \yii\db\ActiveRecord
+class Office extends LoggedActiveRecord
 {
     /**
      * @inheritdoc

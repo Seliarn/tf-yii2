@@ -19,7 +19,7 @@ use Yii;
  * @property CashFlowStatementGroup $parent
  * @property CashFlowStatementGroup[] $cashFlowStatementGroups
  */
-class CashFlowStatementGroup extends \yii\db\ActiveRecord
+class CashFlowStatementGroup extends LoggedActiveRecord
 {
     /**
      * @inheritdoc

@@ -28,7 +28,7 @@ use Yii;
  * @property StaffDepartment $department
  * @property StaffPosition $position
  */
-class StaffEmployee extends \yii\db\ActiveRecord
+class StaffEmployee extends LoggedActiveRecord
 {
     /**
      * @inheritdoc
