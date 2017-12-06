@@ -2,14 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use app\models\IncomeCashboxOrder;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\IncomeCashboxOrder */
 
-$this->title = IncomeCashboxOrder::$titles['rus']['main'] . ' № ' . $model->code;
-$this->params['breadcrumbs'][] = ['label' => IncomeCashboxOrder::$titles['rus']['plural'], 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->code;
+$this->title = $model::$titles['rus']['main'] . ' № ' . $model->code;
+$this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class = "income-cashbox-order-view">
 
