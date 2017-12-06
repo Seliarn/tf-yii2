@@ -2,59 +2,62 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\IncomeCashboxOrder;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\IncomeCashboxOrder */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Приходные кассовые ордеры', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = IncomeCashboxOrder::$titles['rus']['main'] . ' № ' . $model->code;
+$this->params['breadcrumbs'][] = ['label' => IncomeCashboxOrder::$titles['rus']['plural'], 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->code;
 ?>
-<div class="income-cashbox-order-view">
+<div class = "income-cashbox-order-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+	<h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+	<p>
+		<?= Html::a(Yii::$app->params['translate']['rus']['btn-update'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+		<?=
+		Html::a(Yii::$app->params['translate']['rus']['btn-delete'], ['delete', 'id' => $model->id], [
+			'class' => 'btn btn-danger',
+			'data' => [
+				'confirm' => Yii::$app->params['translate']['rus']['dialog-are-you-sure'],
+				'method' => 'post',
+			],
+		]) ?>
+	</p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'code',
+	<?=
+	DetailView::widget([
+		'model' => $model,
+		'attributes' => [
+//            'id',
+			'code',
 			[
-				'label' => 'Операция',
+				'label' => $model->attributeLabels('operation_id'),
 				'value' => $model->getOperation()->one()->title
 			],
 			[
-				'label' => 'Счет',
+				'label' => $model->attributeLabels('account_id'),
 				'value' => $model->getAccount()->one()->title
 			],
 			[
-				'label' => 'Статья ДДС',
+				'label' => $model->attributeLabels('cash_flow_statement_id'),
 				'value' => $model->getCashFlowStatement()->one()->title
 			],
-            'note:ntext',
+			'note:ntext',
 			[
-				'label' => 'Субконто',
+				'label' => $model->attributeLabels('subcount_id'),
 				'value' => $model->getSubcount()->one()->username
 			],
-            'amount',
-            'created:date',
-            'updated:date',
+			'amount',
+			'created:date',
+			'updated:date',
 			[
-				'label' => 'Субконто',
-				'value' => $model->getSubcount()->one()->username
+				'label' => $model->attributeLabels('status'),
+				'value' => $model->getStateAlias()
 			],
-        ],
-    ]) ?>
+		],
+	]) ?>
 
 </div>

@@ -31,7 +31,7 @@ abstract class LoggedActiveRecord extends \yii\db\ActiveRecord
 	/**
 	 * @var string
 	 */
-	protected $_loggerChangeInfo = 'backend\models\AdminEventLogs';
+	protected $_loggerChangeInfo = 'app\models\AdminEventLogs';
 
 	/**
 	 *
@@ -50,6 +50,6 @@ abstract class LoggedActiveRecord extends \yii\db\ActiveRecord
 	 */
 	public function getStateAlias()
 	{
-		return $this->_stateAlias[$this->state];
+		return $this->_statusAlias[$this->status];
 	}
 } 

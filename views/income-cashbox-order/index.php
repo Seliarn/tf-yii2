@@ -2,71 +2,73 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\IncomeCashboxOrder;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\controllers\search\IncomeCashboxOrderSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Приходные кассовые ордеры';
+$this->title = IncomeCashboxOrder::$titles['rus']['plural'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="income-cashbox-order-index">
+<div class = "income-cashbox-order-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+	<h1><?= Html::encode($this->title) ?></h1>
+	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Создать приходный кассовый ордер', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+	<p>
+		<?= Html::a(Yii::$app->params['translate']['rus']['btn-create'] . ' ' . IncomeCashboxOrder::$titles['rus']['main'], ['create'], ['class' => 'btn btn-success']) ?>
+	</p>
+	<?=
+	GridView::widget([
+		'dataProvider' => $dataProvider,
+		'filterModel' => $searchModel,
+		'columns' => [
+			['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'code',
+			'id',
+			'code',
 			[
 				'attribute' => 'operation_id',
-				'label' => 'Операция',
+				'label' => $model->attributeLabels('operation_id'),
 				'content' => function ($data) {
 						return $data->getOperation()->one()->title;
 					}
 			],
 			[
 				'attribute' => 'account_id',
-				'label' => 'Счет',
+				'label' => $model->attributeLabels('account_id'),
 				'content' => function ($data) {
 						return $data->getAccount()->one()->title;
 					}
 			],
 			[
 				'attribute' => 'cash_flow_statement_id',
-				'label' => 'Статья ДДС',
+				'label' => $model->attributeLabels('cash_flow_statement_id'),
 				'content' => function ($data) {
 						return $data->getCashFlowStatement()->one()->title;
 					}
 			],
 			[
 				'attribute' => 'subcount_id',
-				'label' => 'Субконто',
+				'label' => $model->attributeLabels('subcount_id'),
 				'content' => function ($data) {
 						return $data->getSubcount()->one()->username;
 					}
 			],
-            // 'note:ntext',
-             'amount',
-             'created:date',
-             'updated:date',
+			// 'note:ntext',
+			'amount',
+			'created:date',
+			'updated:date',
 			[
 				'attribute' => 'status',
-				'label' => 'Статус',
+				'label' => $model->attributeLabels('status'),
 				'content' => function ($data) {
 						return $data->getStateAlias();
 					}
 			],
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+			['class' => 'yii\grid\ActionColumn'],
+		],
+	]); ?>
 </div>

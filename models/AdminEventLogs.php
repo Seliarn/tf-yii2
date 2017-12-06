@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\base\Event;
 
 /**
  * This is the model class for table "Admin_Event_Logs".

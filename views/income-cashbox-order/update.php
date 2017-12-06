@@ -5,17 +5,21 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\IncomeCashboxOrder */
 
-$this->title = 'Изменить приходный кассовый ордер: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Приходные кассовые ордеры', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Изменить';
+$this->title = Yii::$app->params['translate']['rus']['btn-update'] . ' ' . IncomeCashboxOrder::$titles['rus']['main'] . ': ' . $model->code;
+$this->params['breadcrumbs'][] = ['label' => IncomeCashboxOrder::$titles['rus']['plural'], 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->code, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = Yii::$app->params['translate']['rus']['btn-update'];
 ?>
-<div class="income-cashbox-order-update">
+<div class = "income-cashbox-order-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+	<h1><?= Html::encode($this->title) ?></h1>
+	<?=
+	$this->render('_form', [
+		'model' => $model,
+		'operations' => $operations,
+		'accounts' => $accounts,
+		'cashFlowStatements' => $cashFlowStatements,
+		'employers' => $employers
+	]) ?>
 
 </div>
