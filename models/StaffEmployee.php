@@ -30,6 +30,13 @@ use Yii;
  */
 class StaffEmployee extends LoggedActiveRecord
 {
+	static $titles = [
+		'rus' => [
+			'main' => 'Сотрудник',
+			'plural' => 'Сотрудники'
+		]
+	];
+
     /**
      * @inheritdoc
      */
@@ -44,9 +51,10 @@ class StaffEmployee extends LoggedActiveRecord
     public function rules()
     {
         return [
-            [['department_id', 'position_id', 'status'], 'required'],
+            [['department_id', 'position_id'], 'required'],
             [['department_id', 'position_id', 'status'], 'integer'],
             [['hired'], 'safe'],
+			[['status'], 'default', 'value' => 1],
             [['username', 'password'], 'string', 'max' => 100],
             [['auth_key'], 'string', 'max' => 32],
             [['password_hash', 'password_reset_token', 'first_name', 'last_name', 'email', 'phone', 'note'], 'string', 'max' => 255],
@@ -58,26 +66,32 @@ class StaffEmployee extends LoggedActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'department_id' => 'Department ID',
-            'position_id' => 'Position ID',
-            'username' => 'Username',
-            'password' => 'Password',
-            'auth_key' => 'Auth Key',
-            'password_hash' => 'Password Hash',
-            'password_reset_token' => 'Password Reset Token',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'email' => 'Email',
-            'phone' => 'Phone',
-            'note' => 'Note',
-            'status' => 'Status',
-            'hired' => 'Hired',
-        ];
-    }
+	public function attributeLabels($attr = null)
+	{
+		$labels = [
+			'id' => 'ID',
+			'department_id' => 'Подразделение',
+			'position_id' => 'Должность',
+			'username' => 'Имя пользователя',
+			'password' => 'Пароль',
+			'auth_key' => 'Auth Key',
+			'password_hash' => 'Password Hash',
+			'password_reset_token' => 'Password Reset Token',
+			'first_name' => 'Имя',
+			'last_name' => 'Фамилия',
+			'email' => 'E-mail',
+			'phone' => 'Телефон',
+			'note' => 'Примечание',
+			'status' => 'Статус',
+			'hired' => 'Нанят',
+		];
+
+		if (!empty($attr)) {
+			return $labels[$attr];
+		}
+
+		return $labels;
+	}
 
     /**
      * @return \yii\db\ActiveQuery

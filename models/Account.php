@@ -18,6 +18,13 @@ use Yii;
  */
 class Account extends LoggedActiveRecord
 {
+	static $titles = [
+		'rus' => [
+			'main' => 'Счет',
+			'plural' => 'Счета'
+		]
+	];
+
 	/**
 	 * @inheritdoc
 	 */
@@ -44,14 +51,20 @@ class Account extends LoggedActiveRecord
 	/**
 	 * @inheritdoc
 	 */
-	public function attributeLabels()
+	public function attributeLabels($attr = null)
 	{
-		return [
+		$labels = [
 			'id' => 'ID',
 			'title' => 'Название',
 			'description' => 'Описание',
 			'currency_id' => 'Валюта',
 		];
+
+		if (!empty($attr)) {
+			return $labels[$attr];
+		}
+
+		return $labels;
 	}
 
 	/**

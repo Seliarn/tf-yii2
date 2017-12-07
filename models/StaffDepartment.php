@@ -20,6 +20,13 @@ use Yii;
  */
 class StaffDepartment extends LoggedActiveRecord
 {
+	static $titles = [
+		'rus' => [
+			'main' => 'Подразделение',
+			'plural' => 'Подразделения'
+		]
+	];
+
 	/**
 	 * @inheritdoc
 	 */
@@ -34,7 +41,7 @@ class StaffDepartment extends LoggedActiveRecord
 	public function rules()
 	{
 		return [
-			[['title', 'parent_id', 'office_id'], 'required'],
+			[['title', 'office_id'], 'required'],
 			[['parent_id', 'office_id'], 'integer'],
 			[['title'], 'string', 'max' => 255],
 			[['note'], 'string', 'max' => 255],
@@ -46,15 +53,21 @@ class StaffDepartment extends LoggedActiveRecord
 	/**
 	 * @inheritdoc
 	 */
-	public function attributeLabels()
+	public function attributeLabels($attr = null)
 	{
-		return [
+		$labels = [
 			'id' => 'ID',
 			'title' => 'Название',
-			'parent_id' => 'Parent ID',
-			'office_id' => 'Office ID',
+			'parent_id' => 'Подразделение',
+			'office_id' => 'Офис',
 			'note' => 'Note',
 		];
+
+		if (!empty($attr)) {
+			return $labels[$attr];
+		}
+
+		return $labels;
 	}
 
 	/**

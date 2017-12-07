@@ -19,60 +19,74 @@ use Yii;
  */
 class Currency extends LoggedActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'Currency';
-    }
+	static $titles = [
+		'rus' => [
+			'main' => 'Валюта',
+			'plural' => 'Валюты'
+		]
+	];
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['code', 'title', 'status'], 'required'],
-            [['status'], 'integer'],
-            [['created', 'updated'], 'safe'],
-            [['note'], 'string', 'max' => 255],
-            [['title'], 'string', 'max' => 100],
-            [['code'], 'string', 'max' => 50],
-            [['code'], 'unique'],
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName()
+	{
+		return 'Currency';
+	}
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'code' => 'Код',
-            'title' => 'Название',
-            'created' => 'Создан',
-            'updated' => 'Обновлен',
-            'status' => 'Статус',
-            'note' => 'Примечание',
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['code', 'title'], 'required'],
+			[['status'], 'integer'],
+			[['status'], 'default', 'value' => 1],
+			[['created', 'updated'], 'safe'],
+			[['note'], 'string', 'max' => 255],
+			[['title'], 'string', 'max' => 100],
+			[['code'], 'string', 'max' => 50],
+			[['code'], 'unique'],
+		];
+	}
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAccounts()
-    {
-        return $this->hasMany(Account::className(), ['currency_id' => 'id']);
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels($attr = null)
+	{
+		$labels = [
+			'id' => 'ID',
+			'code' => 'Код',
+			'title' => 'Название',
+			'created' => 'Создан',
+			'updated' => 'Обновлен',
+			'status' => 'Статус',
+			'note' => 'Примечание',
+		];
 
-    /**
-     * @inheritdoc
-     * @return \app\models\aq\CurrencyQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new \app\models\aq\CurrencyQuery(get_called_class());
-    }
+		if (!empty($attr)) {
+			return $labels[$attr];
+		}
+
+		return $labels;
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getAccounts()
+	{
+		return $this->hasMany(Account::className(), ['currency_id' => 'id']);
+	}
+
+	/**
+	 * @inheritdoc
+	 * @return \app\models\aq\CurrencyQuery the active query used by this AR class.
+	 */
+	public static function find()
+	{
+		return new \app\models\aq\CurrencyQuery(get_called_class());
+	}
 }

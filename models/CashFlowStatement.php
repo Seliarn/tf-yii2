@@ -21,6 +21,13 @@ use Yii;
  */
 class CashFlowStatement extends LoggedActiveRecord
 {
+	static $titles = [
+		'rus' => [
+			'main' => 'Статья ДДС',
+			'plural' => 'Статьи ДДС'
+		]
+	];
+
     /**
      * @inheritdoc
      */
@@ -35,8 +42,9 @@ class CashFlowStatement extends LoggedActiveRecord
     public function rules()
     {
         return [
-            [['group_id', 'title', 'status'], 'required'],
+            [[ 'title'], 'required'],
             [['group_id', 'status'], 'integer'],
+            [['group_id', 'status'], 'default', 'value' => 1],
             [['created', 'updated'], 'safe'],
             [['title'], 'string', 'max' => 100],
             [['note'], 'string', 'max' => 255],
@@ -47,17 +55,23 @@ class CashFlowStatement extends LoggedActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
+    public function attributeLabels($attr = null)
     {
-        return [
+		$labels = [
             'id' => 'ID',
-            'group_id' => 'Group ID',
-            'title' => 'Title',
-            'created' => 'Created',
-            'updated' => 'Updated',
-            'status' => 'Status',
-            'note' => 'Note',
+            'group_id' => 'Группа',
+            'title' => 'Название',
+            'created' => 'Создан',
+            'updated' => 'Изменен',
+            'status' => 'Статус',
+            'note' => 'Примечание',
         ];
+
+		if (!empty($attr)) {
+			return $labels[$attr];
+		}
+
+		return $labels;
     }
 
     /**

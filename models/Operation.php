@@ -19,6 +19,13 @@ use Yii;
  */
 class Operation extends LoggedActiveRecord
 {
+	static $titles = [
+		'rus' => [
+			'main' => 'Операция',
+			'plural' => 'Операции'
+		]
+	];
+	
     /**
      * @inheritdoc
      */
@@ -43,17 +50,23 @@ class Operation extends LoggedActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'created' => 'Created',
-            'updated' => 'Updated',
-            'status' => 'Status',
-            'type' => 'Type',
-        ];
-    }
+	public function attributeLabels($attr = null)
+	{
+		$labels = [
+			'id' => 'ID',
+			'title' => 'Название',
+			'created' => 'Создан',
+			'updated' => 'Изменен',
+			'status' => 'Статус',
+			'type' => 'Тип',
+		];
+
+		if (!empty($attr)) {
+			return $labels[$attr];
+		}
+
+		return $labels;
+	}
 
     /**
      * @return \yii\db\ActiveQuery

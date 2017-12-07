@@ -20,6 +20,13 @@ use yii\base\Event;
  */
 class AdminEventLogs extends \yii\db\ActiveRecord
 {
+	static $titles = [
+		'rus' => [
+			'main' => 'Логи',
+			'plural' => 'Логи'
+		]
+	];
+
 	/**
 	 * @inheritdoc
 	 */
@@ -46,9 +53,9 @@ class AdminEventLogs extends \yii\db\ActiveRecord
 	/**
 	 * @inheritdoc
 	 */
-	public function attributeLabels()
+	public function attributeLabels($attr = null)
 	{
-		return [
+		$labels = [
 			'id' => 'ID',
 			'event' => 'Event',
 			'sender' => 'Sender',
@@ -59,6 +66,12 @@ class AdminEventLogs extends \yii\db\ActiveRecord
 			'authorName' => 'Author Name',
 			'timestamp' => 'Timestamp',
 		];
+
+		if (!empty($attr)) {
+			return $labels[$attr];
+		}
+
+		return $labels;
 	}
 
 	/**

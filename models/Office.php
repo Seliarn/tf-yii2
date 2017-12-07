@@ -18,7 +18,14 @@ use Yii;
  */
 class Office extends LoggedActiveRecord
 {
-    /**
+	static $titles = [
+		'rus' => [
+			'main' => 'Офис',
+			'plural' => 'Офисы'
+		]
+	];
+
+	/**
      * @inheritdoc
      */
     public static function tableName()
@@ -41,17 +48,23 @@ class Office extends LoggedActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'address' => 'Address',
-            'email' => 'Email',
-            'phone' => 'Phone',
-            'note' => 'Note',
-        ];
-    }
+	public function attributeLabels($attr = null)
+	{
+		$labels = [
+			'id' => 'ID',
+			'title' => 'Название',
+			'address' => 'Адрес',
+			'email' => 'E-mail',
+			'phone' => 'Телефон',
+			'note' => 'Примечание',
+		];
+
+		if (!empty($attr)) {
+			return $labels[$attr];
+		}
+
+		return $labels;
+	}
 
     /**
      * @return \yii\db\ActiveQuery
