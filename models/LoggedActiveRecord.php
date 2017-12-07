@@ -24,8 +24,8 @@ abstract class LoggedActiveRecord extends \yii\db\ActiveRecord
 	 * @var array
 	 */
 	protected $_statusAlias = [
-		self::STATUS_ACTIVE => 'Active',
-		self::STATUS_DELETE => 'Delete'
+		self::STATUS_ACTIVE => 'Активный',
+		self::STATUS_DELETE => 'Удален'
 	];
 
 	/**
