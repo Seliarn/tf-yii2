@@ -114,6 +114,17 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 									],
 								],
 								[
+									"label" => "Банк",
+									"url" => "#",
+									"icon" => "money",
+									"items" => [
+										[
+											"label" => "Выписки",
+											"url" => "/bank-statement/index",
+										],
+									],
+								],
+								[
 									"label" => "Настройки",
 									"url" => "#",
 									"icon" => "cogs",

@@ -10,6 +10,19 @@ namespace app\models;
 
 abstract class CashboxOrder extends LoggedActiveRecord
 {
+	static $lables = [
+		'id' => 'ID',
+		'code' => '№',
+		'operation_id' => 'Операция',
+		'account_id' => 'Счет',
+		'cash_flow_statement_id' => 'Статья ДДС',
+		'note' => 'Примечание',
+		'subcount_id' => 'Субконто',
+		'amount' => 'Сумма',
+		'created' => 'Создан',
+		'updated' => 'Изменен',
+		'status' => 'Статус',
+	];
 
 	/**
 	 * @inheritdoc
@@ -37,25 +50,11 @@ abstract class CashboxOrder extends LoggedActiveRecord
 	 */
 	public function attributeLabels($attr = null)
 	{
-		$labels = [
-			'id' => 'ID',
-			'code' => '№',
-			'operation_id' => 'Операция',
-			'account_id' => 'Счет',
-			'cash_flow_statement_id' => 'Статья ДДС',
-			'note' => 'Примечание',
-			'subcount_id' => 'Субконто',
-			'amount' => 'Сумма',
-			'created' => 'Создан',
-			'updated' => 'Изменен',
-			'status' => 'Статус',
-		];
-
 		if (!empty($attr)) {
-			return $labels[$attr];
+			return self::$lables[$attr];
 		}
 
-		return $labels;
+		return self::$lables;
 	}
 
 	/**

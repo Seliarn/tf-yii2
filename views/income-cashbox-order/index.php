@@ -30,28 +30,28 @@ $this->params['breadcrumbs'][] = $this->title;
 			'code',
 			[
 				'attribute' => 'operation_id',
-				'label' => $model->attributeLabels('operation_id'),
+				'label' => IncomeCashboxOrder::attributeLabels('operation_id'),
 				'content' => function ($data) {
 						return $data->getOperation()->one()->title;
 					}
 			],
 			[
 				'attribute' => 'account_id',
-				'label' => $model->attributeLabels('account_id'),
+				'label' => IncomeCashboxOrder::attributeLabels('account_id'),
 				'content' => function ($data) {
 						return $data->getAccount()->one()->title;
 					}
 			],
 			[
 				'attribute' => 'cash_flow_statement_id',
-				'label' => $model->attributeLabels('cash_flow_statement_id'),
+				'label' => IncomeCashboxOrder::attributeLabels('cash_flow_statement_id'),
 				'content' => function ($data) {
 						return $data->getCashFlowStatement()->one()->title;
 					}
 			],
 			[
 				'attribute' => 'subcount_id',
-				'label' => $model->attributeLabels('subcount_id'),
+				'label' => IncomeCashboxOrder::attributeLabels('subcount_id'),
 				'content' => function ($data) {
 						return $data->getSubcount()->one()->username;
 					}
@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			'updated:date',
 			[
 				'attribute' => 'status',
-				'label' => $model->attributeLabels('status'),
+				'label' => IncomeCashboxOrder::attributeLabels('status'),
 				'content' => function ($data) {
 						return $data->getStateAlias();
 					}
