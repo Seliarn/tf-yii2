@@ -160,7 +160,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 		</div>
 		<!-- /sidebar menu -->
 
-		<!-- /menu footer buttons -->
+		<!-- /menu footer buttons --
 		<div class = "sidebar-footer hidden-small">
 			<a data-toggle = "tooltip" data-placement = "top" title = "Settings">
 				<span class = "glyphicon glyphicon-cog" aria-hidden = "true"></span>
@@ -326,7 +326,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 	<?= $content ?>
 </div>
 <!-- /page content -->
-<!-- footer content -->
+<!-- footer content --
 <footer>
 	<div class = "pull-right">
 		Gentelella - Bootstrap Admin Template by
