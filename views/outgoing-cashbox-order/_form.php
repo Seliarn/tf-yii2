@@ -8,34 +8,49 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="outgoing-cashbox-order-form">
+<div class = "outgoing-cashbox-order-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+	<?php
+	if (empty($operations)) {
+		echo '<div class="alert alert-error fade in">Нет доступных операций. <a href="/operation/create">Создать</a></div>';
+	} else if (empty($accounts)) {
+		echo '<div class="alert alert-error fade in">Нет доступных счетов. <a href="/account/create">Создать</a></div>';
+	} else if (empty($cashFlowStatements)) {
+		echo '<div class="alert alert-error fade in">Нет доступных статей ДДС. <a href="/cash-flow-statement/create">Создать</a></div>';
+	} else if (empty($employers)) {
+		echo '<div class="alert alert-error fade in">Нет доступных сотрудников. <a href="/staff-employee/create">Создать</a></div>';
+	} else {
 
-    <?= $form->field($model, 'code')->textInput(['maxlength' => true]) ?>
+		$form = ActiveForm::begin();
 
-    <?= $form->field($model, 'operation_id')->textInput() ?>
+		echo $form->field($model, 'code')->textInput(['maxlength' => true]);
 
-    <?= $form->field($model, 'account_id')->textInput() ?>
+		$operationItems = ArrayHelper::map($operations, 'id', 'title');
+		echo $form->field($model, 'operation_id')->dropDownList($operationItems, ['prompt' => $model->attributeLabels('operation_id')]);
 
-    <?= $form->field($model, 'cash_flow_statement_id')->textInput() ?>
+		$accountItems = ArrayHelper::map($accounts, 'id', 'title');
+		echo $form->field($model, 'account_id')->dropDownList($accountItems, ['prompt' => $model->attributeLabels('account_id')]);
 
-    <?= $form->field($model, 'note')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'subcount_id')->textInput() ?>
+		$cfsItems = ArrayHelper::map($cashFlowStatements, 'id', 'title');
+		echo $form->field($model, 'cash_flow_statement_id')->dropDownList($cfsItems, ['prompt' => $model->attributeLabels('cash_flow_statement_id')]);
 
-    <?= $form->field($model, 'amount')->textInput() ?>
 
-    <?= $form->field($model, 'updated')->textInput() ?>
+		echo $form->field($model, 'note')->textarea(['rows' => 6]);
 
-    <?= $form->field($model, 'created')->textInput() ?>
+		$employerItems = ArrayHelper::map($employers, 'id', 'username');
+		echo $form->field($model, 'subcount_id')->dropDownList($employerItems, ['prompt' => $model->attributeLabels('subcount_id')]);
 
-    <?= $form->field($model, 'status')->textInput() ?>
+		echo $form->field($model, 'amount')->textInput();
+		echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+		?>
 
-    <?php ActiveForm::end(); ?>
+		<div class = "form-group">
+			<?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Изменить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+		</div>
+
+		<?php ActiveForm::end();
+	} ?>
 
 </div>
