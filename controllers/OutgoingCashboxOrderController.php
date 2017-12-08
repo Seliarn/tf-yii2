@@ -68,9 +68,17 @@ class OutgoingCashboxOrderController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+			$operations = Operation::find()->all();
+			$accounts = Account::find()->all();
+			$cfs = CashFlowStatement::find()->all();
+			$employers = StaffEmployee::find()->all();
+			return $this->render('create', [
+				'model' => $model,
+				'operations' => $operations,
+				'accounts' => $accounts,
+				'cashFlowStatements' => $cfs,
+				'employers' => $employers
+			]);
         }
     }
 
@@ -87,9 +95,17 @@ class OutgoingCashboxOrderController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+			$operations = Operation::find()->all();
+			$accounts = Account::find()->all();
+			$cfs = CashFlowStatement::find()->all();
+			$employers = StaffEmployee::find()->all();
+			return $this->render('update', [
+				'model' => $model,
+				'operations' => $operations,
+				'accounts' => $accounts,
+				'cashFlowStatements' => $cfs,
+				'employers' => $employers,
+			]);
         }
     }
 

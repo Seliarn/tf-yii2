@@ -26,6 +26,12 @@ use Yii;
  */
 class OutgoingCashboxOrder extends CashboxOrder
 {
+	static $titles = [
+		'rus' => [
+			'main' => 'Расходный кассовый ордер',
+			'plural' => 'Расходные кассовые ордеры'
+		]
+	];
 	/**
 	 * @inheritdoc
 	 */
