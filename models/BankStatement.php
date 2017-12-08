@@ -70,6 +70,7 @@ class BankStatement extends \app\models\LoggedActiveRecord
 			[['code'], 'string', 'max' => 100],
 			[['note'], 'string', 'max' => 255],
 			[['code'], 'unique'],
+			[['status'], 'default', 'value' => 1],
 			[['account_id'], 'exist', 'skipOnError' => true, 'targetClass' => Account::className(), 'targetAttribute' => ['account_id' => 'id']],
 			[['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => StaffEmployee::className(), 'targetAttribute' => ['author_id' => 'id']],
 		];

@@ -9,6 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $title
+ * @property integer $status
  *
  * @property StaffEmployee[] $staffEmployees
  */
@@ -23,6 +24,7 @@ class StaffPosition extends LoggedActiveRecord
 	static $labels = [
 		'id' => 'ID',
 		'title' => 'Название',
+		'status' => 'Статус',
 	];
 
 
@@ -42,6 +44,7 @@ class StaffPosition extends LoggedActiveRecord
 		return [
 			[['title'], 'required'],
 			[['title'], 'string', 'max' => 255],
+			[['status'], 'default', 'value' => 1],
 		];
 	}
 

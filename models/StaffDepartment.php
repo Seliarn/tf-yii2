@@ -12,6 +12,7 @@ use Yii;
  * @property integer $parent_id
  * @property integer $office_id
  * @property string $note
+ * @property integer $status
  *
  * @property StaffDepartment $parent
  * @property StaffDepartment[] $staffDepartments
@@ -33,6 +34,7 @@ class StaffDepartment extends LoggedActiveRecord
 		'parent_id' => 'Подразделение',
 		'office_id' => 'Офис',
 		'note' => 'Note',
+		'status' => 'Статус',
 	];
 
 	/**
@@ -53,6 +55,7 @@ class StaffDepartment extends LoggedActiveRecord
 			[['parent_id', 'office_id'], 'integer'],
 			[['title'], 'string', 'max' => 255],
 			[['note'], 'string', 'max' => 255],
+			[['status'], 'default', 'value' => 1],
 			[['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => StaffDepartment::className(), 'targetAttribute' => ['parent_id' => 'id']],
 			[['office_id'], 'exist', 'skipOnError' => true, 'targetClass' => Office::className(), 'targetAttribute' => ['office_id' => 'id']],
 		];

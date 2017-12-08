@@ -58,6 +58,7 @@ class CashFlowStatement extends LoggedActiveRecord
 			[['created', 'updated'], 'safe'],
 			[['title'], 'string', 'max' => 100],
 			[['note'], 'string', 'max' => 255],
+			[['status'], 'default', 'value' => 1],
 			[['group_id'], 'exist', 'skipOnError' => true, 'targetClass' => CashFlowStatementGroup::className(), 'targetAttribute' => ['group_id' => 'id']],
 		];
 	}

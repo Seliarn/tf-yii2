@@ -52,6 +52,7 @@ class Operation extends LoggedActiveRecord
 			[['title', 'status', 'type'], 'required'],
 			[['created', 'updated'], 'safe'],
 			[['status', 'type'], 'integer'],
+			[['status'], 'default', 'value' => 1],
 			[['title'], 'string', 'max' => 255],
 		];
 	}

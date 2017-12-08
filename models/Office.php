@@ -13,6 +13,7 @@ use Yii;
  * @property string $email
  * @property string $phone
  * @property string $note
+ * @property integer $status
  *
  * @property StaffDepartment[] $staffDepartments
  */
@@ -24,7 +25,7 @@ class Office extends LoggedActiveRecord
 			'plural' => 'Офисы'
 		]
 	];
-	
+
 	static $labels = [
 		'id' => 'ID',
 		'title' => 'Название',
@@ -32,6 +33,7 @@ class Office extends LoggedActiveRecord
 		'email' => 'E-mail',
 		'phone' => 'Телефон',
 		'note' => 'Примечание',
+		'status' => 'Статус',
 	];
 
 	/**
@@ -50,6 +52,7 @@ class Office extends LoggedActiveRecord
 		return [
 			[['title'], 'required'],
 			[['address'], 'string'],
+			[['status'], 'default', 'value' => 1],
 			[['title', 'email', 'phone', 'note'], 'string', 'max' => 255],
 		];
 	}

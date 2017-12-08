@@ -64,4 +64,14 @@ abstract class LoggedActiveRecord extends \yii\db\ActiveRecord
 
 		return static::$labels;
 	}
+
+
+	/**
+	 * @return bool
+	 */
+	public function delete()
+	{
+		$this->status = self::STATE_DELETE;
+		return $this->update(true);
+	}
 } 

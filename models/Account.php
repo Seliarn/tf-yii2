@@ -11,6 +11,7 @@ use Yii;
  * @property string $title
  * @property string $description
  * @property integer $currency_id
+ * @property integer $status
  *
  * @property Currency $currency
  * @property IncomeCashboxOrder[] $incomeCashboxOrders
@@ -24,11 +25,14 @@ class Account extends LoggedActiveRecord
 			'plural' => 'Счета'
 		]
 	];
-	
-	static $labels = ['id' => 'ID',
+
+	static $labels = [
+		'id' => 'ID',
 		'title' => 'Название',
 		'description' => 'Описание',
-		'currency_id' => 'Валюта',];
+		'currency_id' => 'Валюта',
+		'status' => 'Статус'
+	];
 
 	/**
 	 * @inheritdoc
@@ -47,8 +51,9 @@ class Account extends LoggedActiveRecord
 			[['title', 'currency_id'], 'required'],
 			[['description'], 'string'],
 			[['currency_id'], 'integer'],
-//			[['status'], 'integer'],
+			[['status'], 'integer'],
 			[['title'], 'string', 'max' => 255],
+			[['status'], 'default', 'value' => 1],
 			[['currency_id'], 'exist', 'skipOnError' => true, 'targetClass' => Currency::className(), 'targetAttribute' => ['currency_id' => 'id']],
 		];
 	}
