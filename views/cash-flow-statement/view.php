@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
             'title',
             'created:date',
-            'update:date',
+            'updated:date',
 			[
 				'label' => $model->attributeLabels('status'),
 				'value' => $model->getStatusAlias()
