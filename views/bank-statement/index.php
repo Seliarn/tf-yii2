@@ -8,51 +8,70 @@ use app\models\BankStatement;
 /* @var $searchModel app\controllers\search\BankStatementSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = IncomeCashboxOrder::$titles['rus']['plural'];
+$this->title = BankStatement::$titles['rus']['plural'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="bank-statement-index">
+<div class = "bank-statement-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+	<h1><?= Html::encode($this->title) ?></h1>
+	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-		<?= Html::a(Yii::$app->params['translate']['rus']['btn-create'] . ' ' . IncomeCashboxOrder::$titles['rus']['main'], ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+	<p>
+		<?= Html::a(Yii::$app->params['translate']['rus']['btn-create'] . ' ' . BankStatement::$titles['rus']['main'], ['create'], ['class' => 'btn btn-success']) ?>
+	</p>
+	<?=
+	GridView::widget([
+		'dataProvider' => $dataProvider,
+		'filterModel' => $searchModel,
+		'columns' => [
+			['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'code',
-            'flow_type',
-            'payment_type',
+			'id',
+			'code',
+			[
+				'attribute' => 'flow_type',
+				'label' => IncomeCashboxOrder::$labels['flow_type'],
+				'content' => function ($data) {
+						return $data->getFlowTypeAlias();
+					}
+			],
+			[
+				'attribute' => 'payment_type',
+				'label' => IncomeCashboxOrder::$labels['payment_type'],
+				'content' => function ($data) {
+						return $data->getPaymentTypeAlias();
+					}
+			],
 			[
 				'attribute' => 'account_id',
-				'label' => IncomeCashboxOrder::$labels['account_id'],
+				'label' => BankStatement::$labels['account_id'],
 				'content' => function ($data) {
 						return $data->getAccount()->one()->title;
 					}
 			],
-            // 'amount',
-            // 'amount_vat',
-            // 'vat',
-            // '',
+			 'amount',
+			// 'amount_vat',
+			// 'vat',
+			// '',
 			[
 				'attribute' => 'author_id',
-				'label' => IncomeCashboxOrder::$labels['author_id'],
+				'label' => BankStatement::$labels['author_id'],
 				'content' => function ($data) {
 						return $data->getAuthor()->one()->username;
 					}
 			],
-            // 'created',
-            // 'updated',
-            // 'status',
-            // 'note',
+			 'created:date',
+			 'updated:date',
+			[
+				'attribute' => 'status',
+				'label' => IncomeCashboxOrder::$labels['status'],
+				'content' => function ($data) {
+						return $data->getStatusAlias();
+					}
+			],
+			// 'note',
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+			['class' => 'yii\grid\ActionColumn'],
+		],
+	]); ?>
 </div>

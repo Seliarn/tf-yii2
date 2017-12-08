@@ -48,7 +48,7 @@ abstract class LoggedActiveRecord extends \yii\db\ActiveRecord
 	/**
 	 * @return mixed
 	 */
-	public function getStateAlias()
+	public function getStatusAlias()
 	{
 		return $this->_statusAlias[$this->status];
 	}

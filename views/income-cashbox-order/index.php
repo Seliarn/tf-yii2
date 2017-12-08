@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				'attribute' => 'status',
 				'label' => IncomeCashboxOrder::$labels['status'],
 				'content' => function ($data) {
-						return $data->getStateAlias();
+						return $data->getStatusAlias();
 					}
 			],
 
