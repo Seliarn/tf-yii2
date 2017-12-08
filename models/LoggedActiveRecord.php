@@ -71,7 +71,7 @@ abstract class LoggedActiveRecord extends \yii\db\ActiveRecord
 	 */
 	public function delete()
 	{
-		$this->status = self::STATE_DELETE;
+		$this->status = self::STATUS_DELETE;
 		return $this->update(true);
 	}
 } 
