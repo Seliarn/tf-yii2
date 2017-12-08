@@ -8,6 +8,6 @@ $this->title = 'My Yii Application';
 
 	<div class = "x_panel">
 		<div class = "x_title">
-			<h2>Top Food</h2>
+			<h1>Top Food</h1>
 		</div>
 	</div>
