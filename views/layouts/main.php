@@ -145,10 +145,10 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 											"label" => "Статьи ДДС",
 											"url" => "/cash-flow-statement/index",
 										],
-										[
-											"label" => "Группы статей ДДС",
-											"url" => "/cash-flow-statement-group/index",
-										],
+//										[
+//											"label" => "Группы статей ДДС",
+//											"url" => "/cash-flow-statement-group/index",
+//										],
 									],
 								],
 							],
