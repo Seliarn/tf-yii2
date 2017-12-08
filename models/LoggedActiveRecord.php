@@ -52,4 +52,16 @@ abstract class LoggedActiveRecord extends \yii\db\ActiveRecord
 	{
 		return $this->_statusAlias[$this->status];
 	}
+	
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels($attr = null)
+	{
+		if (!empty($attr)) {
+			return self::$lables[$attr];
+		}
+
+		return self::$lables;
+	}
 } 

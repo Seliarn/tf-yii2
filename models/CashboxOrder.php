@@ -46,18 +46,6 @@ abstract class CashboxOrder extends LoggedActiveRecord
 	}
 
 	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels($attr = null)
-	{
-		if (!empty($attr)) {
-			return self::$lables[$attr];
-		}
-
-		return self::$lables;
-	}
-
-	/**
 	 * @return \yii\db\ActiveQuery
 	 */
 	public function getOperation()
