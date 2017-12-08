@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Account;
+use app\models\Operation;
 use Yii;
 use app\models\BankStatement;
 use app\controllers\search\BankStatementSearch;
@@ -68,9 +70,13 @@ class BankStatementController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+			$accounts = Account::find()->all();
+			$employers = StaffEmployee::find()->all();
+			return $this->render('create', [
+				'model' => $model,
+				'accounts' => $accounts,
+				'employers' => $employers
+			]);
         }
     }
 
@@ -87,9 +93,13 @@ class BankStatementController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+			$accounts = Account::find()->all();
+			$employers = StaffEmployee::find()->all();
+			return $this->render('create', [
+				'model' => $model,
+				'accounts' => $accounts,
+				'employers' => $employers
+			]);
         }
     }
 
