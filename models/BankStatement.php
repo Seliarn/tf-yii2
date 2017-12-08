@@ -33,82 +33,70 @@ class BankStatement extends \app\models\LoggedActiveRecord
 		]
 	];
 
+	static $labels = [
+		'id' => 'ID',
+		'code' => '№',
+		'flow_type' => 'Вид движения',
+		'payment_type' => 'Вид платежа',
+		'account_id' => 'Счет',
+		'amount' => 'Сумма',
+		'amount_vat' => 'Сумма + НДС',
+		'vat' => 'НДС',
+		'author_id' => 'Автор',
+		'created' => 'Создан',
+		'updated' => 'Изменен',
+		'status' => 'Статус',
+		'note' => 'Примечание',
+	];
+
 	/**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'Bank_Statement';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['code', 'flow_type', 'payment_type', 'amount', 'author_id'], 'required'],
-            [['flow_type', 'payment_type', 'account_id', 'author_id', 'status'], 'integer'],
-            [['amount', 'amount_vat', 'vat'], 'number'],
-            [['created', 'updated'], 'safe'],
-            [['code'], 'string', 'max' => 100],
-            [['note'], 'string', 'max' => 255],
-            [['code'], 'unique'],
-            [['account_id'], 'exist', 'skipOnError' => true, 'targetClass' => Account::className(), 'targetAttribute' => ['account_id' => 'id']],
-            [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => StaffEmployee::className(), 'targetAttribute' => ['author_id' => 'id']],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-	public function attributeLabels($attr = null)
+	 * @inheritdoc
+	 */
+	public static function tableName()
 	{
-		$labels = [
-			'id' => 'ID',
-			'code' => '№',
-			'flow_type' => 'Вид движения',
-			'payment_type' => 'Вид платежа',
-			'account_id' => 'Счет',
-			'amount' => 'Сумма',
-			'amount_vat' => 'Сумма + НДС',
-			'vat' => 'НДС',
-			'author_id' => 'Автор',
-			'created' => 'Создан',
-			'updated' => 'Изменен',
-			'status' => 'Статус',
-			'note' => 'Примечание',
-		];
-
-		if (!empty($attr)) {
-			return $labels[$attr];
-		}
-
-		return $labels;
+		return 'Bank_Statement';
 	}
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAccount()
-    {
-        return $this->hasOne(Account::className(), ['id' => 'account_id']);
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['code', 'flow_type', 'payment_type', 'amount', 'author_id'], 'required'],
+			[['flow_type', 'payment_type', 'account_id', 'author_id', 'status'], 'integer'],
+			[['amount', 'amount_vat', 'vat'], 'number'],
+			[['created', 'updated'], 'safe'],
+			[['code'], 'string', 'max' => 100],
+			[['note'], 'string', 'max' => 255],
+			[['code'], 'unique'],
+			[['account_id'], 'exist', 'skipOnError' => true, 'targetClass' => Account::className(), 'targetAttribute' => ['account_id' => 'id']],
+			[['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => StaffEmployee::className(), 'targetAttribute' => ['author_id' => 'id']],
+		];
+	}
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAuthor()
-    {
-        return $this->hasOne(StaffEmployee::className(), ['id' => 'author_id']);
-    }
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getAccount()
+	{
+		return $this->hasOne(Account::className(), ['id' => 'account_id']);
+	}
 
-    /**
-     * @inheritdoc
-     * @return \app\models\aq\BankStatementQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new \app\models\aq\BankStatementQuery(get_called_class());
-    }
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getAuthor()
+	{
+		return $this->hasOne(StaffEmployee::className(), ['id' => 'author_id']);
+	}
+
+	/**
+	 * @inheritdoc
+	 * @return \app\models\aq\BankStatementQuery the active query used by this AR class.
+	 */
+	public static function find()
+	{
+		return new \app\models\aq\BankStatementQuery(get_called_class());
+	}
 }

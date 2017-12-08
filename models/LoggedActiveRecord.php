@@ -59,9 +59,9 @@ abstract class LoggedActiveRecord extends \yii\db\ActiveRecord
 	public function attributeLabels($attr = null)
 	{
 		if (!empty($attr)) {
-			return static::$lables[$attr];
+			return static::$labels[$attr];
 		}
 
-		return static::$lables;
+		return static::$labels;
 	}
 } 

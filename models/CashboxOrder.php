@@ -10,7 +10,7 @@ namespace app\models;
 
 abstract class CashboxOrder extends LoggedActiveRecord
 {
-	static $lables = [
+	static $labels = [
 		'id' => 'ID',
 		'code' => '№',
 		'operation_id' => 'Операция',

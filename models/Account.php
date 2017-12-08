@@ -24,6 +24,11 @@ class Account extends LoggedActiveRecord
 			'plural' => 'Счета'
 		]
 	];
+	
+	static $labels = ['id' => 'ID',
+		'title' => 'Название',
+		'description' => 'Описание',
+		'currency_id' => 'Валюта',];
 
 	/**
 	 * @inheritdoc
@@ -46,25 +51,6 @@ class Account extends LoggedActiveRecord
 			[['title'], 'string', 'max' => 255],
 			[['currency_id'], 'exist', 'skipOnError' => true, 'targetClass' => Currency::className(), 'targetAttribute' => ['currency_id' => 'id']],
 		];
-	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels($attr = null)
-	{
-		$labels = [
-			'id' => 'ID',
-			'title' => 'Название',
-			'description' => 'Описание',
-			'currency_id' => 'Валюта',
-		];
-
-		if (!empty($attr)) {
-			return $labels[$attr];
-		}
-
-		return $labels;
 	}
 
 	/**

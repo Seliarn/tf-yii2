@@ -27,6 +27,16 @@ class CashFlowStatementGroup extends LoggedActiveRecord
 			'plural' => 'Группы статей ДДС'
 		]
 	];
+	
+	static $labels = [
+		'id' => 'ID',
+		'parent_id' => 'Родитель',
+		'title' => 'Название',
+		'created' => 'Создан',
+		'updated' => 'Изменен',
+		'status' => 'Статус',
+		'note' => 'Примечание',
+	];
 
 	/**
 	 * @inheritdoc
@@ -50,28 +60,6 @@ class CashFlowStatementGroup extends LoggedActiveRecord
 			[['note'], 'string', 'max' => 255],
 			[['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => CashFlowStatementGroup::className(), 'targetAttribute' => ['parent_id' => 'id']],
 		];
-	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels($attr = null)
-	{
-		$labels = [
-			'id' => 'ID',
-			'parent_id' => 'Родитель',
-			'title' => 'Название',
-			'created' => 'Создан',
-			'updated' => 'Изменен',
-			'status' => 'Статус',
-			'note' => 'Примечание',
-		];
-
-		if (!empty($attr)) {
-			return $labels[$attr];
-		}
-
-		return $labels;
 	}
 
 	/**
