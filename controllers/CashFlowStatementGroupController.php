@@ -90,7 +90,7 @@ class CashFlowStatementGroupController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
 			$groupItems = CashFlowStatementGroup::find()->all();
-			return $this->render('create', [
+			return $this->render('update', [
 				'model' => $model,
 				'groupItems' => $groupItems,
 			]);

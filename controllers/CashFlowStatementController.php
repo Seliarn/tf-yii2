@@ -91,7 +91,7 @@ class CashFlowStatementController extends Controller
 			return $this->redirect(['view', 'id' => $model->id]);
 		} else {
 			$cfsGroup = CashFlowStatementGroup::find()->all();
-			return $this->render('create', [
+			return $this->render('update', [
 				'model' => $model,
 				'cfsGroup' => $cfsGroup,
 			]);

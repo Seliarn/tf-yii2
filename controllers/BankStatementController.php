@@ -95,7 +95,7 @@ class BankStatementController extends Controller
         } else {
 			$accounts = Account::find()->all();
 			$employers = StaffEmployee::find()->all();
-			return $this->render('create', [
+			return $this->render('update', [
 				'model' => $model,
 				'accounts' => $accounts,
 				'employers' => $employers
