@@ -108,7 +108,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 											"url" => "/staff-department/index",
 										],
 										[
-											"label" => "Офисы",
+											"label" => "Франчайзи",
 											"url" => "/office",
 										],
 									],
