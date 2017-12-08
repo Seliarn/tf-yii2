@@ -191,20 +191,21 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 			<ul class = "nav navbar-nav navbar-right">
 				<li class = "">
 
-						<?php
-						if (Yii::$app->user->isGuest) {
-							?>
-							<a href = "/site/login">Sign in</a>
-						<?php
-						} else {
-							?>
+					<?php
+					if (Yii::$app->user->isGuest) {
+						?>
+						<a href = "/site/login">Sign in</a>
+					<?php
+					} else {
+					?>
 					<a href = "javascript:;" class = "user-profile dropdown-toggle" data-toggle = "dropdown" aria-expanded = "false">
 						<img src = "http://placehold.it/128x128" alt = "">
-							<?=Yii::$app->user->identity->username?>
-						<span class = " fa fa-angle-down"></span>
+						<?= Yii::$app->user->identity->username ?>
+						<!--span class = " fa fa-angle-down"></span-->
 						<?php
 						} ?>
 					</a>
+					<!--
 					<ul class = "dropdown-menu dropdown-usermenu pull-right">
 						<li><a href = "javascript:;"> Profile</a>
 						</li>
@@ -220,6 +221,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 						<li><a href = "/site/logout"><i class = "fa fa-sign-out pull-right"></i> Log Out</a>
 						</li>
 					</ul>
+					-->
 				</li>
 
 				<li role = "presentation" class = "dropdown">
