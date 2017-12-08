@@ -41,7 +41,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 		</div>
 		<div class = "clearfix"></div>
 
-		<!-- menu prile quick info -->
+		<!-- menu prile quick info --
 		<div class = "profile">
 			<div class = "profile_pic">
 				<img src = "http://placehold.it/128x128" alt = "..." class = "img-circle profile_img">

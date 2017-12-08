@@ -25,71 +25,59 @@ class Operation extends LoggedActiveRecord
 			'plural' => 'Операции'
 		]
 	];
-	
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'Operation';
-    }
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['title', 'status', 'type'], 'required'],
-            [['created', 'updated'], 'safe'],
-            [['status', 'type'], 'integer'],
-            [['title'], 'string', 'max' => 255],
-        ];
-    }
+	static $labels = [
+		'id' => 'ID',
+		'title' => 'Название',
+		'created' => 'Создан',
+		'updated' => 'Изменен',
+		'status' => 'Статус',
+		'type' => 'Тип',
+	];
 
-    /**
-     * @inheritdoc
-     */
-	public function attributeLabels($attr = null)
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName()
 	{
-		$labels = [
-			'id' => 'ID',
-			'title' => 'Название',
-			'created' => 'Создан',
-			'updated' => 'Изменен',
-			'status' => 'Статус',
-			'type' => 'Тип',
-		];
-
-		if (!empty($attr)) {
-			return $labels[$attr];
-		}
-
-		return $labels;
+		return 'Operation';
 	}
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getIncomeCashboxOrders()
-    {
-        return $this->hasMany(IncomeCashboxOrder::className(), ['operation_id' => 'id']);
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['title', 'status', 'type'], 'required'],
+			[['created', 'updated'], 'safe'],
+			[['status', 'type'], 'integer'],
+			[['title'], 'string', 'max' => 255],
+		];
+	}
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getOutgoingCashboxOrders()
-    {
-        return $this->hasMany(OutgoingCashboxOrder::className(), ['operation_id' => 'id']);
-    }
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getIncomeCashboxOrders()
+	{
+		return $this->hasMany(IncomeCashboxOrder::className(), ['operation_id' => 'id']);
+	}
 
-    /**
-     * @inheritdoc
-     * @return \app\models\aq\OperationQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new \app\models\aq\OperationQuery(get_called_class());
-    }
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getOutgoingCashboxOrders()
+	{
+		return $this->hasMany(OutgoingCashboxOrder::className(), ['operation_id' => 'id']);
+	}
+
+	/**
+	 * @inheritdoc
+	 * @return \app\models\aq\OperationQuery the active query used by this AR class.
+	 */
+	public static function find()
+	{
+		return new \app\models\aq\OperationQuery(get_called_class());
+	}
 }

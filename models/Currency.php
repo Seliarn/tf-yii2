@@ -26,6 +26,16 @@ class Currency extends LoggedActiveRecord
 		]
 	];
 
+	static $labels = [
+		'id' => 'ID',
+		'code' => 'Код',
+		'title' => 'Название',
+		'created' => 'Создан',
+		'updated' => 'Обновлен',
+		'status' => 'Статус',
+		'note' => 'Примечание',
+	];
+
 	/**
 	 * @inheritdoc
 	 */
@@ -49,28 +59,6 @@ class Currency extends LoggedActiveRecord
 			[['code'], 'string', 'max' => 50],
 			[['code'], 'unique'],
 		];
-	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels($attr = null)
-	{
-		$labels = [
-			'id' => 'ID',
-			'code' => 'Код',
-			'title' => 'Название',
-			'created' => 'Создан',
-			'updated' => 'Обновлен',
-			'status' => 'Статус',
-			'note' => 'Примечание',
-		];
-
-		if (!empty($attr)) {
-			return $labels[$attr];
-		}
-
-		return $labels;
 	}
 
 	/**

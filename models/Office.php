@@ -24,62 +24,50 @@ class Office extends LoggedActiveRecord
 			'plural' => 'Офисы'
 		]
 	];
+	
+	static $labels = [
+		'id' => 'ID',
+		'title' => 'Название',
+		'address' => 'Адрес',
+		'email' => 'E-mail',
+		'phone' => 'Телефон',
+		'note' => 'Примечание',
+	];
 
 	/**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'Office';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['title'], 'required'],
-            [['address'], 'string'],
-            [['title', 'email', 'phone', 'note'], 'string', 'max' => 255],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-	public function attributeLabels($attr = null)
+	 * @inheritdoc
+	 */
+	public static function tableName()
 	{
-		$labels = [
-			'id' => 'ID',
-			'title' => 'Название',
-			'address' => 'Адрес',
-			'email' => 'E-mail',
-			'phone' => 'Телефон',
-			'note' => 'Примечание',
-		];
-
-		if (!empty($attr)) {
-			return $labels[$attr];
-		}
-
-		return $labels;
+		return 'Office';
 	}
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getStaffDepartments()
-    {
-        return $this->hasMany(StaffDepartment::className(), ['office_id' => 'id']);
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['title'], 'required'],
+			[['address'], 'string'],
+			[['title', 'email', 'phone', 'note'], 'string', 'max' => 255],
+		];
+	}
 
-    /**
-     * @inheritdoc
-     * @return \app\models\aq\OfficeQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new \app\models\aq\OfficeQuery(get_called_class());
-    }
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getStaffDepartments()
+	{
+		return $this->hasMany(StaffDepartment::className(), ['office_id' => 'id']);
+	}
+
+	/**
+	 * @inheritdoc
+	 * @return \app\models\aq\OfficeQuery the active query used by this AR class.
+	 */
+	public static function find()
+	{
+		return new \app\models\aq\OfficeQuery(get_called_class());
+	}
 }

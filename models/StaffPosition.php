@@ -20,6 +20,10 @@ class StaffPosition extends LoggedActiveRecord
 			'plural' => 'Должности'
 		]
 	];
+	static $labels = [
+		'id' => 'ID',
+		'title' => 'Название',
+	];
 
 
 	/**
@@ -39,23 +43,6 @@ class StaffPosition extends LoggedActiveRecord
 			[['title'], 'required'],
 			[['title'], 'string', 'max' => 255],
 		];
-	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels($attr = null)
-	{
-		$labels = [
-			'id' => 'ID',
-			'title' => 'Название',
-		];
-
-		if (!empty($attr)) {
-			return $labels[$attr];
-		}
-
-		return $labels;
 	}
 
 	/**

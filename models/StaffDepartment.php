@@ -27,6 +27,14 @@ class StaffDepartment extends LoggedActiveRecord
 		]
 	];
 
+	static $labels = [
+		'id' => 'ID',
+		'title' => 'Название',
+		'parent_id' => 'Подразделение',
+		'office_id' => 'Офис',
+		'note' => 'Note',
+	];
+
 	/**
 	 * @inheritdoc
 	 */
@@ -48,26 +56,6 @@ class StaffDepartment extends LoggedActiveRecord
 			[['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => StaffDepartment::className(), 'targetAttribute' => ['parent_id' => 'id']],
 			[['office_id'], 'exist', 'skipOnError' => true, 'targetClass' => Office::className(), 'targetAttribute' => ['office_id' => 'id']],
 		];
-	}
-
-	/**
-	 * @inheritdoc
-	 */
-	public function attributeLabels($attr = null)
-	{
-		$labels = [
-			'id' => 'ID',
-			'title' => 'Название',
-			'parent_id' => 'Подразделение',
-			'office_id' => 'Офис',
-			'note' => 'Note',
-		];
-
-		if (!empty($attr)) {
-			return $labels[$attr];
-		}
-
-		return $labels;
 	}
 
 	/**
