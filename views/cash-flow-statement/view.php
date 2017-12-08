@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\CashFlowStatement */
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Статьи ДДС', 'url' => ['index']];
+$this->title = $model::$titles['rus']['main'] . ': ' . $model->title;
+$this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cash-flow-statement-view">
@@ -29,11 +29,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'group_id',
+			[
+				'label' => $model->attributeLabels('group_id'),
+				'value' => $model->getGroup()->one()->username
+			],
             'title',
-            'created',
-            'updated',
-            'status',
+            'created:date',
+            'update:date',
+			[
+				'label' => $model->attributeLabels('status'),
+				'value' => $model->getStatusAlias()
+			],
             'note',
         ],
     ]) ?>
