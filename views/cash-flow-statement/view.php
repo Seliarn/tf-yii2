@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
 			[
 				'label' => $model->attributeLabels('group_id'),
-				'value' => $model->getGroup()->one()->username
+				'value' => $model->getGroup()->one()->title
 			],
             'title',
             'created:date',

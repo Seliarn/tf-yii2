@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CashFlowStatementGroup */
 
-$this->title = 'Редактировать группу статей ДДС: ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Группы статей ДДС', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
+$this->title = Yii::$app->params['translate']['rus']['btn-update'] . ' ' . $model::$titles['rus']['main'] . ': ' . $model->code;
+$this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->code, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::$app->params['translate']['rus']['btn-update'];
 ?>
 <div class="cash-flow-statement-group-update">
@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = Yii::$app->params['translate']['rus']['btn-upda
 
     <?= $this->render('_form', [
         'model' => $model,
+		'groupItems' => $groupItems,
     ]) ?>
 
 </div>

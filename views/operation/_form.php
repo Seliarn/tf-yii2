@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'updated')->textInput() ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]); ?>
 
     <?= $form->field($model, 'type')->textInput() ?>
 

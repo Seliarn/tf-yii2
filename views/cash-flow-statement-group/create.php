@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\CashFlowStatementGroup */
 
-$this->title = 'Создать группу статей ДДС';
-$this->params['breadcrumbs'][] = ['label' => 'Группы статей ДДС', 'url' => ['index']];
+$this->title = Yii::$app->params['translate']['rus']['btn-create'] . ' ' . $model::$titles['rus']['main'];
+$this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cash-flow-statement-group-create">
@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'groupItems' => $groupItems,
     ]) ?>
 
 </div>
