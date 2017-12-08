@@ -28,10 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
 			'id',
 			'code',
 			'title',
-			'created',
-			'updated',
-			'status',
-			'note',
+			'created:date',
+			'updated:date',
+			[
+				'attribute' => 'status',
+				'label' => IncomeCashboxOrder::$labels['status'],
+				'content' => function ($data) {
+						return $data->getStatusAlias();
+					}
+			],
+//			'note',
 
 			['class' => 'yii\grid\ActionColumn'],
 		],
