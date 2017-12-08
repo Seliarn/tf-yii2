@@ -30,14 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
 			'code',
 			[
 				'attribute' => 'flow_type',
-				'label' => IncomeCashboxOrder::$labels['flow_type'],
+				'label' => BankStatement::$labels['flow_type'],
 				'content' => function ($data) {
 						return $data->getFlowTypeAlias();
 					}
 			],
 			[
 				'attribute' => 'payment_type',
-				'label' => IncomeCashboxOrder::$labels['payment_type'],
+				'label' => BankStatement::$labels['payment_type'],
 				'content' => function ($data) {
 						return $data->getPaymentTypeAlias();
 					}
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			 'updated:date',
 			[
 				'attribute' => 'status',
-				'label' => IncomeCashboxOrder::$labels['status'],
+				'label' => BankStatement::$labels['status'],
 				'content' => function ($data) {
 						return $data->getStatusAlias();
 					}
