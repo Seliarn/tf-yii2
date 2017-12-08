@@ -2,44 +2,55 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\BankStatement */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="bank-statement-form">
+<div class = "bank-statement-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+	<?php
+	if (empty($accounts)) {
+		echo '<div class="alert alert-error fade in">Нет доступных счетов. <a href="/account/create">Создать</a></div>';
+	} else if (empty($employers)) {
+		echo '<div class="alert alert-error fade in">Нет доступных сотрудников. <a href="/staff-employee/create">Создать</a></div>';
+	} else {
+		$form = ActiveForm::begin();
 
-    <?= $form->field($model, 'code')->textInput(['maxlength' => true]) ?>
+		echo $form->field($model, 'code')->textInput(['maxlength' => true]);
 
-    <?= $form->field($model, 'flow_type')->textInput() ?>
+		echo $form->field($model, 'flow_type')->dropDownList([
+			'1' => 'Поступление',
+			'2' => 'Выплата'
+		]);
 
-    <?= $form->field($model, 'payment_type')->textInput() ?>
+		echo $form->field($model, 'payment_type')->dropDownList([
+			'1' => 'Оплата',
+			'2' => 'Возврат'
+		]);
 
-    <?= $form->field($model, 'account_id')->textInput() ?>
+		$accountItems = ArrayHelper::map($accounts, 'id', 'title');
+		echo $form->field($model, 'account_id')->dropDownList($accountItems, ['prompt' => $model->attributeLabels('account_id')]);
 
-    <?= $form->field($model, 'amount')->textInput() ?>
+		echo $form->field($model, 'amount')->textInput();
 
-    <?= $form->field($model, 'amount_vat')->textInput() ?>
+		echo $form->field($model, 'amount_vat')->textInput();
 
-    <?= $form->field($model, 'vat')->textInput() ?>
+		echo $form->field($model, 'vat')->textInput();
 
-    <?= $form->field($model, 'author_id')->textInput() ?>
+		$employerItems = ArrayHelper::map($employers, 'id', 'username');
+		echo $form->field($model, 'author_id')->dropDownList($employerItems, ['prompt' => $model->attributeLabels('author_id')]);
 
-    <?= $form->field($model, 'created')->textInput() ?>
+		echo $form->field($model, 'note')->textInput(['maxlength' => true]);
+		echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
+	}
+	?>
+	<div class = "form-group">
+		<?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Изменить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+	</div>
 
-    <?= $form->field($model, 'updated')->textInput() ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'note')->textInput(['maxlength' => true]) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
+	<?php ActiveForm::end(); ?>
 
 </div>

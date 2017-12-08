@@ -48,6 +48,29 @@ class BankStatement extends \app\models\LoggedActiveRecord
 		'status' => 'Статус',
 		'note' => 'Примечание',
 	];
+	/**
+	 *
+	 */
+	const PAYMENT_TYPE_INCOME = 1;
+	const PAYMENT_TYPE_OUTGOING = 2;
+
+	const FLOW_TYPE_INCOME = 1;
+	const FLOW_TYPE_OUTGOING = 2;
+
+	/**
+	 * @var array
+	 */
+	protected $_paymentTypeAlias = [
+		self::PAYMENT_TYPE_INCOME => 'Оплата',
+		self::PAYMENT_TYPE_OUTGOING => 'Возврат'
+	];
+	/**
+	 * @var array
+	 */
+	protected $_flowTypeAlias = [
+		self::FLOW_TYPE_INCOME => 'Поступление',
+		self::FLOW_TYPE_OUTGOING => 'Выплата'
+	];
 
 	/**
 	 * @inheritdoc
@@ -99,5 +122,20 @@ class BankStatement extends \app\models\LoggedActiveRecord
 	public static function find()
 	{
 		return new \app\models\aq\BankStatementQuery(get_called_class());
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getPaymentTypeAlias()
+	{
+		return $this->_paymentTypeAlias[$this->payment_type];
+	}
+	/**
+	 * @return mixed
+	 */
+	public function getFlowTypeAlias()
+	{
+		return $this->_flowTypeAlias[$this->flow_type];
 	}
 }

@@ -2,12 +2,13 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\BankStatement;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\controllers\search\BankStatementSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Bank Statements';
+$this->title = IncomeCashboxOrder::$titles['rus']['plural'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bank-statement-index">
@@ -16,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Bank Statement', ['create'], ['class' => 'btn btn-success']) ?>
+		<?= Html::a(Yii::$app->params['translate']['rus']['btn-create'] . ' ' . IncomeCashboxOrder::$titles['rus']['main'], ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -28,11 +29,24 @@ $this->params['breadcrumbs'][] = $this->title;
             'code',
             'flow_type',
             'payment_type',
-            'account_id',
+			[
+				'attribute' => 'account_id',
+				'label' => IncomeCashboxOrder::$labels['account_id'],
+				'content' => function ($data) {
+						return $data->getAccount()->one()->title;
+					}
+			],
             // 'amount',
             // 'amount_vat',
             // 'vat',
-            // 'author_id',
+            // '',
+			[
+				'attribute' => 'author_id',
+				'label' => IncomeCashboxOrder::$labels['author_id'],
+				'content' => function ($data) {
+						return $data->getAuthor()->one()->username;
+					}
+			],
             // 'created',
             // 'updated',
             // 'status',
