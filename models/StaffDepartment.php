@@ -32,8 +32,8 @@ class StaffDepartment extends LoggedActiveRecord
 		'id' => 'ID',
 		'title' => 'Название',
 		'parent_id' => 'Подразделение',
-		'office_id' => 'Офис',
-		'note' => 'Note',
+		'office_id' => 'Франчайз',
+		'note' => 'Примечание',
 		'status' => 'Статус',
 	];
 
