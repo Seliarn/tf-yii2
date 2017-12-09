@@ -36,7 +36,7 @@ class StaffEmployee extends LoggedActiveRecord
 			'plural' => 'Сотрудники'
 		]
 	];
-	
+
 	static $labels = [
 		'id' => 'ID',
 		'department_id' => 'Подразделение',
@@ -69,7 +69,7 @@ class StaffEmployee extends LoggedActiveRecord
 	public function rules()
 	{
 		return [
-			[['department_id', 'position_id'], 'required'],
+			[['department_id', 'position_id', 'username', 'password'], 'required'],
 			[['department_id', 'position_id', 'status'], 'integer'],
 			[['hired'], 'safe'],
 			[['status'], 'default', 'value' => 1],
