@@ -45,7 +45,7 @@ class Operation extends LoggedActiveRecord
 	/**
 	 * @var array
 	 */
-	public $typeAlias = [
+	protected $_typeAlias = [
 		self::TYPE_INCOME => 'Приходная',
 		self::TYPE_OUTGOING => 'Расходная'
 	];
