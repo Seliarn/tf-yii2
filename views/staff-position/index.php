@@ -2,12 +2,13 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\StaffPosition;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\controllers\search\StaffPositionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Staff Positions';
+$this->title = StaffPosition::$titles['rus']['plural'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="staff-position-index">
@@ -16,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Staff Position', ['create'], ['class' => 'btn btn-success']) ?>
+		<?= Html::a(Yii::$app->params['translate']['rus']['btn-create'] . ' ' . StaffPosition::$titles['rus']['main'], ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -26,6 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'title',
+			[
+				'attribute' => 'status',
+				'label' => StaffPosition::$labels['status'],
+				'content' => function ($data) {
+						return $data->getStatusAlias();
+					}
+			],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

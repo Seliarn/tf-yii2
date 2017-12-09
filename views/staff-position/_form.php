@@ -8,16 +8,17 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="staff-position-form">
+<div class = "staff-position-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+	<?php $form = ActiveForm::begin();
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+	echo $form->field($model, 'title')->textInput(['maxlength' => true]);
+	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
+	?>
+	<div class = "form-group">
+		<?= Html::submitButton($model->isNewRecord ? Yii::$app->params['translate']['rus']['btn-create'] : Yii::$app->params['translate']['rus']['btn-update'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+	</div>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
+	<?php ActiveForm::end(); ?>
 
 </div>
