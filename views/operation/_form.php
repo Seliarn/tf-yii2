@@ -8,24 +8,23 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="operation-form">
+<div class = "operation-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+	<?php $form = ActiveForm::begin();
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+	echo $form->field($model, 'title')->textInput(['maxlength' => true]);
 
-    <?= $form->field($model, 'created')->textInput() ?>
+	echo $form->field($model, 'type')->dropDownList([
+		$model::TYPE_INCOME => 'Приходная',
+		$model::TYPE_OUTGOING => 'Расходная'
+	]);
+	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
 
-    <?= $form->field($model, 'updated')->textInput() ?>
+	?>
+	<div class = "form-group">
+		<?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Изменить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+	</div>
 
-    <?= $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]); ?>
-
-    <?= $form->field($model, 'type')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
+	<?php ActiveForm::end(); ?>
 
 </div>

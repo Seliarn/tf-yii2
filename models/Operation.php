@@ -35,6 +35,21 @@ class Operation extends LoggedActiveRecord
 		'type' => 'Тип',
 	];
 
+
+	/**
+	 *
+	 */
+	const TYPE_INCOME = 1;
+	const TYPE_OUTGOING = 2;
+
+	/**
+	 * @var array
+	 */
+	public $typeAlias = [
+		self::TYPE_INCOME => 'Приходная',
+		self::TYPE_OUTGOING => 'Расходная'
+	];
+
 	/**
 	 * @inheritdoc
 	 */
@@ -80,5 +95,13 @@ class Operation extends LoggedActiveRecord
 	public static function find()
 	{
 		return new \app\models\aq\OperationQuery(get_called_class());
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getOperationTypeAlias()
+	{
+		return $this->_typeAlias[$this->type];
 	}
 }
