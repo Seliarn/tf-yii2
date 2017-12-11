@@ -131,23 +131,22 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 //											"label" => "Группы статей ДДС",
 //											"url" => "/cash-flow-statement-group/index",
 //										],
+
 										[
 											"label" => "Франчайзи",
 											"url" => "/office/index",
-											"items" => [
-												[
-													"label" => "Сотрудники",
-													"url" => "/staff-employee/index",
-												],
-												[
-													"label" => "Должности",
-													"url" => "/staff-position/index",
-												],
-												[
-													"label" => "Подразделения",
-													"url" => "/staff-department/index",
-												],
-											],
+										],
+										[
+											"label" => "Сотрудники",
+											"url" => "/staff-employee/index",
+										],
+										[
+											"label" => "Должности",
+											"url" => "/staff-position/index",
+										],
+										[
+											"label" => "Подразделения",
+											"url" => "/staff-department/index",
 										],
 									],
 								],
