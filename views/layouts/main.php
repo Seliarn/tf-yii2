@@ -70,7 +70,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 								[
 									"label" => "Документы",
 									"url" => "#",
-									"icon" => "book",
+									"icon" => "file-text",
 									"items" => [
 										[
 											"label" => "Касса",
@@ -91,29 +91,6 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 									],
 								],
 								[
-									"label" => "Кадры",
-									"url" => "#",
-									"icon" => "users",
-									"items" => [
-										[
-											"label" => "Сотрудники",
-											"url" => "/staff-employee/index",
-										],
-										[
-											"label" => "Должности",
-											"url" => "/staff-position/index",
-										],
-										[
-											"label" => "Подразделения",
-											"url" => "/staff-department/index",
-										],
-										[
-											"label" => "Франчайзи",
-											"url" => "/office",
-										],
-									],
-								],
-								[
 									"label" => "Банк",
 									"url" => "#",
 									"icon" => "money",
@@ -125,9 +102,9 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 									],
 								],
 								[
-									"label" => "Настройки",
+									"label" => "Справочник",
 									"url" => "#",
-									"icon" => "cogs",
+									"icon" => "book",
 									"items" => [
 										[
 											"label" => "Счета",
@@ -145,11 +122,71 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 											"label" => "Статьи ДДС",
 											"url" => "/cash-flow-statement/index",
 										],
+										[
+											"label" => "Статусы заказов",
+//											"url" => "/order-status/index",
+											"url" => "#",
+										],
 //										[
 //											"label" => "Группы статей ДДС",
 //											"url" => "/cash-flow-statement-group/index",
 //										],
+										[
+											"label" => "Франчайзи",
+											"url" => "/office/index",
+											"items" => [
+												[
+													"label" => "Сотрудники",
+													"url" => "/staff-employee/index",
+												],
+												[
+													"label" => "Должности",
+													"url" => "/staff-position/index",
+												],
+												[
+													"label" => "Подразделения",
+													"url" => "/staff-department/index",
+												],
+											],
+										],
 									],
+								],
+								[
+									"label" => "Склад",
+//									"url" => "/stock/index",
+									"url" => "#",
+									"icon" => "archive",
+									"items" => [
+										[
+											"label" => "Товары",
+//											"url" => "/items/index",
+											"url" => "#",
+										],
+									]
+								],
+								[
+									"label" => "Заказы",
+//									"url" => "/orders/index",
+									"url" => "#",
+									"icon" => "calendar-check-o"
+								],
+								[
+									"label" => "CRM",
+//									"url" => "/orders/index",
+									"url" => "#",
+									"icon" => "users",
+									"items" => [
+										[
+											"label" => "Клиенты",
+//											"url" => "/items/index",
+											"url" => "#",
+										],
+									],
+								],
+								[
+									"label" => "Настройки",
+									"url" => "#",
+									"icon" => "cogs"
 								],
 							],
 						]

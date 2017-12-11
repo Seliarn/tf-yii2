@@ -68,10 +68,10 @@ class CashFlowStatementGroupController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-			$groupItems = CashFlowStatementGroup::find()->all();
+			$cfsGroup = CashFlowStatementGroup::find()->all();
             return $this->render('create', [
                 'model' => $model,
-				'groupItems' => $groupItems,
+				'cfsGroup' => $cfsGroup,
             ]);
         }
     }
@@ -89,10 +89,10 @@ class CashFlowStatementGroupController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-			$groupItems = CashFlowStatementGroup::find()->all();
+			$cfsGroup = CashFlowStatementGroup::find()->all();
 			return $this->render('update', [
 				'model' => $model,
-				'groupItems' => $groupItems,
+				'cfsGroup' => $cfsGroup,
 			]);
         }
     }
