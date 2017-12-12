@@ -21,8 +21,8 @@ class Office extends LoggedActiveRecord
 {
 	static $titles = [
 		'rus' => [
-			'main' => 'Франчайз',
-			'plural' => 'Франчайзи'
+			'main' => 'Офис',
+			'plural' => 'Офисы'
 		]
 	];
 
