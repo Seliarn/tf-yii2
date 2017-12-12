@@ -165,13 +165,11 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 								],
 								[
 									"label" => "Заказы",
-//									"url" => "/orders/index",
-									"url" => "#",
+									"url" => "/product-order/index",
 									"icon" => "calendar-check-o"
 								],
 								[
 									"label" => "CRM",
-//									"url" => "/orders/index",
 									"url" => "#",
 									"icon" => "users",
 									"items" => [
