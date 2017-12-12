@@ -66,7 +66,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 						[
 							"items" => [
 								["label" => "Главная", "url" => "/", "icon" => "home"],
-								["label" => "Gii", "url" => ["/gii"], "icon" => "files-o"],
+//								["label" => "Gii", "url" => ["/gii"], "icon" => "files-o"],
 								[
 									"label" => "Документы",
 									"url" => "#",
