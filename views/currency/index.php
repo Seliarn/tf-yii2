@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Currency;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\controllers\search\CurrencySearch */
@@ -32,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			'updated:date',
 			[
 				'attribute' => 'status',
-				'label' => IncomeCashboxOrder::$labels['status'],
+				'label' => Currency::$labels['status'],
 				'content' => function ($data) {
 						return $data->getStatusAlias();
 					}
