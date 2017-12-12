@@ -8,7 +8,7 @@ use app\models\ProductOrder;
 /* @var $searchModel app\controllers\search\ProductOrderSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Product Orders';
+$this->title = ProductOrder::$titles['rus']['plural'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class = "product-order-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 	<p>
-		<?= Html::a('Create Product Order', ['create'], ['class' => 'btn btn-success']) ?>
+		<?= Html::a(Yii::$app->params['translate']['rus']['btn-create'] . ' ' . ProductOrder::$titles['rus']['main'], ['create'], ['class' => 'btn btn-success']) ?>
 	</p>
 	<?=
 	GridView::widget([
