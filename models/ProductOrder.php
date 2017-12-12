@@ -16,7 +16,7 @@ use Yii;
  * @property string $note
  * @property string $client_note
  */
-class ProductOrder extends \yii\db\ActiveRecord
+class ProductOrder extends LoggedActiveRecord
 {
 	static $titles = [
 		'rus' => [
