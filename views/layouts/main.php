@@ -133,7 +133,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 //										],
 
 										[
-											"label" => "Франчайзи",
+											"label" => "Офисы",
 											"url" => "/office/index",
 										],
 										[
@@ -179,6 +179,11 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 											"url" => "#",
 										],
 									],
+								],
+								[
+									"label" => "Франчайзи",
+									"url" => "#",
+									"icon" => "code-fork"
 								],
 								[
 									"label" => "Настройки",
