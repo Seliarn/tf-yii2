@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\grid\GridView;
 use app\models\ProductOrder;
+use app\controllers\ProductOrderController;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\ClientCustomer */
@@ -77,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					}
 			],
 
-			['class' => 'yii\grid\ActionColumn'],
+			['class' => 'yii\grid\ActionColumn', 'controller' => 'ProductOrderController'],
 		],
 	])?>
 </div>
