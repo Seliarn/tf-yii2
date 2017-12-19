@@ -18,16 +18,16 @@ use yii\helpers\ArrayHelper;
 		echo '<div class="alert alert-error fade in">Нет доступных счетов. <a href="/account/create">Создать</a></div>';
 	} else if (empty($cashFlowStatements)) {
 		echo '<div class="alert alert-error fade in">Нет доступных статей ДДС. <a href="/cash-flow-statement/create">Создать</a></div>';
-	} else if (empty($employers)) {
+	} else /*if (empty($employers)) {
 		echo '<div class="alert alert-error fade in">Нет доступных сотрудников. <a href="/staff-employee/create">Создать</a></div>';
-	} else {
+	} else*/ {
 
 		$form = ActiveForm::begin();
 
 		echo $form->field($model, 'code')->textInput(['maxlength' => true]);
 
 		$operationItems = ArrayHelper::map($operations, 'id', 'title');
-		echo $form->field($model, 'operation_id')->dropDownList($operationItems, ['prompt' => $model->attributeLabels('operation_id')]);
+		echo $form->field($model, 'operation_id')->dropDownList(null, ['prompt' => $model->attributeLabels('operation_id')]);
 
 		$accountItems = ArrayHelper::map($accounts, 'id', 'title');
 		echo $form->field($model, 'account_id')->dropDownList($accountItems, ['prompt' => $model->attributeLabels('account_id')]);
