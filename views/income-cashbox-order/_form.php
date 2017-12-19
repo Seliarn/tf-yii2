@@ -31,7 +31,7 @@ use yii\helpers\ArrayHelper;
 		echo $form->field($model, 'code')->textInput(['maxlength' => true]);
 
 		$operationItems = ArrayHelper::map($operations, 'id', 'title');
-		echo $form->field($model, 'operation_id')->dropDownList($operationItems, ['prompt' => $model->attributeLabels('operation_id')]);
+		echo $form->field($model, 'operation_id')->dropDownList($operationItems);
 		echo $form->field($model, 'payment_type')->dropDownList([
 			$model::PAYMENT_TYPE_PAY => "Оплата",
 			$model::PAYMENT_TYPE_RETURN => "Возврат"
