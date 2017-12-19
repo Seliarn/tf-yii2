@@ -2,12 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\ProductOrder;
 use Yii;
 use app\models\ClientCustomer;
 use app\controllers\search\ClientCustomerSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 
 /**
  * ClientCustomerController implements the CRUD actions for ClientCustomer model.
@@ -51,8 +53,16 @@ class ClientCustomerController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$customerDataProvider = new ActiveDataProvider([
+			'query' => ProductOrder::find()->where(['customer_id' => $id])->all(),
+			'pagination' => [
+				'pageSize' => 10,
+			],
+		]);
+
 		return $this->render('view', [
 			'model' => $this->findModel($id),
+			'customerOrders' => $customerDataProvider,
 		]);
 	}
 

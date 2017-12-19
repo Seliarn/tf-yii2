@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\widgets\GridView;
+use app\models\ProductOrder;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\ClientCustomer */
@@ -57,5 +59,31 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 		],
 	]) ?>
+	<?=
+	GridView::widget([
+		'dataProvider' => $customerOrders,
+		'columns' => [
+			['class' => 'yii\grid\SerialColumn'],
 
+			'id',
+			[
+				'attribute' => 'customer_id',
+				'label' => ProductOrder::$labels['customer_id'],
+				'content' => function ($model) {
+						$data = $model->getCustomer()->one();
+						return (!$data) ? false : $data->email_1;
+					}
+			],
+			'updated:date',
+			[
+				'attribute' => 'status',
+				'label' => ProductOrder::$labels['status'],
+				'content' => function ($data) {
+						return $data->getStatusAlias();
+					}
+			],
+
+			['class' => 'yii\grid\ActionColumn'],
+		],
+	])?>
 </div>
