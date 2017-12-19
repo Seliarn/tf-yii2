@@ -74,7 +74,7 @@ class IncomeCashboxOrderController extends Controller
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			return $this->redirect(['view', 'id' => $model->id]);
 		} else {
-			$params = array_merge([$model], $this->_prepareForm());
+			$params = array_merge(['model' => $model], $this->_prepareForm());
 			return $this->render('create', $params);
 		}
 	}
@@ -92,7 +92,7 @@ class IncomeCashboxOrderController extends Controller
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			return $this->redirect(['view', 'id' => $model->id]);
 		} else {
-			$params = array_merge([$model], $this->_prepareForm());
+			$params = array_merge(['model' => $model], $this->_prepareForm());
 			return $this->render('update', $params);
 		}
 	}
