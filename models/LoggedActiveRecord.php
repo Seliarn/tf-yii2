@@ -19,13 +19,18 @@ abstract class LoggedActiveRecord extends \yii\db\ActiveRecord
 	 *
 	 */
 	const STATUS_DELETE = 2;
+	/**
+	 *
+	 */
+	const STATUS_DRAFT = 3;
 
 	/**
 	 * @var array
 	 */
 	protected $_statusAlias = [
 		self::STATUS_ACTIVE => 'Активный',
-		self::STATUS_DELETE => 'Удален'
+		self::STATUS_DELETE => 'Удален',
+		self::STATUS_DRAFT => 'Черновик'
 	];
 
 	/**
@@ -70,6 +75,15 @@ abstract class LoggedActiveRecord extends \yii\db\ActiveRecord
 	 * @return bool
 	 */
 	public function delete()
+	{
+		$this->status = self::STATUS_DELETE;
+		return $this->update(true);
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function update($runValidation = true, $attributeNames = null)
 	{
 		$this->status = self::STATUS_DELETE;
 		return $this->update(true);

@@ -50,14 +50,28 @@ $this->params['breadcrumbs'][] = $this->title;
 					}
 			],
 			[
-				'attribute' => 'subcount_id',
-				'label' => IncomeCashboxOrder::$labels['subcount_id'],
+				'attribute' => 'subconto_id',
+				'label' => IncomeCashboxOrder::$labels['subconto_id'],
 				'content' => function ($data) {
-						return $data->getSubcount()->one()->username;
+						return $data->getSubconto()->one()->username;
+					}
+			],
+			[
+				'attribute' => 'contractor_id',
+				'label' => IncomeCashboxOrder::$labels['contractor_id'],
+				'content' => function ($data) {
+						return $data->getContractor()->one()->company;
 					}
 			],
 			// 'note:ntext',
 			'amount',
+			[
+				'attribute' => 'currency_id',
+				'label' => IncomeCashboxOrder::$labels['currency_id'],
+				'content' => function ($data) {
+						return $data->getCurrency()->one()->title;
+					}
+			],
 			'created:date',
 			'updated:date',
 			[

@@ -46,8 +46,8 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 			'note:ntext',
 			[
-				'label' => $model->attributeLabels('subcount_id'),
-				'value' => $model->getSubcount()->one()->username
+				'label' => $model->attributeLabels('subconto_id'),
+				'value' => $model->getSubconto()->one()->username
 			],
 			'amount',
 			'created:date',

@@ -50,10 +50,17 @@ $this->params['breadcrumbs'][] = $this->title;
 					}
 			],
 			[
-				'attribute' => 'subcount_id',
-				'label' => OutgoingCashboxOrder::$labels['subcount_id'],
+				'attribute' => 'subconto_id',
+				'label' => OutgoingCashboxOrder::$labels['subconto_id'],
 				'content' => function ($data) {
-						return $data->getSubcount()->one()->username;
+						return $data->getSubconto()->one()->username;
+					}
+			],
+			[
+				'attribute' => 'contractor_id',
+				'label' => OutgoingCashboxOrder::$labels['contractor_id'],
+				'content' => function ($data) {
+						return $data->getSubconto()->one()->username;
 					}
 			],
 			// 'note:ntext',

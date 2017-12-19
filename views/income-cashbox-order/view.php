@@ -44,12 +44,21 @@ $this->params['breadcrumbs'][] = $this->title;
 				'label' => $model->attributeLabels('cash_flow_statement_id'),
 				'value' => $model->getCashFlowStatement()->one()->title
 			],
-			'note:ntext',
 			[
-				'label' => $model->attributeLabels('subcount_id'),
-				'value' => $model->getSubcount()->one()->username
+				'label' => $model->attributeLabels('subconto_id'),
+				'value' => $model->getSubconto()->one()->username
+			],
+			[
+				'label' => $model->attributeLabels('contractor_id'),
+				'value' => $model->getContractor()->one()->company
 			],
 			'amount',
+			[
+				'label' => $model->attributeLabels('currency_id'),
+				'value' => $model->getCurrency()->one()->title
+			],
+			'note:ntext',
+			'date:date',
 			'created:date',
 			'updated:date',
 			[

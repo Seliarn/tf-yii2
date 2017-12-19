@@ -18,7 +18,7 @@ class IncomeCashboxOrderSearch extends IncomeCashboxOrder
     public function rules()
     {
         return [
-            [['id', 'operation_id', 'account_id', 'cash_flow_statement_id', 'subcount_id', 'status'], 'integer'],
+            [['id', 'operation_id', 'account_id', 'cash_flow_statement_id', 'subconto_id', 'status'], 'integer'],
             [['code', 'note', 'created', 'updated'], 'safe'],
             [['amount'], 'number'],
         ];
@@ -64,7 +64,7 @@ class IncomeCashboxOrderSearch extends IncomeCashboxOrder
             'operation_id' => $this->operation_id,
             'account_id' => $this->account_id,
             'cash_flow_statement_id' => $this->cash_flow_statement_id,
-            'subcount_id' => $this->subcount_id,
+            'subconto_id' => $this->subcount_id,
             'amount' => $this->amount,
             'created' => $this->created,
             'updated' => $this->updated,
