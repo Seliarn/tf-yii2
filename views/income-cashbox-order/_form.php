@@ -56,7 +56,6 @@ use yii\helpers\ArrayHelper;
 		echo $form->field($model, 'currency_id')->dropDownList($currencyItems);
 
 		echo $form->field($model, 'note')->textarea(['rows' => 6]);
-		echo $form->field($model, '')->dropDownList(['value' => $model::STATUS_ACTIVE]);
 		echo $form->field($model, 'status')->dropDownList([
 			$model::STATUS_ACTIVE => "Провести",
 			$model::STATUS_DRAFT => "В черновик"
