@@ -45,12 +45,12 @@ use yii\helpers\ArrayHelper;
 
 
 		$employerItems = ArrayHelper::map($employers, 'id', 'username');
-		echo $form->field($model, 'subconto_id')->dropDownList($employerItems);
+		echo $form->field($model, 'subconto_id')->dropDownList($employerItems, ['prompt' => $model->attributeLabels('subconto_id')]);
 
 		$contractorItems = ArrayHelper::map($contractors, 'id', 'company');
-		echo $form->field($model, 'contractor_id')->dropDownList($contractorItems);
+		echo $form->field($model, 'contractor_id')->dropDownList($contractorItems, ['prompt' => $model->attributeLabels('contractor_id')]);
 
-		echo $form->field($model, 'amount')->textInput(['value' => 0.00]);
+		echo $form->field($model, 'amount')->textInput(['value' => 0]);
 
 		$currencyItems = ArrayHelper::map($currency, 'id', 'title');
 		echo $form->field($model, 'currency_id')->dropDownList($currencyItems);
