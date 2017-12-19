@@ -6,6 +6,8 @@ use app\models\Account;
 use app\models\CashFlowStatement;
 use app\models\Operation;
 use app\models\StaffEmployee;
+use app\models\Currency;
+use app\models\ClientContractor;
 use Yii;
 use app\models\OutgoingCashboxOrder;
 use app\controllers\search\OutgoingCashboxOrderSearch;
