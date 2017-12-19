@@ -66,14 +66,8 @@ $this->params['breadcrumbs'][] = $this->title;
 			['class' => 'yii\grid\SerialColumn'],
 
 			'id',
-			[
-				'attribute' => 'customer_id',
-				'label' => ProductOrder::$labels['customer_id'],
-				'content' => function ($model) {
-						$data = $model->getCustomer()->one();
-						return (!$data) ? false : $data->email_1;
-					}
-			],
+			'note',
+			'client_note',
 			'updated:date',
 			[
 				'attribute' => 'status',
