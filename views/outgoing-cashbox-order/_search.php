@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="outgoing-cashbox-order-search">
+<div class="income-cashbox-order-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -27,19 +27,19 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'note') ?>
 
-    <?php // echo $form->field($model, 'subcount_id') ?>
+    <?php // echo $form->field($model, 'subconto_id') ?>
 
     <?php // echo $form->field($model, 'amount') ?>
 
-    <?php // echo $form->field($model, 'updated') ?>
-
     <?php // echo $form->field($model, 'created') ?>
+
+    <?php // echo $form->field($model, 'updated') ?>
 
     <?php // echo $form->field($model, 'status') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Искать', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Сбросить', ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

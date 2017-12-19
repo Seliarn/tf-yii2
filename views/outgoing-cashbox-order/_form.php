@@ -9,7 +9,7 @@ use yii\helpers\ArrayHelper;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class = "outgoing-cashbox-order-form">
+<div class = "income-cashbox-order-form">
 
 	<?php
 	if (empty($operations)) {
@@ -20,6 +20,10 @@ use yii\helpers\ArrayHelper;
 		echo '<div class="alert alert-error fade in">Нет доступных статей ДДС. <a href="/cash-flow-statement/create">Создать</a></div>';
 	} else if (empty($employers)) {
 		echo '<div class="alert alert-error fade in">Нет доступных сотрудников. <a href="/staff-employee/create">Создать</a></div>';
+	} else if (empty($contractors)) {
+		echo '<div class="alert alert-error fade in">Нет доступных контрагентов. <a href="/client-contractor/create">Создать</a></div>';
+	} else if (empty($currency)) {
+		echo '<div class="alert alert-error fade in">Нет доступных валют. <a href="/currency/create">Создать</a></div>';
 	} else {
 
 		$form = ActiveForm::begin();
@@ -27,23 +31,35 @@ use yii\helpers\ArrayHelper;
 		echo $form->field($model, 'code')->textInput(['maxlength' => true]);
 
 		$operationItems = ArrayHelper::map($operations, 'id', 'title');
-		echo $form->field($model, 'operation_id')->dropDownList($operationItems, ['prompt' => $model->attributeLabels('operation_id')]);
+		echo $form->field($model, 'operation_id')->dropDownList($operationItems);
+		echo $form->field($model, 'payment_type')->dropDownList([
+			$model::PAYMENT_TYPE_PAY => "Оплата",
+			$model::PAYMENT_TYPE_RETURN => "Возврат"
+		]);
 
 		$accountItems = ArrayHelper::map($accounts, 'id', 'title');
-		echo $form->field($model, 'account_id')->dropDownList($accountItems, ['prompt' => $model->attributeLabels('account_id')]);
-
+		echo $form->field($model, 'account_id')->dropDownList($accountItems);
 
 		$cfsItems = ArrayHelper::map($cashFlowStatements, 'id', 'title');
-		echo $form->field($model, 'cash_flow_statement_id')->dropDownList($cfsItems, ['prompt' => $model->attributeLabels('cash_flow_statement_id')]);
+		echo $form->field($model, 'cash_flow_statement_id')->dropDownList($cfsItems);
 
-
-		echo $form->field($model, 'note')->textarea(['rows' => 6]);
 
 		$employerItems = ArrayHelper::map($employers, 'id', 'username');
-		echo $form->field($model, 'subcount_id')->dropDownList($employerItems, ['prompt' => $model->attributeLabels('subcount_id')]);
+		echo $form->field($model, 'subconto_id')->dropDownList($employerItems);
+
+		$contractorItems = ArrayHelper::map($contractors, 'id', 'company');
+		echo $form->field($model, 'contractor_id')->dropDownList($contractorItems);
 
 		echo $form->field($model, 'amount')->textInput();
-		echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
+
+		$currencyItems = ArrayHelper::map($currency, 'id', 'title');
+		echo $form->field($model, 'currency_id')->dropDownList($currencyItems);
+
+		echo $form->field($model, 'note')->textarea(['rows' => 6]);
+		echo $form->field($model, 'status')->dropDownList([
+			$model::STATUS_ACTIVE => "Провести",
+			$model::STATUS_DRAFT => "В черновик"
+		]);
 
 		?>
 

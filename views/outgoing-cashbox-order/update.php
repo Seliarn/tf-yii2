@@ -9,9 +9,8 @@ $this->title = Yii::$app->params['translate']['rus']['btn-update'] . ' ' . $mode
 $this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->code, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::$app->params['translate']['rus']['btn-update'];
-
 ?>
-<div class = "outgoing-cashbox-order-update">
+<div class = "income-cashbox-order-update">
 
 	<h1><?= Html::encode($this->title) ?></h1>
 	<?=
@@ -20,7 +19,9 @@ $this->params['breadcrumbs'][] = Yii::$app->params['translate']['rus']['btn-upda
 		'operations' => $operations,
 		'accounts' => $accounts,
 		'cashFlowStatements' => $cashFlowStatements,
-		'employers' => $employers
+		'employers' => $employers,
+		'contractors' => $contractors,
+		'currency' => $currency,
 	]) ?>
 
 </div>

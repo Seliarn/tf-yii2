@@ -10,7 +10,7 @@ $this->title = $model::$titles['rus']['main'] . ' № ' . $model->code;
 $this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class = "outgoing-cashbox-order-view">
+<div class = "income-cashbox-order-view">
 
 	<h1><?= Html::encode($this->title) ?></h1>
 
@@ -44,12 +44,21 @@ $this->params['breadcrumbs'][] = $this->title;
 				'label' => $model->attributeLabels('cash_flow_statement_id'),
 				'value' => $model->getCashFlowStatement()->one()->title
 			],
-			'note:ntext',
 			[
 				'label' => $model->attributeLabels('subconto_id'),
-				'value' => $model->getSubconto()->one()->username
+				'value' => (!$model->getSubconto()->one()) ? '' : $model->getSubconto()->one()->username
+			],
+			[
+				'label' => $model->attributeLabels('contractor_id'),
+				'value' => (!$model->getContractor()->one()) ? '' : $model->getContractor()->one()->company
 			],
 			'amount',
+			[
+				'label' => $model->attributeLabels('currency_id'),
+				'value' => $model->getCurrency()->one()->title
+			],
+			'note:ntext',
+			'date:date',
 			'created:date',
 			'updated:date',
 			[
@@ -58,4 +67,5 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 		],
 	]) ?>
+
 </div>

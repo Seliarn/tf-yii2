@@ -27,7 +27,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'note') ?>
 
-    <?php // echo $form->field($model, 'subcount_id') ?>
+    <?php // echo $form->field($model, 'subconto_id') ?>
 
     <?php // echo $form->field($model, 'amount') ?>
 
