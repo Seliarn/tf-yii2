@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					}
 			],
 
-			['class' => 'yii\grid\ActionColumn', 'controller' => 'ProductOrderController'],
+			['class' => 'yii\grid\ActionColumn', 'controller' => 'product-order'],
 		],
 	])?>
 </div>
