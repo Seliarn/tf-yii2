@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "Product_Order".
  *
  * @property integer $id
- * @property string $client
+ * @property string $customer_id
  * @property string $created
  * @property string $updated
  * @property integer $status
@@ -27,7 +27,7 @@ class ProductOrder extends LoggedActiveRecord
 
 	static $labels = [
 		'id' => 'ID',
-		'client' => 'Клиент',
+		'customer_id' => 'Клиент',
 		'created' => 'Создан',
 		'updated' => 'Изменен',
 		'status' => 'Статус',
@@ -50,12 +50,21 @@ class ProductOrder extends LoggedActiveRecord
 	public function rules()
 	{
 		return [
-			[['client'], 'required'],
+			[['customer_id'], 'required'],
 			[['created', 'updated'], 'safe'],
 			[['status'], 'default', 'value' => 1],
-			[['status', 'product_order_status_id'], 'integer'],
+			[['status', 'product_order_status_id', 'customer_id'], 'integer'],
 			[['client', 'note', 'client_note'], 'string', 'max' => 255],
+			[['customer_id'], 'exist', 'skipOnError' => true, 'targetClass' => ClientCustomer::className(), 'targetAttribute' => ['customer_id' => 'id']],
 		];
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getCustomer()
+	{
+		return $this->hasOne(ClientCustomer::className(), ['id' => 'customer_id']);
 	}
 
 	/**

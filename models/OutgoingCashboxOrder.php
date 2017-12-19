@@ -13,7 +13,7 @@ use Yii;
  * @property integer $account_id
  * @property integer $cash_flow_statement_id
  * @property string $note
- * @property integer $subcount_id
+ * @property integer $subconto_id
  * @property double $amount
  * @property string $updated
  * @property string $created
