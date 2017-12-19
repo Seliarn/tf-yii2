@@ -54,7 +54,7 @@ class ClientCustomerController extends Controller
 	public function actionView($id)
 	{
 		$customerDataProvider = new ActiveDataProvider([
-			'query' => ProductOrder::find()->where(['customer_id' => $id])->all(),
+			'query' => ProductOrder::find()->where(['customer_id' => $id]),
 			'pagination' => [
 				'pageSize' => 10,
 			],
