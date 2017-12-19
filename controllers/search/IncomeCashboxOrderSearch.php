@@ -64,7 +64,7 @@ class IncomeCashboxOrderSearch extends IncomeCashboxOrder
             'operation_id' => $this->operation_id,
             'account_id' => $this->account_id,
             'cash_flow_statement_id' => $this->cash_flow_statement_id,
-            'subconto_id' => $this->subcount_id,
+            'subconto_id' => $this->subconto_id,
             'amount' => $this->amount,
             'created' => $this->created,
             'updated' => $this->updated,
