@@ -68,37 +68,23 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 								["label" => "Главная", "url" => "/", "icon" => "home"],
 //								["label" => "Gii", "url" => ["/gii"], "icon" => "files-o"],
 								[
-									"label" => "Документы",
+									"label" => "Финансы",
 									"url" => "#",
 									"icon" => "file-text",
 									"items" => [
 										[
-											"label" => "Касса",
-											"url" => "#",
-											"items" => [
-												[
-													"label" => "Приходный кассовый ордер",
-//													"icon" => "sign-in",
-													"url" => "/income-cashbox-order/index"
-												],
-												[
-													"label" => "Расходный кассовый ордер",
-//													"icon" => "sign-out",
-													"url" => "/outgoing-cashbox-order/index"
-												],
-											],
+											"label" => "Поступление ДС",
+											"url" => "/income-cashbox-order/index"
 										],
-									],
-								],
-								[
-									"label" => "Банк",
-									"url" => "#",
-									"icon" => "money",
-									"items" => [
 										[
-											"label" => "Выписки",
+											"label" => "Списание ДС",
+											"url" => "/outgoing-cashbox-order/index"
+										],
+										[
+											"label" => "Банковские выписки",
 											"url" => "/bank-statement/index",
 										],
+
 									],
 								],
 								[
@@ -174,9 +160,12 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 									"icon" => "users",
 									"items" => [
 										[
+											"label" => "Поставщики",
+											"url" => "/client-contractor/index",
+										],
+										[
 											"label" => "Клиенты",
-//											"url" => "/items/index",
-											"url" => "#",
+											"url" => "/client-customer/index",
 										],
 									],
 								],
