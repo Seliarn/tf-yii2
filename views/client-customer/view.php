@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use yii\widgets\GridView;
+use yii\grid\GridView;
 use app\models\ProductOrder;
 
 /* @var $this yii\web\View */
