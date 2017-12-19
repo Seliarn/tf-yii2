@@ -46,7 +46,7 @@ abstract class CashboxOrder extends LoggedActiveRecord
 		'created' => 'Создан',
 		'updated' => 'Изменен',
 		'date' => 'Дата',
-		'status' => 'Системный статус',
+		'status' => 'Статус',
 		'state' => 'Статус',
 	];
 
@@ -56,7 +56,7 @@ abstract class CashboxOrder extends LoggedActiveRecord
 	public function rules()
 	{
 		return [
-			[['code', 'operation_id', 'account_id', 'cash_flow_statement_id', 'subconto_id', 'amount'], 'required'],
+			[['code', 'operation_id', 'account_id', 'cash_flow_statement_id', 'amount', 'currency_id'], 'required'],
 			[['operation_id', 'account_id', 'cash_flow_statement_id', 'subconto_id', 'status', 'currency_id', 'state', 'contractor_id', 'payment_type'], 'integer'],
 			[['note'], 'string'],
 			[['amount'], 'number'],
@@ -127,5 +127,13 @@ abstract class CashboxOrder extends LoggedActiveRecord
 	public function getPaymentTypeAlias()
 	{
 		return $this->_paymentTypeAlias[$this->payment_type];
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getStatusAlias()
+	{
+		return $this->_statusAlias[$this->status];
 	}
 } 
