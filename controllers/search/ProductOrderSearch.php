@@ -19,7 +19,7 @@ class ProductOrderSearch extends ProductOrder
     {
         return [
             [['id', 'status', 'product_order_status_id'], 'integer'],
-            [['client', 'created', 'updated', 'note', 'client_note'], 'safe'],
+            [['customer_id', 'created', 'updated', 'note', 'client_note'], 'safe'],
         ];
     }
 
@@ -60,14 +60,14 @@ class ProductOrderSearch extends ProductOrder
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'customer_id' => $this->customer_id,
             'created' => $this->created,
             'updated' => $this->updated,
             'status' => $this->status,
             'product_order_status_id' => $this->product_order_status_id,
         ]);
 
-        $query->andFilterWhere(['like', 'client', $this->client])
-            ->andFilterWhere(['like', 'note', $this->note])
+        $query->andFilterWhere(['like', 'note', $this->note])
             ->andFilterWhere(['like', 'client_note', $this->client_note]);
 
         return $dataProvider;
