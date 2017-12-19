@@ -30,68 +30,70 @@ use Yii;
  * @property string $updated
  * @property integer $status
  */
-class ClientContractor extends \yii\db\ActiveRecord
+class ClientContractor extends LoggedActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'Client_Contractor';
-    }
+	static $titles = [
+		'rus' => [
+			'main' => 'Поставщик',
+			'plural' => 'Поставщики'
+		],
+		'link' => 'client-contractor'
+	];
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['created', 'updated'], 'safe'],
-            [['status'], 'integer'],
-            [['title', 'company', 'director', 'manager', 'billing_address', 'alt_emails', 'alt_phones', 'address', 'note'], 'string', 'max' => 255],
-            [['billing_card'], 'string', 'max' => 20],
-            [['edrpou_code', 'inn', 'email_1', 'email_2', 'email_3'], 'string', 'max' => 50],
-            [['phone_1', 'phone_2', 'phone_3'], 'string', 'max' => 15],
-        ];
-    }
+	static $labels = [
+		'id' => 'ID',
+		'title' => 'Название',
+		'company' => 'Компания',
+		'director' => 'Директор',
+		'manager' => 'Контактное лицо',
+		'billing_card' => 'Номер кредитной карты',
+		'edrpou_code' => 'ЕДРПОУ',
+		'inn' => 'ИНН',
+		'billing_address' => 'Юридический адрес',
+		'email_1' => 'Email 1',
+		'email_2' => 'Email 2',
+		'email_3' => 'Email 3',
+		'alt_emails' => 'Дополнительные Email',
+		'phone_1' => 'Телефон 1',
+		'phone_2' => 'Телефон 2',
+		'phone_3' => 'Телефон 3',
+		'alt_phones' => 'Дополнительные телефоны',
+		'address' => 'Адрес',
+		'note' => 'Примечание',
+		'created' => 'Создан',
+		'updated' => 'Изменен',
+		'status' => 'Статус',
+	];
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'company' => 'Company',
-            'director' => 'Director',
-            'manager' => 'Manager',
-            'billing_card' => 'Billing Card',
-            'edrpou_code' => 'Edrpou Code',
-            'inn' => 'Inn',
-            'billing_address' => 'Billing Address',
-            'email_1' => 'Email 1',
-            'email_2' => 'Email 2',
-            'email_3' => 'Email 3',
-            'alt_emails' => 'Alt Emails',
-            'phone_1' => 'Phone 1',
-            'phone_2' => 'Phone 2',
-            'phone_3' => 'Phone 3',
-            'alt_phones' => 'Alt Phones',
-            'address' => 'Address',
-            'note' => 'Note',
-            'created' => 'Created',
-            'updated' => 'Updated',
-            'status' => 'Status',
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName()
+	{
+		return 'Client_Contractor';
+	}
 
-    /**
-     * @inheritdoc
-     * @return \app\models\aq\ClientContractorQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new \app\models\aq\ClientContractorQuery(get_called_class());
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['created', 'updated'], 'safe'],
+			[['status'], 'integer'],
+			[['title', 'company', 'director', 'manager', 'billing_address', 'alt_emails', 'alt_phones', 'address', 'note'], 'string', 'max' => 255],
+			[['billing_card'], 'string', 'max' => 20],
+			[['edrpou_code', 'inn', 'email_1', 'email_2', 'email_3'], 'string', 'max' => 50],
+			[['phone_1', 'phone_2', 'phone_3'], 'string', 'max' => 15],
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 * @return \app\models\aq\ClientContractorQuery the active query used by this AR class.
+	 */
+	public static function find()
+	{
+		return new \app\models\aq\ClientContractorQuery(get_called_class());
+	}
 }

@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\ClientContractor */
 
-$this->title = 'Create Client Contractor';
-$this->params['breadcrumbs'][] = ['label' => 'Client Contractors', 'url' => ['index']];
+$this->title = Yii::$app->params['translate']['rus']['btn-create'] . ' ' . $model::$titles['rus']['main'];
+$this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="client-contractor-create">

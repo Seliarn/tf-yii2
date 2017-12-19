@@ -9,6 +9,7 @@ return [
 			'btn-delete' => 'Удалить',
 			'btn-search' => 'Искать',
 			'btn-reset' => 'Сбросить',
+			'btn-back-to-list' => 'Вернуться к списку',
 			'dialog-are-you-sure' => 'Вы уверены, что хотите удалить?',
 		]
 	]

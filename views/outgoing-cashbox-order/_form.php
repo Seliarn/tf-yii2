@@ -50,7 +50,7 @@ use yii\helpers\ArrayHelper;
 		$contractorItems = ArrayHelper::map($contractors, 'id', 'company');
 		echo $form->field($model, 'contractor_id')->dropDownList($contractorItems);
 
-		echo $form->field($model, 'amount')->textInput();
+		echo $form->field($model, 'amount')->textInput(['value' => 0.00]);
 
 		$currencyItems = ArrayHelper::map($currency, 'id', 'title');
 		echo $form->field($model, 'currency_id')->dropDownList($currencyItems);
