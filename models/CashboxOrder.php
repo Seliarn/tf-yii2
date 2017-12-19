@@ -10,12 +10,33 @@ namespace app\models;
 
 abstract class CashboxOrder extends LoggedActiveRecord
 {
+	const PAYMENT_TYPE_PAY = 1;
+	const PAYMENT_TYPE_RETURN = 2;
+
+	/**
+	 * @var array
+	 */
+	protected $_paymentTypeAlias = [
+		self::PAYMENT_TYPE_PAY => 'Оплата',
+		self::PAYMENT_TYPE_RETURN => 'Возврат'
+	];
+
+	/**
+	 * @var array
+	 */
+	protected $_statusAlias = [
+		self::STATUS_ACTIVE => 'Проведен',
+		self::STATUS_DELETE => 'Удален',
+		self::STATUS_DRAFT => 'Черновик'
+	];
+
 	static $labels = [
 		'id' => 'ID',
 		'code' => '№',
 		'operation_id' => 'Операция',
 		'account_id' => 'Счет',
 		'cash_flow_statement_id' => 'Статья ДДС',
+		'payment_type' => 'Вид оплаты',
 		'note' => 'Примечание',
 		'subconto_id' => 'Тип субконто',
 		'subconto_model_id' => 'Субконто',
@@ -36,13 +57,13 @@ abstract class CashboxOrder extends LoggedActiveRecord
 	{
 		return [
 			[['code', 'operation_id', 'account_id', 'cash_flow_statement_id', 'subconto_id', 'amount'], 'required'],
-			[['operation_id', 'account_id', 'cash_flow_statement_id', 'subconto_id', 'status', 'currency_id', 'state', 'contractor_id'], 'integer'],
+			[['operation_id', 'account_id', 'cash_flow_statement_id', 'subconto_id', 'status', 'currency_id', 'state', 'contractor_id', 'payment_type'], 'integer'],
 			[['note'], 'string'],
 			[['amount'], 'number'],
 			[['created', 'updated', 'date'], 'safe'],
 			[['code'], 'string', 'max' => 50],
 			[['code'], 'unique'],
-			[['status', 'currency_id', 'state'], 'default', 'value' => 1],
+			[['status', 'currency_id', 'state', 'payment_type'], 'default', 'value' => 1],
 			[['operation_id'], 'exist', 'skipOnError' => true, 'targetClass' => Operation::className(), 'targetAttribute' => ['operation_id' => 'id']],
 			[['account_id'], 'exist', 'skipOnError' => true, 'targetClass' => Account::className(), 'targetAttribute' => ['account_id' => 'id']],
 			[['cash_flow_statement_id'], 'exist', 'skipOnError' => true, 'targetClass' => CashFlowStatement::className(), 'targetAttribute' => ['cash_flow_statement_id' => 'id']],
@@ -100,4 +121,11 @@ abstract class CashboxOrder extends LoggedActiveRecord
 		return $this->hasOne(Currency::className(), ['id' => 'currency_id']);
 	}
 
+	/**
+	 * @return mixed
+	 */
+	public function getPaymentTypeAlias()
+	{
+		return $this->_paymentTypeAlias[$this->payment_type];
+	}
 } 

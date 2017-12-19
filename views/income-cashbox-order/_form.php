@@ -18,22 +18,31 @@ use yii\helpers\ArrayHelper;
 		echo '<div class="alert alert-error fade in">Нет доступных счетов. <a href="/account/create">Создать</a></div>';
 	} else if (empty($cashFlowStatements)) {
 		echo '<div class="alert alert-error fade in">Нет доступных статей ДДС. <a href="/cash-flow-statement/create">Создать</a></div>';
-	} else /*if (empty($employers)) {
+	} else if (empty($employers)) {
 		echo '<div class="alert alert-error fade in">Нет доступных сотрудников. <a href="/staff-employee/create">Создать</a></div>';
-	} else*/ {
+	} else if (empty($contractors)) {
+		echo '<div class="alert alert-error fade in">Нет доступных контрагентов. <a href="/client-contractor/create">Создать</a></div>';
+	} else if (empty($currency)) {
+		echo '<div class="alert alert-error fade in">Нет доступных валют. <a href="/currency/create">Создать</a></div>';
+	} else {
 
 		$form = ActiveForm::begin();
 
 		echo $form->field($model, 'code')->textInput(['maxlength' => true]);
 
 		$operationItems = ArrayHelper::map($operations, 'id', 'title');
-		echo $form->field($model, 'operation_id')->dropDownList(null, ['prompt' => $model->attributeLabels('operation_id')]);
+		echo $form->field($model, 'operation_id')->dropDownList($operationItems, ['prompt' => $model->attributeLabels('operation_id')]);
+		echo $form->field($model, 'payment_type')->dropDownList([
+			$model::PAYMENT_TYPE_PAY => "Оплата",
+			$model::PAYMENT_TYPE_RETURN => "Возврат"
+		]);
 
 		$accountItems = ArrayHelper::map($accounts, 'id', 'title');
 		echo $form->field($model, 'account_id')->dropDownList($accountItems, ['prompt' => $model->attributeLabels('account_id')]);
 
 		$cfsItems = ArrayHelper::map($cashFlowStatements, 'id', 'title');
 		echo $form->field($model, 'cash_flow_statement_id')->dropDownList($cfsItems, ['prompt' => $model->attributeLabels('cash_flow_statement_id')]);
+
 
 		$employerItems = ArrayHelper::map($employers, 'id', 'username');
 		echo $form->field($model, 'subconto_id')->dropDownList($employerItems, ['prompt' => $model->attributeLabels('subconto_id')]);
@@ -46,9 +55,8 @@ use yii\helpers\ArrayHelper;
 		$currencyItems = ArrayHelper::map($currency, 'id', 'title');
 		echo $form->field($model, 'currency_id')->dropDownList($currencyItems, ['prompt' => $model->attributeLabels('currency_id')]);
 
-
 		echo $form->field($model, 'note')->textarea(['rows' => 6]);
-		echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
+		echo $form->field($model, 'status')->dropDownList(['value' => $model::STATUS_ACTIVE]);
 
 		?>
 
