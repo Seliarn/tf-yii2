@@ -20,7 +20,9 @@ $this->params['breadcrumbs'][] = $this->title;
 		'operations' => $operations,
 		'accounts' => $accounts,
 		'cashFlowStatements' => $cashFlowStatements,
-		'employers' => $employers
+		'employers' => $employers,
+		'contractors' => $contractors,
+		'currency' => $currency,
 	]) ?>
 
 </div>

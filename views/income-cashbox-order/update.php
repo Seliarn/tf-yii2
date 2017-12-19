@@ -19,7 +19,9 @@ $this->params['breadcrumbs'][] = Yii::$app->params['translate']['rus']['btn-upda
 		'operations' => $operations,
 		'accounts' => $accounts,
 		'cashFlowStatements' => $cashFlowStatements,
-		'employers' => $employers
+		'employers' => $employers,
+		'contractors' => $contractors,
+		'currency' => $currency,
 	]) ?>
 
 </div>
