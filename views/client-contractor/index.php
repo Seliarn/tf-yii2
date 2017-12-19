@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 	<p>
-		<?= Html::a(Yii::$app->params['translate']['rus']['btn-create'] . ' ' . ClientContractor::$titles['rus']['main'], ['create'], ['class' => 'btn btn-success']) ?>
+		<?= Html::a(Yii::$app->params['translate']['rus']['btn-create'], ['create'], ['class' => 'btn btn-success']) ?>
 	</p>
 	<?=
 	GridView::widget([
@@ -38,16 +38,22 @@ $this->params['breadcrumbs'][] = $this->title;
 			'email_1:email',
 			// 'email_2:email',
 			// 'email_3:email',
-			// 'alt_emails:email',
+			// 'alt_emails',
 			'phone_1',
 			// 'phone_2',
 			// 'phone_3',
 			// 'alt_phones',
 			'address',
 			// 'note',
-			'created',
-			'updated',
-			'status',
+			'created:date',
+			'updated:date',
+			[
+				'attribute' => 'status',
+				'label' => ClientContractor::$labels['status'],
+				'content' => function ($data) {
+						return $data->getStatusAlias();
+					}
+			],
 
 			['class' => 'yii\grid\ActionColumn'],
 		],

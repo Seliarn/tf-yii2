@@ -38,7 +38,7 @@ abstract class CashboxOrder extends LoggedActiveRecord
 		'cash_flow_statement_id' => 'Статья ДДС',
 		'payment_type' => 'Вид оплаты',
 		'note' => 'Примечание',
-		'subconto_id' => 'Тип субконто',
+		'subconto_id' => 'Cубконто',
 		'subconto_model_id' => 'Субконто',
 		'contractor_id' => 'Контрагент',
 		'currency_id' => 'Валюта',

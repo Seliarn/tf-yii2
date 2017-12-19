@@ -27,66 +27,68 @@ use Yii;
  * @property string $updated
  * @property integer $status
  */
-class ClientCustomer extends \yii\db\ActiveRecord
+class ClientCustomer extends LoggedActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'Client_Customer';
-    }
+	static $titles = [
+		'rus' => [
+			'main' => 'Клиент',
+			'plural' => 'Клиенты'
+		],
+		'link' => 'client-customer'
+	];
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['birthday', 'created', 'updated'], 'safe'],
-            [['status'], 'integer'],
-            [['username'], 'string', 'max' => 100],
-            [['first_name', 'last_name', 'alt_emails', 'alt_phones', 'address', 'note'], 'string', 'max' => 255],
-            [['billing_card'], 'string', 'max' => 20],
-            [['email_1', 'email_2', 'email_3'], 'string', 'max' => 50],
-            [['phone_1', 'phone_2', 'phone_3'], 'string', 'max' => 15],
-        ];
-    }
+	static $labels = [
+		'id' => 'ID',
+		'username' => 'Логин',
+		'first_name' => 'Имя',
+		'last_name' => 'Фамилия',
+		'billing_card' => 'Кредитная карта',
+		'birthday' => 'День рождения',
+		'email_1' => 'Email',
+		'email_2' => 'Email 2',
+		'email_3' => 'Email 3',
+		'alt_emails' => 'Дополнительные Email',
+		'phone_1' => 'Телефон',
+		'phone_2' => 'Телефон 2',
+		'phone_3' => 'Телефон 3',
+		'alt_phones' => 'Дополнительные телефоны',
+		'address' => 'Адрес',
+		'note' => 'Примечание',
+		'created' => 'Создан',
+		'updated' => 'Изменен',
+		'status' => 'Статус',
+	];
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'username' => 'Username',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'billing_card' => 'Billing Card',
-            'email_1' => 'Email 1',
-            'email_2' => 'Email 2',
-            'email_3' => 'Email 3',
-            'alt_emails' => 'Alt Emails',
-            'phone_1' => 'Phone 1',
-            'phone_2' => 'Phone 2',
-            'phone_3' => 'Phone 3',
-            'alt_phones' => 'Alt Phones',
-            'address' => 'Address',
-            'birthday' => 'Birthday',
-            'note' => 'Note',
-            'created' => 'Created',
-            'updated' => 'Updated',
-            'status' => 'Status',
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName()
+	{
+		return 'Client_Customer';
+	}
 
-    /**
-     * @inheritdoc
-     * @return \app\models\aq\ClientCustomerQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new \app\models\aq\ClientCustomerQuery(get_called_class());
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['birthday', 'created', 'updated'], 'safe'],
+			[['status'], 'integer'],
+			[['username'], 'string', 'max' => 100],
+			[['first_name', 'last_name', 'alt_emails', 'alt_phones', 'address', 'note'], 'string', 'max' => 255],
+			[['billing_card'], 'string', 'max' => 20],
+			[['email_1', 'email_2', 'email_3'], 'string', 'max' => 50],
+			[['phone_1', 'phone_2', 'phone_3'], 'string', 'max' => 15],
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 * @return \app\models\aq\ClientCustomerQuery the active query used by this AR class.
+	 */
+	public static function find()
+	{
+		return new \app\models\aq\ClientCustomerQuery(get_called_class());
+	}
 }
