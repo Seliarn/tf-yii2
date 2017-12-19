@@ -70,10 +70,4 @@ abstract class LoggedActiveRecord extends \yii\db\ActiveRecord
 		$this->status = self::STATUS_DELETE;
 		return $this->update();
 	}
-
-	public function update($runValidation = true, $attributeNames = null)
-	{
-		$this->updated = time();
-		return parent::update($runValidation, $attributeNames);
-	}
 } 
