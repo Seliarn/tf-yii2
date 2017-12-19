@@ -38,25 +38,29 @@ use yii\helpers\ArrayHelper;
 		]);
 
 		$accountItems = ArrayHelper::map($accounts, 'id', 'title');
-		echo $form->field($model, 'account_id')->dropDownList($accountItems, ['prompt' => $model->attributeLabels('account_id')]);
+		echo $form->field($model, 'account_id')->dropDownList($accountItems);
 
 		$cfsItems = ArrayHelper::map($cashFlowStatements, 'id', 'title');
-		echo $form->field($model, 'cash_flow_statement_id')->dropDownList($cfsItems, ['prompt' => $model->attributeLabels('cash_flow_statement_id')]);
+		echo $form->field($model, 'cash_flow_statement_id')->dropDownList($cfsItems);
 
 
 		$employerItems = ArrayHelper::map($employers, 'id', 'username');
-		echo $form->field($model, 'subconto_id')->dropDownList($employerItems, ['prompt' => $model->attributeLabels('subconto_id')]);
+		echo $form->field($model, 'subconto_id')->dropDownList($employerItems);
 
 		$contractorItems = ArrayHelper::map($contractors, 'id', 'company');
-		echo $form->field($model, 'contractor_id')->dropDownList($contractorItems, ['prompt' => $model->attributeLabels('contractor_id')]);
+		echo $form->field($model, 'contractor_id')->dropDownList($contractorItems);
 
 		echo $form->field($model, 'amount')->textInput();
 
 		$currencyItems = ArrayHelper::map($currency, 'id', 'title');
-		echo $form->field($model, 'currency_id')->dropDownList($currencyItems, ['prompt' => $model->attributeLabels('currency_id')]);
+		echo $form->field($model, 'currency_id')->dropDownList($currencyItems);
 
 		echo $form->field($model, 'note')->textarea(['rows' => 6]);
-		echo $form->field($model, 'status')->dropDownList(['value' => $model::STATUS_ACTIVE]);
+		echo $form->field($model, '')->dropDownList(['value' => $model::STATUS_ACTIVE]);
+		echo $form->field($model, 'status')->dropDownList([
+			$model::STATUS_ACTIVE => "Провести",
+			$model::STATUS_DRAFT => "В черновик"
+		]);
 
 		?>
 
