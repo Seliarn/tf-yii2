@@ -31,36 +31,41 @@ $this->params['breadcrumbs'][] = $this->title;
 			[
 				'attribute' => 'operation_id',
 				'label' => IncomeCashboxOrder::$labels['operation_id'],
-				'content' => function ($data) {
-						return $data->getOperation()->one()->title;
+				'content' => function ($model) {
+						$data = $model->getOperation()->one();
+						return (!$data) ? false : $data->title;
 					}
 			],
 			[
 				'attribute' => 'account_id',
 				'label' => IncomeCashboxOrder::$labels['account_id'],
-				'content' => function ($data) {
-						return $data->getAccount()->one()->title;
+				'content' => function ($model) {
+						$data = $model->getAccount()->one();
+						return (!$data) ? false : $data->title;
 					}
 			],
 			[
 				'attribute' => 'cash_flow_statement_id',
 				'label' => IncomeCashboxOrder::$labels['cash_flow_statement_id'],
-				'content' => function ($data) {
-						return $data->getCashFlowStatement()->one()->title;
+				'content' => function ($model) {
+						$data = $model->getCashFlowStatement()->one();
+						return (!$data) ? false : $data->title;
 					}
 			],
 			[
 				'attribute' => 'subconto_id',
 				'label' => IncomeCashboxOrder::$labels['subconto_id'],
-				'content' => function ($data) {
-						return $data->getSubconto()->one()->username;
+				'content' => function ($model) {
+						$data = $model->getSubconto()->one();
+						return (!$data) ? false : $data->username;
 					}
 			],
 			[
 				'attribute' => 'contractor_id',
 				'label' => IncomeCashboxOrder::$labels['contractor_id'],
-				'content' => function ($data) {
-						return $data->getContractor()->one()->company;
+				'content' => function ($model) {
+						$data = $model->getContractor()->one();
+						return (!$data) ? false : $data->company;
 					}
 			],
 			// 'note:ntext',
@@ -68,8 +73,9 @@ $this->params['breadcrumbs'][] = $this->title;
 			[
 				'attribute' => 'currency_id',
 				'label' => IncomeCashboxOrder::$labels['currency_id'],
-				'content' => function ($data) {
-						return $data->getCurrency()->one()->title;
+				'content' => function ($model) {
+						$data = $model->getCurrency()->one();
+						return (!$data) ? false : $data->title;
 					}
 			],
 			'created:date',
@@ -77,8 +83,8 @@ $this->params['breadcrumbs'][] = $this->title;
 			[
 				'attribute' => 'status',
 				'label' => IncomeCashboxOrder::$labels['status'],
-				'content' => function ($data) {
-						return $data->getStatusAlias();
+				'content' => function ($model) {
+						return $model->getStatusAlias();
 					}
 			],
 
