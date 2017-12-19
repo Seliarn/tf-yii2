@@ -54,7 +54,7 @@ class ProductOrder extends LoggedActiveRecord
 			[['created', 'updated'], 'safe'],
 			[['status'], 'default', 'value' => 1],
 			[['status', 'product_order_status_id', 'customer_id'], 'integer'],
-			[['client', 'note', 'client_note'], 'string', 'max' => 255],
+			[['note', 'client_note'], 'string', 'max' => 255],
 			[['customer_id'], 'exist', 'skipOnError' => true, 'targetClass' => ClientCustomer::className(), 'targetAttribute' => ['customer_id' => 'id']],
 		];
 	}
