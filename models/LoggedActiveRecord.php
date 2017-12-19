@@ -74,6 +74,6 @@ abstract class LoggedActiveRecord extends \yii\db\ActiveRecord
 	public function update($runValidation = true, $attributeNames = null)
 	{
 		$this->updated = time();
-		return $this->update($runValidation, $attributeNames);
+		return parent::update($runValidation, $attributeNames);
 	}
 } 
