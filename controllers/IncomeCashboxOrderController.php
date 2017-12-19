@@ -132,7 +132,7 @@ class IncomeCashboxOrderController extends Controller
 	 */
 	protected function _prepareForm()
 	{
-		$operations = Operation::find()->all();
+		$operations = Operation::find()->where(['type' => Operation::TYPE_INCOME])->all();
 		$accounts = Account::find()->all();
 		$cfs = CashFlowStatement::find()->all();
 		$employers = StaffEmployee::find()->all();
