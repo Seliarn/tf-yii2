@@ -19,7 +19,7 @@ class IncomeCashboxOrderSearch extends IncomeCashboxOrder
     {
         return [
             [['id', 'operation_id', 'account_id', 'cash_flow_statement_id', 'subconto_id', 'status'], 'integer'],
-            [['code', 'note', 'created', 'updated'], 'safe'],
+            [['code', 'note', 'created', 'updated', 'date'], 'safe'],
             [['amount'], 'number'],
         ];
     }
@@ -68,6 +68,7 @@ class IncomeCashboxOrderSearch extends IncomeCashboxOrder
             'amount' => $this->amount,
             'created' => $this->created,
             'updated' => $this->updated,
+            'date' => $this->date,
             'status' => $this->status,
         ]);
 

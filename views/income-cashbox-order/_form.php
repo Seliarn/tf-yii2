@@ -32,13 +32,16 @@ use yii\helpers\ArrayHelper;
 
 		$operationItems = ArrayHelper::map($operations, 'id', 'title');
 		echo $form->field($model, 'operation_id')->dropDownList($operationItems);
-		echo $form->field($model, 'payment_type')->dropDownList([
+		/*echo $form->field($model, 'payment_type')->dropDownList([
 			$model::PAYMENT_TYPE_PAY => "Оплата",
 			$model::PAYMENT_TYPE_RETURN => "Возврат"
-		]);
+		]);*/
 
 		$accountItems = ArrayHelper::map($accounts, 'id', 'title');
 		echo $form->field($model, 'account_id')->dropDownList($accountItems);
+
+		$accountBookItems = ArrayHelper::map($accountBooks, 'id', 'title');
+		echo $form->field($model, 'account_book_id')->dropDownList($accountBookItems);
 
 		$cfsItems = ArrayHelper::map($cashFlowStatements, 'id', 'title');
 		echo $form->field($model, 'cash_flow_statement_id')->dropDownList($cfsItems);

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Account;
+use app\models\AccountBook;
 use app\models\CashFlowStatement;
 use app\models\Operation;
 use app\models\StaffEmployee;
@@ -137,6 +138,7 @@ class IncomeCashboxOrderController extends Controller
 	{
 		$operations = Operation::find()->where(['type' => Operation::TYPE_INCOME])->all();
 		$accounts = Account::find()->all();
+		$accountBooks = AccountBook::find()->all();
 		$cfs = CashFlowStatement::find()->all();
 		$employers = StaffEmployee::find()->all();
 		$contractors = ClientContractor::find()->all();
@@ -145,6 +147,7 @@ class IncomeCashboxOrderController extends Controller
 		return [
 			'operations' => $operations,
 			'accounts' => $accounts,
+			'accountBooks' => $accountBooks,
 			'cashFlowStatements' => $cfs,
 			'employers' => $employers,
 			'currency' => $currency,

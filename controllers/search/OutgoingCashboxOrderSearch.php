@@ -19,7 +19,7 @@ class OutgoingCashboxOrderSearch extends OutgoingCashboxOrder
     {
         return [
             [['id', 'operation_id', 'account_id', 'cash_flow_statement_id', 'subconto_id', 'status'], 'integer'],
-            [['code', 'note', 'updated', 'created'], 'safe'],
+            [['code', 'note', 'updated', 'created', 'date'], 'safe'],
             [['amount'], 'number'],
         ];
     }
@@ -68,6 +68,7 @@ class OutgoingCashboxOrderSearch extends OutgoingCashboxOrder
             'amount' => $this->amount,
             'updated' => $this->updated,
             'created' => $this->created,
+            'date' => $this->date,
             'status' => $this->status,
         ]);
 

@@ -34,9 +34,10 @@ abstract class CashboxOrder extends LoggedActiveRecord
 		'id' => 'ID',
 		'code' => '№',
 		'operation_id' => 'Операция',
-		'account_id' => 'Счет',
+		'account_id' => 'Вид оплаты',
+		'account_book_id' => 'Счет',
 		'cash_flow_statement_id' => 'Статья ДДС',
-		'payment_type' => 'Вид оплаты',
+		'payment_type' => 'Тип оплаты',
 		'note' => 'Примечание',
 		'subconto_id' => 'Cубконто',
 		'subconto_model_id' => 'Субконто',
@@ -45,7 +46,7 @@ abstract class CashboxOrder extends LoggedActiveRecord
 		'amount' => 'Сумма',
 		'created' => 'Создан',
 		'updated' => 'Изменен',
-		'date' => 'Дата',
+		'date' => 'Дата операции',
 		'status' => 'Статус',
 		'state' => 'Статус',
 	];
@@ -56,8 +57,8 @@ abstract class CashboxOrder extends LoggedActiveRecord
 	public function rules()
 	{
 		return [
-			[['code', 'operation_id', 'account_id', 'cash_flow_statement_id', 'amount', 'currency_id'], 'required'],
-			[['operation_id', 'account_id', 'cash_flow_statement_id', 'subconto_id', 'status', 'currency_id', 'state', 'contractor_id', 'payment_type'], 'integer'],
+			[['code', 'operation_id', 'account_id', 'cash_flow_statement_id', 'amount', 'currency_id', 'account_book_id'], 'required'],
+			[['operation_id', 'account_id', 'cash_flow_statement_id', 'subconto_id', 'status', 'currency_id', 'state', 'contractor_id', 'payment_type', 'account_book_id'], 'integer'],
 			[['note'], 'string'],
 			[['amount'], 'number'],
 			[['created', 'updated', 'date'], 'safe'],
@@ -66,6 +67,7 @@ abstract class CashboxOrder extends LoggedActiveRecord
 			[['status', 'currency_id', 'state', 'payment_type'], 'default', 'value' => 1],
 			[['operation_id'], 'exist', 'skipOnError' => true, 'targetClass' => Operation::className(), 'targetAttribute' => ['operation_id' => 'id']],
 			[['account_id'], 'exist', 'skipOnError' => true, 'targetClass' => Account::className(), 'targetAttribute' => ['account_id' => 'id']],
+			[['account_book_id'], 'exist', 'skipOnError' => true, 'targetClass' => AccountBook::className(), 'targetAttribute' => ['account_book_id' => 'id']],
 			[['cash_flow_statement_id'], 'exist', 'skipOnError' => true, 'targetClass' => CashFlowStatement::className(), 'targetAttribute' => ['cash_flow_statement_id' => 'id']],
 			[['subconto_id'], 'exist', 'skipOnError' => true, 'targetClass' => StaffEmployee::className(), 'targetAttribute' => ['subconto_id' => 'id']],
 			[['contractor_id'], 'exist', 'skipOnError' => true, 'targetClass' => ClientContractor::className(), 'targetAttribute' => ['contractor_id' => 'id']],
@@ -119,6 +121,14 @@ abstract class CashboxOrder extends LoggedActiveRecord
 	public function getCurrency()
 	{
 		return $this->hasOne(Currency::className(), ['id' => 'currency_id']);
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getAccountBook()
+	{
+		return $this->hasOne(AccountBook::className(), ['id' => 'account_book_id']);
 	}
 
 	/**
