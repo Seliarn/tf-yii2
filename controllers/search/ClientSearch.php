@@ -18,7 +18,7 @@ class ClientSearch extends Client
     public function rules()
     {
         return [
-            [['id', 'type', 'status'], 'integer'],
+            [['id', 'is_customer', 'is_contractor', 'status'], 'integer'],
             [['first_name', 'last_name', 'username', 'birthday', 'title', 'company', 'director', 'manager', 'billing_card', 'edrpou_code', 'inn', 'billing_address', 'email', 'alt_emails', 'phone', 'alt_phones', 'address', 'note', 'created', 'updated'], 'safe'],
         ];
     }
@@ -60,7 +60,8 @@ class ClientSearch extends Client
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'type' => $this->type,
+            'is_customer' => $this->type,
+            'is_contractor' => $this->type,
             'birthday' => $this->birthday,
             'created' => $this->created,
             'updated' => $this->updated,
