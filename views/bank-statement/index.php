@@ -60,8 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
 						return $data->getAuthor()->one()->username;
 					}
 			],
-			 'created:date',
-			 'updated:date',
+			 'date:datetime',
 			[
 				'attribute' => 'status',
 				'label' => BankStatement::$labels['status'],

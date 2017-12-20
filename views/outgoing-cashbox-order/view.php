@@ -57,10 +57,10 @@ $this->params['breadcrumbs'][] = $this->title;
 				'label' => $model->attributeLabels('currency_id'),
 				'value' => $model->getCurrency()->one()->title
 			],
+			'date:datetime',
 			'note:ntext',
-			'date:date',
-			'created:date',
-			'updated:date',
+			'created:datetime',
+			'updated:datetime',
 			[
 				'label' => $model->attributeLabels('status'),
 				'value' => $model->getStatusAlias()

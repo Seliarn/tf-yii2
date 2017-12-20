@@ -79,7 +79,6 @@ $this->params['breadcrumbs'][] = $this->title;
 					}
 			],
 			'date:datetime',
-			'updated:date',
 			[
 				'attribute' => 'status',
 				'label' => IncomeCashboxOrder::$labels['status'],

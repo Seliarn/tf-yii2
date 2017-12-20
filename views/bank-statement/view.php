@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	DetailView::widget([
 		'model' => $model,
 		'attributes' => [
-//			'id',
+			'id',
 			'code',
 			[
 				'label' => $model->attributeLabels('flow_type'),
@@ -51,13 +51,14 @@ $this->params['breadcrumbs'][] = $this->title;
 				'label' => $model->attributeLabels('author_id'),
 				'value' => $model->getAuthor()->one()->username
 			],
-			'created:date',
-			'updated:date',
+			'date:datetime',
+			'note:ntext',
+			'created:datetime',
+			'updated:datetime',
 			[
 				'label' => $model->attributeLabels('status'),
 				'value' => $model->getStatusAlias()
 			],
-			'note',
 		],
 	]) ?>
 
