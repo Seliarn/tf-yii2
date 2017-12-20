@@ -6,59 +6,52 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\ClientContractor */
 
-$this->title = $model::$titles['rus']['main'] . '№ ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], 'url' => ['index']];
+$this->title = $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Client Contractors', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class = "client-contractor-view">
+<div class="client-contractor-view">
 
-	<h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title) ?></h1>
 
-	<p>
-		<?php
-		echo Html::a(Yii::$app->params['translate']['rus']['btn-back-to-list'], ['index'], ['class' => 'btn btn-primary']);
-		echo Html::a(Yii::$app->params['translate']['rus']['btn-update'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']);
-		echo Html::a(Yii::$app->params['translate']['rus']['btn-create'], ['create'], ['class' => 'btn btn-primary']);
-		echo Html::a(Yii::$app->params['translate']['rus']['btn-delete'], ['delete', 'id' => $model->id], [
-			'class' => 'btn btn-danger',
-			'data' => [
-				'confirm' => Yii::$app->params['translate']['rus']['dialog-are-you-sure'],
-				'method' => 'post',
-			],
-		]);
-		?>
-	</p>
+    <p>
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </p>
 
-	<?=
-	DetailView::widget([
-		'model' => $model,
-		'attributes' => [
-			'id',
-			'title',
-			'company',
-			'director',
-			'manager',
-			'billing_card',
-			'edrpou_code',
-			'inn',
-			'billing_address',
-			'email_1:email',
-			'email_2:email',
-			'email_3:email',
-			'alt_emails',
-			'phone_1',
-			'phone_2',
-			'phone_3',
-			'alt_phones',
-			'address',
-			'note',
-			'created:date',
-			'updated:date',
-			[
-				'label' => $model->attributeLabels('status'),
-				'value' => $model->getStatusAlias()
-			],
-		],
-	]) ?>
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'id',
+            'first_name',
+            'last_name',
+            'username',
+            'type',
+            'birthday',
+            'title',
+            'company',
+            'director',
+            'manager',
+            'billing_card',
+            'edrpou_code',
+            'inn',
+            'billing_address',
+            'email:email',
+            'alt_emails:email',
+            'phone',
+            'alt_phones',
+            'address',
+            'note',
+            'created',
+            'updated',
+            'status',
+        ],
+    ]) ?>
 
 </div>

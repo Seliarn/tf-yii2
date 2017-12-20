@@ -18,8 +18,8 @@ class ClientContractorSearch extends ClientContractor
     public function rules()
     {
         return [
-            [['id', 'status'], 'integer'],
-            [['title', 'company', 'director', 'manager', 'billing_card', 'edrpou_code', 'inn', 'billing_address', 'email_1', 'email_2', 'email_3', 'alt_emails', 'phone_1', 'phone_2', 'phone_3', 'alt_phones', 'address', 'note', 'created', 'updated'], 'safe'],
+            [['id', 'type', 'status'], 'integer'],
+            [['first_name', 'last_name', 'username', 'birthday', 'title', 'company', 'director', 'manager', 'billing_card', 'edrpou_code', 'inn', 'billing_address', 'email', 'alt_emails', 'phone', 'alt_phones', 'address', 'note', 'created', 'updated'], 'safe'],
         ];
     }
 
@@ -60,12 +60,17 @@ class ClientContractorSearch extends ClientContractor
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'type' => $this->type,
+            'birthday' => $this->birthday,
             'created' => $this->created,
             'updated' => $this->updated,
             'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
+        $query->andFilterWhere(['like', 'first_name', $this->first_name])
+            ->andFilterWhere(['like', 'last_name', $this->last_name])
+            ->andFilterWhere(['like', 'username', $this->username])
+            ->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'company', $this->company])
             ->andFilterWhere(['like', 'director', $this->director])
             ->andFilterWhere(['like', 'manager', $this->manager])
@@ -73,13 +78,9 @@ class ClientContractorSearch extends ClientContractor
             ->andFilterWhere(['like', 'edrpou_code', $this->edrpou_code])
             ->andFilterWhere(['like', 'inn', $this->inn])
             ->andFilterWhere(['like', 'billing_address', $this->billing_address])
-            ->andFilterWhere(['like', 'email_1', $this->email_1])
-            ->andFilterWhere(['like', 'email_2', $this->email_2])
-            ->andFilterWhere(['like', 'email_3', $this->email_3])
+            ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'alt_emails', $this->alt_emails])
-            ->andFilterWhere(['like', 'phone_1', $this->phone_1])
-            ->andFilterWhere(['like', 'phone_2', $this->phone_2])
-            ->andFilterWhere(['like', 'phone_3', $this->phone_3])
+            ->andFilterWhere(['like', 'phone', $this->phone])
             ->andFilterWhere(['like', 'alt_phones', $this->alt_phones])
             ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'note', $this->note]);

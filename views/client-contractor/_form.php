@@ -8,34 +8,58 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class = "client-contractor-form">
+<div class="client-contractor-form">
 
-	<?php $form = ActiveForm::begin();
+    <?php $form = ActiveForm::begin(); ?>
 
-	echo $form->field($model, 'title')->textInput(['maxlength' => true]);
-	echo $form->field($model, 'company')->textInput(['maxlength' => true]);
-	echo $form->field($model, 'director')->textInput(['maxlength' => true]);
-	echo $form->field($model, 'manager')->textInput(['maxlength' => true]);
-	echo $form->field($model, 'billing_card')->textInput(['maxlength' => true]);
-	echo $form->field($model, 'edrpou_code')->textInput(['maxlength' => true]);
-	echo $form->field($model, 'inn')->textInput(['maxlength' => true]);
-	echo $form->field($model, 'billing_address')->textInput(['maxlength' => true]);
-	echo $form->field($model, 'email_1')->textInput(['maxlength' => true]);
-	echo $form->field($model, 'email_2')->textInput(['maxlength' => true]);
-	echo $form->field($model, 'email_3')->textInput(['maxlength' => true]);
-	echo $form->field($model, 'alt_emails')->textarea(['rows' => 3]);
-	echo $form->field($model, 'phone_1')->textInput(['maxlength' => true]);
-	echo $form->field($model, 'phone_2')->textInput(['maxlength' => true]);
-	echo $form->field($model, 'phone_3')->textInput(['maxlength' => true]);
-	echo $form->field($model, 'alt_phones')->textarea(['rows' => 3]);
-	echo $form->field($model, 'address')->textInput(['maxlength' => true]);
-	echo $form->field($model, 'note')->textarea(['rows' => 3]);
-	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
-	?>
-	<div class = "form-group">
-		<?= Html::submitButton($model->isNewRecord ? Yii::$app->params['translate']['rus']['btn-create'] : Yii::$app->params['translate']['rus']['btn-update'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-	</div>
+    <?= $form->field($model, 'first_name')->textInput(['maxlength' => true]) ?>
 
-	<?php ActiveForm::end(); ?>
+    <?= $form->field($model, 'last_name')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'type')->textInput() ?>
+
+    <?= $form->field($model, 'birthday')->textInput() ?>
+
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'company')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'director')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'manager')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'billing_card')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'edrpou_code')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'inn')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'billing_address')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'alt_emails')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'alt_phones')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'note')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'created')->textInput() ?>
+
+    <?= $form->field($model, 'updated')->textInput() ?>
+
+    <?= $form->field($model, 'status')->textInput() ?>
+
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
 
 </div>

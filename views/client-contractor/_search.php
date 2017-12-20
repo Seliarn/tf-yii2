@@ -17,13 +17,23 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'title') ?>
+    <?= $form->field($model, 'first_name') ?>
 
-    <?= $form->field($model, 'company') ?>
+    <?= $form->field($model, 'last_name') ?>
 
-    <?= $form->field($model, 'director') ?>
+    <?= $form->field($model, 'username') ?>
 
-    <?= $form->field($model, 'manager') ?>
+    <?= $form->field($model, 'type') ?>
+
+    <?php // echo $form->field($model, 'birthday') ?>
+
+    <?php // echo $form->field($model, 'title') ?>
+
+    <?php // echo $form->field($model, 'company') ?>
+
+    <?php // echo $form->field($model, 'director') ?>
+
+    <?php // echo $form->field($model, 'manager') ?>
 
     <?php // echo $form->field($model, 'billing_card') ?>
 
@@ -33,19 +43,11 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'billing_address') ?>
 
-    <?php // echo $form->field($model, 'email_1') ?>
-
-    <?php // echo $form->field($model, 'email_2') ?>
-
-    <?php // echo $form->field($model, 'email_3') ?>
+    <?php // echo $form->field($model, 'email') ?>
 
     <?php // echo $form->field($model, 'alt_emails') ?>
 
-    <?php // echo $form->field($model, 'phone_1') ?>
-
-    <?php // echo $form->field($model, 'phone_2') ?>
-
-    <?php // echo $form->field($model, 'phone_3') ?>
+    <?php // echo $form->field($model, 'phone') ?>
 
     <?php // echo $form->field($model, 'alt_phones') ?>
 
