@@ -86,7 +86,7 @@ class StaffEmployee extends LoggedActiveRecord
 	 */
 	public function getIncomeCashboxOrders()
 	{
-		return $this->hasMany(IncomeCashboxOrder::className(), ['subcount_id' => 'id']);
+		return $this->hasMany(IncomeCashboxOrder::className(), ['subconto_id' => 'id']);
 	}
 
 	/**
@@ -94,7 +94,7 @@ class StaffEmployee extends LoggedActiveRecord
 	 */
 	public function getOutgoingCashboxOrders()
 	{
-		return $this->hasMany(OutgoingCashboxOrder::className(), ['subcount_id' => 'id']);
+		return $this->hasMany(OutgoingCashboxOrder::className(), ['subconto_id' => 'id']);
 	}
 
 	/**
