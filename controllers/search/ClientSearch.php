@@ -60,8 +60,8 @@ class ClientSearch extends Client
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'is_customer' => $this->type,
-            'is_contractor' => $this->type,
+            'is_customer' => $this->is_customer,
+            'is_contractor' => $this->is_contractor,
             'birthday' => $this->birthday,
             'created' => $this->created,
             'updated' => $this->updated,
