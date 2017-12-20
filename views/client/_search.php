@@ -23,8 +23,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'username') ?>
 
-    <?= $form->field($model, 'type') ?>
-
     <?php // echo $form->field($model, 'birthday') ?>
 
     <?php // echo $form->field($model, 'title') ?>
