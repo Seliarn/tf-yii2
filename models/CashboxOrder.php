@@ -70,7 +70,7 @@ abstract class CashboxOrder extends LoggedActiveRecord
 			[['account_book_id'], 'exist', 'skipOnError' => true, 'targetClass' => AccountBook::className(), 'targetAttribute' => ['account_book_id' => 'id']],
 			[['cash_flow_statement_id'], 'exist', 'skipOnError' => true, 'targetClass' => CashFlowStatement::className(), 'targetAttribute' => ['cash_flow_statement_id' => 'id']],
 			[['subconto_id'], 'exist', 'skipOnError' => true, 'targetClass' => StaffEmployee::className(), 'targetAttribute' => ['subconto_id' => 'id']],
-			[['contractor_id'], 'exist', 'skipOnError' => true, 'targetClass' => ClientContractor::className(), 'targetAttribute' => ['contractor_id' => 'id']],
+			[['contractor_id'], 'exist', 'skipOnError' => true, 'targetClass' => Client::className(), 'targetAttribute' => ['contractor_id' => 'id']],
 			[['currency_id'], 'exist', 'skipOnError' => true, 'targetClass' => Currency::className(), 'targetAttribute' => ['currency_id' => 'id']],
 		];
 	}
@@ -112,7 +112,7 @@ abstract class CashboxOrder extends LoggedActiveRecord
 	 */
 	public function getContractor()
 	{
-		return $this->hasOne(ClientContractor::className(), ['id' => 'contractor_id']);
+		return $this->hasOne(Client::className(), ['id' => 'contractor_id']);
 	}
 
 	/**
