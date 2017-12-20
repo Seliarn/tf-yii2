@@ -137,6 +137,7 @@ class OutgoingCashboxOrderController extends Controller
 	{
 		$operations = Operation::find()->where(['type' => Operation::TYPE_OUTGOING])->all();
 		$accounts = Account::find()->all();
+		$accountBooks = AccountBook::find()->all();
 		$cfs = CashFlowStatement::find()->all();
 		$employers = StaffEmployee::find()->all();
 		$contractors = ClientContractor::find()->all();
@@ -145,6 +146,7 @@ class OutgoingCashboxOrderController extends Controller
 		return [
 			'operations' => $operations,
 			'accounts' => $accounts,
+			'accountBooks' => $accountBooks,
 			'cashFlowStatements' => $cfs,
 			'employers' => $employers,
 			'currency' => $currency,

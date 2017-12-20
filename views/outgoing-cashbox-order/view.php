@@ -41,6 +41,10 @@ $this->params['breadcrumbs'][] = $this->title;
 				'value' => $model->getAccount()->one()->title
 			],
 			[
+				'label' => $model->attributeLabels('account_book_id'),
+				'value' => $model->getAccountBook()->one()->title
+			],
+			[
 				'label' => $model->attributeLabels('cash_flow_statement_id'),
 				'value' => $model->getCashFlowStatement()->one()->title
 			],

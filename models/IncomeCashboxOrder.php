@@ -28,8 +28,8 @@ class IncomeCashboxOrder extends CashboxOrder
 {
 	static $titles = [
 		'rus' => [
-			'main' => 'Приходный кассовый ордер',
-			'plural' => 'Приходные кассовые ордеры'
+			'main' => 'Поступление ДС',
+			'plural' => 'Поступление ДС'
 		]
 	];
 

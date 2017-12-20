@@ -45,6 +45,14 @@ $this->params['breadcrumbs'][] = $this->title;
 					}
 			],
 			[
+				'attribute' => 'account_book_id',
+				'label' => OutgoingCashboxOrder::$labels['account_book_id'],
+				'content' => function ($model) {
+						$data = $model->getAccountBook()->one();
+						return (!$data) ? false : $data->title;
+					}
+			],
+			[
 				'attribute' => 'cash_flow_statement_id',
 				'label' => OutgoingCashboxOrder::$labels['cash_flow_statement_id'],
 				'content' => function ($model) {
@@ -79,6 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					}
 			],
 			'date:datetime',
+			'note:ntext',
 			[
 				'attribute' => 'status',
 				'label' => OutgoingCashboxOrder::$labels['status'],
