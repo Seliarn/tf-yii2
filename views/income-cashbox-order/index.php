@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
 						return (!$data) ? false : $data->title;
 					}
 			],
-			'date:datetime:php:Y-m-d h:i:s',
+			'date:datetime',
 			'updated:date',
 			[
 				'attribute' => 'status',

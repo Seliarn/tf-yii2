@@ -50,6 +50,7 @@ use yii\helpers\ArrayHelper;
 		echo $form->field($model, 'contractor_id')->dropDownList($contractorItems, ['prompt' => $model->attributeLabels('contractor_id')]);
 
 		echo $form->field($model, 'amount')->textInput(['value' => 0]);
+		echo $form->field($model, 'date')->textInput(['type' => 'datetime-local']);
 
 		$currencyItems = ArrayHelper::map($currency, 'id', 'title');
 		echo $form->field($model, 'currency_id')->dropDownList($currencyItems);

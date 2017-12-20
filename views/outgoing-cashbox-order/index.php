@@ -78,8 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
 						return (!$data) ? false : $data->title;
 					}
 			],
-			'created:date',
-			'updated:date',
+			'date:datetime',
 			[
 				'attribute' => 'status',
 				'label' => OutgoingCashboxOrder::$labels['status'],
