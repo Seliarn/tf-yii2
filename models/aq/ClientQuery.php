@@ -3,11 +3,11 @@
 namespace app\models\aq;
 
 /**
- * This is the ActiveQuery class for [[\app\models\ClientContractor]].
+ * This is the ActiveQuery class for [[\app\models\Client]].
  *
- * @see \app\models\ClientContractor
+ * @see \app\models\Client
  */
-class ClientContractorQuery extends \yii\db\ActiveQuery
+class ClientQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class ClientContractorQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return \app\models\ClientContractor[]|array
+     * @return \app\models\Client[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class ClientContractorQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return \app\models\ClientContractor|array|null
+     * @return \app\models\Client|array|null
      */
     public function one($db = null)
     {

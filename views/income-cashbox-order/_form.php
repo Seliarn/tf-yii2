@@ -21,7 +21,7 @@ use yii\helpers\ArrayHelper;
 	} else if (empty($employers)) {
 		echo '<div class="alert alert-error fade in">Нет доступных сотрудников. <a href="/staff-employee/create">Создать</a></div>';
 	} else if (empty($contractors)) {
-		echo '<div class="alert alert-error fade in">Нет доступных контрагентов. <a href="/client-contractor/create">Создать</a></div>';
+		echo '<div class="alert alert-error fade in">Нет доступных контрагентов. <a href="/client/create">Создать</a></div>';
 	} else if (empty($currency)) {
 		echo '<div class="alert alert-error fade in">Нет доступных валют. <a href="/currency/create">Создать</a></div>';
 	} else {
@@ -68,7 +68,7 @@ use yii\helpers\ArrayHelper;
 		?>
 
 		<div class = "form-group">
-			<?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Изменить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+			<?= Html::submitButton($model->isNewRecord ? Yii::$app->params['translate']['rus']['btn-create'] : Yii::$app->params['translate']['rus']['btn-update'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 		</div>
 
 		<?php ActiveForm::end();

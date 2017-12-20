@@ -161,7 +161,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 									"items" => [
 										[
 											"label" => "Поставщики",
-											"url" => "/client-contractor/index",
+											"url" => "/client/index",
 										],
 										[
 											"label" => "Клиенты",

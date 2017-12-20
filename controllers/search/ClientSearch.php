@@ -5,12 +5,12 @@ namespace app\controllers\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\ClientContractor;
+use app\models\Client;
 
 /**
- * ClientContractorSearch represents the model behind the search form about `app\models\ClientContractor`.
+ * ClientSearch represents the model behind the search form about `app\models\Client`.
  */
-class ClientContractorSearch extends ClientContractor
+class ClientSearch extends Client
 {
     /**
      * @inheritdoc
@@ -41,7 +41,7 @@ class ClientContractorSearch extends ClientContractor
      */
     public function search($params)
     {
-        $query = ClientContractor::find();
+        $query = Client::find();
 
         // add conditions that should always apply here
 

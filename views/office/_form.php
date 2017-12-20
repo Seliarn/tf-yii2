@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
 	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
 	?>
 	<div class = "form-group">
-		<?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Изменить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+		<?= Html::submitButton($model->isNewRecord ? Yii::$app->params['translate']['rus']['btn-create'] : Yii::$app->params['translate']['rus']['btn-update'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 	</div>
 
 	<?php ActiveForm::end(); ?>

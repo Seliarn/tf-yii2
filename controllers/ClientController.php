@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\ClientContractor;
-use app\controllers\search\ClientContractorSearch;
+use app\models\Client;
+use app\controllers\search\ClientSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ClientContractorController implements the CRUD actions for ClientContractor model.
+ * ClientController implements the CRUD actions for Client model.
  */
-class ClientContractorController extends Controller
+class ClientController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class ClientContractorController extends Controller
     }
 
     /**
-     * Lists all ClientContractor models.
+     * Lists all Client models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ClientContractorSearch();
+        $searchModel = new ClientSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class ClientContractorController extends Controller
     }
 
     /**
-     * Displays a single ClientContractor model.
+     * Displays a single Client model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class ClientContractorController extends Controller
     }
 
     /**
-     * Creates a new ClientContractor model.
+     * Creates a new Client model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new ClientContractor();
+        $model = new Client();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class ClientContractorController extends Controller
     }
 
     /**
-     * Updates an existing ClientContractor model.
+     * Updates an existing Client model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +94,7 @@ class ClientContractorController extends Controller
     }
 
     /**
-     * Deletes an existing ClientContractor model.
+     * Deletes an existing Client model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +107,15 @@ class ClientContractorController extends Controller
     }
 
     /**
-     * Finds the ClientContractor model based on its primary key value.
+     * Finds the Client model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return ClientContractor the loaded model
+     * @return Client the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ClientContractor::findOne($id)) !== null) {
+        if (($model = Client::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
