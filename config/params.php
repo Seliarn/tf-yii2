@@ -6,6 +6,7 @@ return [
 		'rus' => [
 			'btn-update' => 'Изменить',
 			'btn-create' => 'Создать',
+			'btn-add' => 'Добавить',
 			'btn-delete' => 'Удалить',
 			'btn-search' => 'Искать',
 			'btn-reset' => 'Сбросить',

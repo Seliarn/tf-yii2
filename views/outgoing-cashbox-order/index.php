@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 	<p>
-		<?= Html::a(Yii::$app->params['translate']['rus']['btn-create'] . ' ' . OutgoingCashboxOrder::$titles['rus']['main'], ['create'], ['class' => 'btn btn-success']) ?>
+		<?= Html::a(Yii::$app->params['translate']['rus']['btn-add'], ['class' => 'btn btn-success']) ?>
 	</p>
 	<?=
 	GridView::widget([
