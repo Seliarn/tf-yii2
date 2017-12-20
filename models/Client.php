@@ -95,10 +95,10 @@ class Client extends LoggedActiveRecord
 
 	/**
 	 * @inheritdoc
-	 * @return \app\models\aq\ClientContractorQuery the active query used by this AR class.
+	 * @return \app\models\aq\ClientQuery the active query used by this AR class.
 	 */
 	public static function find()
 	{
-		return new \app\models\aq\ClientContractorQuery(get_called_class());
+		return new \app\models\aq\ClientQuery(get_called_class());
 	}
 }
