@@ -57,8 +57,8 @@ $this->params['breadcrumbs'][] = $this->title;
 				'label' => $model->attributeLabels('currency_id'),
 				'value' => $model->getCurrency()->one()->title
 			],
-			'note:ntext',
 			'date:date',
+			'note:ntext',
 			'created:date',
 			'updated:date',
 			[
