@@ -17,7 +17,7 @@ use yii\helpers\ArrayHelper;
 	} else {
 		$form = ActiveForm::begin();
 
-		$customerItems = ArrayHelper::map($customers, 'id', 'email');
+		$customerItems = ArrayHelper::map($customers, 'id', 'email_1');
 		echo $form->field($model, 'customer_id')->dropDownList($customerItems, ['prompt' => $model->attributeLabels('customer_id')]);
 
 		$statusItems = ArrayHelper::map($orderStatus, 'id', 'title');

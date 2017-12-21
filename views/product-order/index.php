@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				'label' => ProductOrder::$labels['customer_id'],
 				'content' => function ($model) {
 						$data = $model->getCustomer()->one();
-						return (!$data) ? false : $data->email;
+						return (!$data) ? false : $data->email_1;
 					}
 			],
 			[
