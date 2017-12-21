@@ -7,7 +7,7 @@ use app\models\CashFlowStatement;
 use app\models\Operation;
 use app\models\StaffEmployee;
 use app\models\Currency;
-use app\models\ClientContractor;
+use app\models\Client;
 use Yii;
 use app\models\OutgoingCashboxOrder;
 use app\controllers\search\OutgoingCashboxOrderSearch;
@@ -140,7 +140,7 @@ class OutgoingCashboxOrderController extends Controller
 		$accountBooks = AccountBook::find()->all();
 		$cfs = CashFlowStatement::find()->all();
 		$employers = StaffEmployee::find()->all();
-		$contractors = ClientContractor::find()->all();
+		$contractors = Client::find()->all();
 		$currency = Currency::find()->all();
 
 		return [
