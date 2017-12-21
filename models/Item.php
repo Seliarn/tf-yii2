@@ -87,6 +87,14 @@ class Item extends LoggedActiveRecord
 	}
 
 	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getGroup()
+	{
+		return $this->hasOne(ItemGroup::className(), ['id' => 'group_id']);
+	}
+
+	/**
 	 * @return mixed
 	 */
 	public function getMeasuresAlias()
