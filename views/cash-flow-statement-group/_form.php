@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
 
 	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);;
 
-	echo $form->field($model, 'note')->textInput(['maxlength' => true]);
+	echo $form->field($model, 'note')->textarea(['row' => 3]);
 	?>
 	<div class = "form-group">
 		<?= Html::submitButton($model->isNewRecord ? Yii::$app->params['translate']['rus']['btn-create'] : Yii::$app->params['translate']['rus']['btn-update'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

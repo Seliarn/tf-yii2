@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\AccountBook */
 
-$this->title = $model::$titles['rus']['main'] . ': ' . $model->title;
+$this->title = $model::$titles['rus']['main'] . ': ' . $model->code;
 $this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -35,7 +35,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'code',
             'title',
-            'subconto_model_id',
+			[
+				'label' => $model->attributeLabels('subconto_model_id'),
+				'value' => (!$model->getSubcontoModel()->one()) ? '' : $model->getSubcontoModel()->one()->title
+			],
             'created:date',
             'updated:date',
             'note',

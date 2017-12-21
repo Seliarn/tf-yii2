@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
 
 	echo $form->field($model, 'phone')->textInput(['maxlength' => true]);
 
-	echo $form->field($model, 'note')->textInput(['maxlength' => true]);
+	echo $form->field($model, 'note')->textarea(['row' => 3]);
 	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
 	?>
 	<div class = "form-group">

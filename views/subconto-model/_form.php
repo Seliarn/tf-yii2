@@ -10,22 +10,17 @@ use yii\widgets\ActiveForm;
 
 <div class="subconto-model-form">
 
-    <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'class_name')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'created')->textInput() ?>
-
-    <?= $form->field($model, 'updated')->textInput() ?>
-
-    <?= $form->field($model, 'note')->textInput(['maxlength' => true]) ?>
-
+    <?php 
+    $form = ActiveForm::begin();
+    echo $form->field($model, 'class_name')->textInput(['maxlength' => true]);
+    echo $form->field($model, 'title')->textInput(['maxlength' => true]);
+    echo $form->field($model, 'status')->textInput();
+    echo $form->field($model, 'created')->textInput();
+    echo $form->field($model, 'updated')->textInput();
+    echo $form->field($model, 'note')->textarea(['row' => 3]);
+?>
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::$app->params['translate']['rus']['btn-create'] : Yii::$app->params['translate']['rus']['btn-update'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
