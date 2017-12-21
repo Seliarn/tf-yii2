@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
 						return (!$data) ? false : $data->title;
 					}
 			],*/
-			[
+			/*[
 				'attribute' => 'measures',
 				'label' => Item::$labels['measures'],
 				'content' => function ($model) {
@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				'content' => function ($model) {
 						return $model->getStatusAlias();
 					}
-			],
+			],*/
 			// 'note',
 
 			['class' => 'yii\grid\ActionColumn'],
