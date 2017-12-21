@@ -16,7 +16,7 @@ use Yii;
  * @property integer $status
  * @property string $note
  */
-class ItemGroup extends \yii\db\ActiveRecord
+class ItemGroup extends LoggedActiveRecord
 {
     /**
      * @inheritdoc

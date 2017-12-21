@@ -17,7 +17,7 @@ use Yii;
  *
  * @property AccountBook[] $accountBooks
  */
-class SubcontoModel extends \yii\db\ActiveRecord
+class SubcontoModel extends LoggedActiveRecord
 {
     /**
      * @inheritdoc

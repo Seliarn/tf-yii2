@@ -18,68 +18,69 @@ use Yii;
  * @property ProductGroup $group
  * @property ProductItem[] $productItems
  */
-class Product extends \yii\db\ActiveRecord
+class Product extends LoggedActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'Product';
-    }
+	static $titles = [
+		'rus' => [
+			'main' => 'Блюдо',
+			'plural' => 'Блюда'
+		]
+	];
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['group_id', 'status'], 'integer'],
-            [['title'], 'required'],
-            [['created', 'updated'], 'safe'],
-            [['title', 'note'], 'string', 'max' => 255],
-            [['group_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProductGroup::className(), 'targetAttribute' => ['group_id' => 'id']],
-        ];
-    }
+	static $labels = [
+		'id' => 'ID',
+		'group_id' => 'Group ID',
+		'title' => 'Название',
+		'status' => 'Статус',
+		'created' => 'Создан',
+		'updated' => 'Изменен',
+		'note' => 'Примечание',
+	];
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'group_id' => 'Group ID',
-            'title' => 'Title',
-            'status' => 'Status',
-            'created' => 'Created',
-            'updated' => 'Updated',
-            'note' => 'Note',
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName()
+	{
+		return 'Product';
+	}
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getGroup()
-    {
-        return $this->hasOne(ProductGroup::className(), ['id' => 'group_id']);
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['group_id', 'status'], 'integer'],
+			[['title'], 'required'],
+			[['created', 'updated'], 'safe'],
+			[['title', 'note'], 'string', 'max' => 255],
+			[['group_id'], 'exist', 'skipOnError' => true, 'targetClass' => ProductGroup::className(), 'targetAttribute' => ['group_id' => 'id']],
+		];
+	}
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProductItems()
-    {
-        return $this->hasMany(ProductItem::className(), ['product_id' => 'id']);
-    }
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getGroup()
+	{
+		return $this->hasOne(ProductGroup::className(), ['id' => 'group_id']);
+	}
 
-    /**
-     * @inheritdoc
-     * @return \app\models\aq\ProductQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new \app\models\aq\ProductQuery(get_called_class());
-    }
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getProductItems()
+	{
+		return $this->hasMany(ProductItem::className(), ['product_id' => 'id']);
+	}
+
+	/**
+	 * @inheritdoc
+	 * @return \app\models\aq\ProductQuery the active query used by this AR class.
+	 */
+	public static function find()
+	{
+		return new \app\models\aq\ProductQuery(get_called_class());
+	}
 }

@@ -19,70 +19,71 @@ use Yii;
  * @property Item $item
  * @property Product $product
  */
-class ProductItem extends \yii\db\ActiveRecord
+class ProductItem extends LoggedActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'Product_Item';
-    }
+	static $titles = [
+		'rus' => [
+			'main' => 'Состав блюда',
+			'plural' => 'Состав блюда'
+		]
+	];
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['product_id', 'item_id'], 'required'],
-            [['product_id', 'item_id', 'count', 'status'], 'integer'],
-            [['created', 'updated'], 'safe'],
-            [['note'], 'string', 'max' => 255],
-            [['item_id'], 'exist', 'skipOnError' => true, 'targetClass' => Item::className(), 'targetAttribute' => ['item_id' => 'id']],
-            [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Product::className(), 'targetAttribute' => ['product_id' => 'id']],
-        ];
-    }
+	static $labels = [
+		'id' => 'ID',
+		'product_id' => 'Блюдо',
+		'item_id' => 'Ингредиент',
+		'count' => 'Количество',
+		'status' => 'Статус',
+		'created' => 'Создан',
+		'updated' => 'Изменен',
+		'note' => 'Примечание',
+	];
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'product_id' => 'Product ID',
-            'item_id' => 'Item ID',
-            'count' => 'Count',
-            'status' => 'Status',
-            'created' => 'Created',
-            'updated' => 'Updated',
-            'note' => 'Note',
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName()
+	{
+		return 'Product_Item';
+	}
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getItem()
-    {
-        return $this->hasOne(Item::className(), ['id' => 'item_id']);
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['product_id', 'item_id'], 'required'],
+			[['product_id', 'item_id', 'count', 'status'], 'integer'],
+			[['created', 'updated'], 'safe'],
+			[['note'], 'string', 'max' => 255],
+			[['item_id'], 'exist', 'skipOnError' => true, 'targetClass' => Item::className(), 'targetAttribute' => ['item_id' => 'id']],
+			[['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Product::className(), 'targetAttribute' => ['product_id' => 'id']],
+		];
+	}
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProduct()
-    {
-        return $this->hasOne(Product::className(), ['id' => 'product_id']);
-    }
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getItem()
+	{
+		return $this->hasOne(Item::className(), ['id' => 'item_id']);
+	}
 
-    /**
-     * @inheritdoc
-     * @return \app\models\aq\ProductItemQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new \app\models\aq\ProductItemQuery(get_called_class());
-    }
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getProduct()
+	{
+		return $this->hasOne(Product::className(), ['id' => 'product_id']);
+	}
+
+	/**
+	 * @inheritdoc
+	 * @return \app\models\aq\ProductItemQuery the active query used by this AR class.
+	 */
+	public static function find()
+	{
+		return new \app\models\aq\ProductItemQuery(get_called_class());
+	}
 }

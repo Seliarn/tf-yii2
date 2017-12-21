@@ -19,7 +19,7 @@ use Yii;
  * @property ProductGroup $parent
  * @property ProductGroup[] $productGroups
  */
-class ProductGroup extends \yii\db\ActiveRecord
+class ProductGroup extends LoggedActiveRecord
 {
     /**
      * @inheritdoc

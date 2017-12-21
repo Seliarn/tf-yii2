@@ -17,8 +17,26 @@ use Yii;
  * @property integer $status
  * @property string $note
  */
-class Item extends \yii\db\ActiveRecord
+class Item extends LoggedActiveRecord
 {
+	static $titles = [
+		'rus' => [
+			'main' => 'Номенклатура',
+			'plural' => 'Номенклатура'
+		]
+	];
+
+	static $labels = [
+		'id' => 'ID',
+		'title' => 'Название',
+		'state' => 'Состояние',
+		'group_id' => 'Категория',
+		'measures' => 'Ед. измерения',
+		'status' => 'Статус',
+		'created' => 'Создан',
+		'updated' => 'Изменен',
+		'note' => 'Примечание',
+	];
     /**
      * @inheritdoc
      */
@@ -37,24 +55,6 @@ class Item extends \yii\db\ActiveRecord
             [['group_id', 'measures', 'state', 'status'], 'integer'],
             [['created', 'updated'], 'safe'],
             [['title', 'note'], 'string', 'max' => 255],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'group_id' => 'Group ID',
-            'measures' => 'Measures',
-            'state' => 'State',
-            'created' => 'Created',
-            'updated' => 'Updated',
-            'status' => 'Status',
-            'note' => 'Note',
         ];
     }
 

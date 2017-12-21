@@ -22,8 +22,28 @@ use Yii;
  * @property Item $item
  * @property Warehouse $warehouse
  */
-class WarehouseItems extends \yii\db\ActiveRecord
+class WarehouseItems extends LoggedActiveRecord
 {
+	static $titles = [
+		'rus' => [
+			'main' => 'Остатки',
+			'plural' => 'Остатки'
+		]
+	];
+
+	static $labels = [
+		'id' => 'ID',
+		'warehouse_id' => 'Склад',
+		'item_id' => 'Номенклатура',
+		'count' => 'Количество',
+		'state' => 'Состояние',
+		'cost' => 'Себестоимость',
+		'amount' => 'Сумма',
+		'status' => 'Статус',
+		'created' => 'Создан',
+		'updated' => 'Изменен',
+		'note' => 'Примечание',
+	];
     /**
      * @inheritdoc
      */
@@ -48,25 +68,6 @@ class WarehouseItems extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'warehouse_id' => 'Warehouse ID',
-            'item_id' => 'Item ID',
-            'count' => 'Count',
-            'state' => 'State',
-            'cost' => 'Cost',
-            'amount' => 'Amount',
-            'created' => 'Created',
-            'updated' => 'Updated',
-            'status' => 'Status',
-            'note' => 'Note',
-        ];
-    }
 
     /**
      * @return \yii\db\ActiveQuery

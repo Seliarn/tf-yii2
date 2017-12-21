@@ -131,7 +131,7 @@ class IncomeCashboxOrderController extends Controller
 	}
 
 	/**
-	 * Prepare form.
+	 * Prepare form
 	 * @return array
 	 */
 	protected function _prepareForm()

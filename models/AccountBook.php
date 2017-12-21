@@ -18,8 +18,25 @@ use Yii;
  *
  * @property SubcontoModel $subcontoModel
  */
-class AccountBook extends \yii\db\ActiveRecord
+class AccountBook extends LoggedActiveRecord
 {
+	static $titles = [
+		'rus' => [
+			'main' => 'План счетов',
+			'plural' => 'Планы счетов'
+		]
+	];
+
+	static $labels = [
+		'id' => 'ID',
+		'code' => 'Код',
+		'title' => 'Название',
+		'subconto_model_id' => 'Субконто',
+		'status' => 'Статус',
+		'created' => 'Создан',
+		'updated' => 'Изменен',
+		'note' => 'Примечание',
+	];
     /**
      * @inheritdoc
      */
@@ -40,23 +57,6 @@ class AccountBook extends \yii\db\ActiveRecord
             [['title', 'note'], 'string', 'max' => 255],
             [['code'], 'unique'],
             [['subconto_model_id'], 'exist', 'skipOnError' => true, 'targetClass' => SubcontoModel::className(), 'targetAttribute' => ['subconto_model_id' => 'id']],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'code' => 'Code',
-            'title' => 'Title',
-            'subconto_model_id' => 'Subconto Model ID',
-            'status' => 'Status',
-            'created' => 'Created',
-            'updated' => 'Updated',
-            'note' => 'Note',
         ];
     }
 

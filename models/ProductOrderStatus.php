@@ -14,8 +14,23 @@ use Yii;
  * @property string $updated
  * @property string $note
  */
-class ProductOrderStatus extends \yii\db\ActiveRecord
+class ProductOrderStatus extends LoggedActiveRecord
 {
+	static $titles = [
+		'rus' => [
+			'main' => 'Статус заказа',
+			'plural' => 'Статусы заказов'
+		]
+	];
+
+	static $labels = [
+		'id' => 'ID',
+		'title' => 'Название',
+		'status' => 'Статус',
+		'created' => 'Создан',
+		'updated' => 'Изменен',
+		'note' => 'Примечание',
+	];
     /**
      * @inheritdoc
      */
@@ -35,21 +50,6 @@ class ProductOrderStatus extends \yii\db\ActiveRecord
             [['created', 'updated'], 'safe'],
             [['title'], 'string', 'max' => 100],
             [['note'], 'string', 'max' => 255],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'status' => 'Status',
-            'created' => 'Created',
-            'updated' => 'Updated',
-            'note' => 'Note',
         ];
     }
 

@@ -37,8 +37,8 @@ class Client extends LoggedActiveRecord
 		'rus' => [
 			'main' => 'Контрагент',
 			'plural' => 'Контрагенты',
-			'customer' => 'Клиент',
-			'contractor' => 'Поставщик'
+			'customer' => 'Клиенты',
+			'contractor' => 'Поставщики'
 		],
 		'link' => 'client'
 	];
