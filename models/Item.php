@@ -46,7 +46,7 @@ class Item extends LoggedActiveRecord
 	const STATE_NEW = 1;
 
 	protected $_stateAlias = [
-		self::STATE_NEW => 'грамм',
+		self::STATE_NEW => 'новый',
 	];
 
 	protected $_measuresAlias = [
