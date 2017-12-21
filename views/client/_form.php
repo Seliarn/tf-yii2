@@ -28,6 +28,10 @@ use yii\widgets\ActiveForm;
 	echo $form->field($model, 'phone')->textInput(['maxlength' => true]);
 	echo $form->field($model, 'alt_phones')->textarea(['row' => 3]);
 	echo $form->field($model, 'address')->textarea(['row' => 3]);
+
+	echo $form->field($model, 'is_contractor')->checkbox();
+	echo $form->field($model, 'is_customer')->checkbox();
+	
 	echo $form->field($model, 'note')->textarea(['row' => 3]);
 	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
 	?>

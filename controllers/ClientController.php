@@ -45,6 +45,38 @@ class ClientController extends Controller
     }
 
     /**
+     * Lists all Client Customers.
+     * @return mixed
+     */
+    public function actionCustomer()
+    {
+        $searchModel = new ClientSearch();
+		$searchModel->is_customer = 1;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Lists all Client Contractors.
+     * @return mixed
+     */
+    public function actionContractor()
+    {
+        $searchModel = new ClientSearch();
+		$searchModel->is_contractor = 1;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
      * Displays a single Client model.
      * @param integer $id
      * @return mixed
