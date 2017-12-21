@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 	echo $form->field($model, 'title')->textInput(['maxlength' => true]);
 
 	if (!empty($subcontoModels)) {
-		$subcontoModelItems = ArrayHelper::map($subcontoModels, 'id', 'company');
+		$subcontoModelItems = ArrayHelper::map($subcontoModels, 'id', 'title');
 		echo $form->field($model, 'subconto_model_id')->dropDownList($subcontoModelItems, ['prompt' => $model->attributeLabels('subconto_model_id')]);
 	} else {
 		echo '<div class="alert alert-warning fade in">Нет доступных субконто. <a href="/subconto-model/create">Создать</a></div>';
