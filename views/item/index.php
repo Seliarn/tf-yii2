@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			'title',
 			[
 				'attribute' => 'group_id',
-				'label' => ItemGroup::$labels['group_id'],
+				'label' => Item::$labels['group_id'],
 				'content' => function ($model) {
 						$data = $model->getGroup()->one();
 						return (!$data) ? false : $data->title;
