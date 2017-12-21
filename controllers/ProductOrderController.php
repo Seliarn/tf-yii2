@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\ClientCustomer;
+use app\models\ProductOrderStatus;
 use Yii;
 use app\models\ProductOrder;
 use app\controllers\search\ProductOrderSearch;
@@ -134,8 +135,10 @@ class ProductOrderController extends Controller
 	protected function _prepareForm()
 	{
 		$customers = ClientCustomer::find()->all();
+		$orderStatus = ProductOrderStatus::find()->all();
 
 		return [
+			'orderStatus' => $orderStatus,
 			'customers' => $customers,
 		];
 	}
