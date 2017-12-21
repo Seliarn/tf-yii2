@@ -68,6 +68,42 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 								["label" => "Главная", "url" => "/", "icon" => "home"],
 //								["label" => "Gii", "url" => ["/gii"], "icon" => "files-o"],
 								[
+									"label" => "Заказы",
+									"url" => "/product-order/index",
+									"icon" => "calendar-check-o"
+								],
+								[
+									"label" => "Склад",
+									"url" => "#",
+									"icon" => "archive",
+									"items" => [
+										[
+											"label" => "Закупка товара",
+											"url" => "#",
+										],
+										[
+											"label" => "Реализация товара",
+											"url" => "#",
+										],
+										[
+											"label" => "Инвентаризация",
+											"url" => "#",
+										],
+										[
+											"label" => "Списание",
+											"url" => "#",
+										],
+										[
+											"label" => "Остатки",
+											"url" => "/warehouse-items/index",
+										],
+										[
+											"label" => "Номенклатура",
+											"url" => "/item/index",
+										],
+									]
+								],
+								[
 									"label" => "Финансы",
 									"url" => "#",
 									"icon" => "file-text",
@@ -117,9 +153,12 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 											"url" => "/warehouse/index",
 										],
 										[
+											"label" => "Блюда",
+											"url" => "/product/index",
+										],
+										[
 											"label" => "Статусы заказов",
-//											"url" => "/order-status/index",
-											"url" => "#",
+											"url" => "/product-order-status/index",
 										],
 //										[
 //											"label" => "Группы статей ДДС",
@@ -143,29 +182,6 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 											"url" => "/staff-department/index",
 										],
 									],
-								],
-								[
-									"label" => "Склад",
-//									"url" => "/stock/index",
-									"url" => "#",
-									"icon" => "archive",
-									"items" => [
-										[
-											"label" => "Остатки",
-											"url" => "/warehouse-items/index",
-											"url" => "#",
-										],
-										[
-											"label" => "Товары",
-											"url" => "/item/index",
-											"url" => "#",
-										],
-									]
-								],
-								[
-									"label" => "Заказы",
-									"url" => "/product-order/index",
-									"icon" => "calendar-check-o"
 								],
 								[
 									"label" => "CRM",
