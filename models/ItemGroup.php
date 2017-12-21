@@ -18,50 +18,59 @@ use Yii;
  */
 class ItemGroup extends LoggedActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'Item_Group';
-    }
+	static $titles = [
+		'rus' => [
+			'main' => 'Категория',
+			'plural' => 'Категории'
+		]
+	];
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['title'], 'required'],
-            [['parent_id', 'count', 'status'], 'integer'],
-            [['created', 'updated'], 'safe'],
-            [['title', 'note'], 'string', 'max' => 255],
-        ];
-    }
+	static $labels = [
+		'id' => 'ID',
+		'title' => 'Название',
+		'parent_id' => 'Родительская',
+		'count' => 'Количество',
+		'status' => 'Статус',
+		'created' => 'Создан',
+		'updated' => 'Изменен',
+		'note' => 'Примечание',
+	];
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'parent_id' => 'Parent ID',
-            'count' => 'Count',
-            'created' => 'Created',
-            'updated' => 'Updated',
-            'status' => 'Status',
-            'note' => 'Note',
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName()
+	{
+		return 'Item_Group';
+	}
 
-    /**
-     * @inheritdoc
-     * @return \app\models\aq\ItemGroupQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new \app\models\aq\ItemGroupQuery(get_called_class());
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['title'], 'required'],
+			[['parent_id', 'count', 'status'], 'integer'],
+			[['created', 'updated'], 'safe'],
+			[['title', 'note'], 'string', 'max' => 255],
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 * @return \app\models\aq\ItemGroupQuery the active query used by this AR class.
+	 */
+	public static function find()
+	{
+		return new \app\models\aq\ItemGroupQuery(get_called_class());
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getParent()
+	{
+		return $this->hasOne(ItemGroup::className(), ['id' => 'parent_id']);
+	}
 }
