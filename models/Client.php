@@ -35,8 +35,10 @@ class Client extends LoggedActiveRecord
 {
 	static $titles = [
 		'rus' => [
-			'main' => 'Клиент',
-			'plural' => 'Клиенты'
+			'main' => 'Контрагент',
+			'plural' => 'Контрагенты',
+			'customer' => 'Клиент',
+			'contractor' => 'Поставщик'
 		],
 		'link' => 'client'
 	];

@@ -8,7 +8,14 @@ use app\models\Client;
 /* @var $searchModel app\controllers\search\ClientSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Client::$titles['rus']['plural'];
+if (!empty($searchModel->is_contractor)) {
+	$this->title = Client::$titles['rus']['contractor'];
+} else if (!empty($searchModel->is_customer)) {
+	$this->title = Client::$titles['rus']['customer'];
+} else {
+	$this->title = Client::$titles['rus']['plural'];
+}
+
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class = "client-index">

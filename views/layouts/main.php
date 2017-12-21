@@ -109,6 +109,14 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 											"url" => "/cash-flow-statement/index",
 										],
 										[
+											"label" => "Контрагенты",
+											"url" => "/client/index",
+										],
+										[
+											"label" => "Склады",
+											"url" => "/warehouse/index",
+										],
+										[
 											"label" => "Статусы заказов",
 //											"url" => "/order-status/index",
 											"url" => "#",
@@ -143,8 +151,13 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 									"icon" => "archive",
 									"items" => [
 										[
+											"label" => "Остатки",
+											"url" => "/warehouse-items/index",
+											"url" => "#",
+										],
+										[
 											"label" => "Товары",
-//											"url" => "/items/index",
+											"url" => "/item/index",
 											"url" => "#",
 										],
 									]
@@ -161,11 +174,11 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 									"items" => [
 										[
 											"label" => "Поставщики",
-											"url" => "/client/index",
+											"url" => "/client/contractor",
 										],
 										[
 											"label" => "Клиенты",
-											"url" => "/client-customer/index",
+											"url" => "/client/customer",
 										],
 									],
 								],
