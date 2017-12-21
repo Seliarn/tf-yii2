@@ -37,13 +37,13 @@ $this->params['breadcrumbs'][] = $this->title;
 						return (!$data) ? false : $data->title;
 					}
 			],*/
-			/*[
+			[
 				'attribute' => 'measures',
 				'label' => Item::$labels['measures'],
 				'content' => function ($model) {
 						return $model->getMeasuresAlias();
 					}
-			],
+			], /*
 			[
 				'attribute' => 'state',
 				'label' => Item::$labels['state'],
