@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\SubcontoModel;
 use Yii;
 use app\models\AccountBook;
 use app\controllers\search\AccountBookSearch;
@@ -68,9 +69,8 @@ class AccountBookController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+			$params = array_merge(['model' => $model], $this->_prepareForm());
+			return $this->render('create', $params);
         }
     }
 
@@ -84,13 +84,15 @@ class AccountBookController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
+		if ($model->load(Yii::$app->request->post())) {
+			$model->updated = time();
+			if ($model->save()) {
+				return $this->redirect(['view', 'id' => $model->id]);
+			}
+		} else {
+			$params = array_merge(['model' => $model], $this->_prepareForm());
+			return $this->render('update', $params);
+		}
     }
 
     /**
@@ -121,4 +123,16 @@ class AccountBookController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+	/**
+	 * Prepare form
+	 * @return array
+	 */
+	protected function _prepareForm()
+	{
+		$subcontoModels = SubcontoModel::find()->all();
+
+		return [
+			'subcontoModels' => $subcontoModels,
+		];
+	}
 }

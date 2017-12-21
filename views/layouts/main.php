@@ -153,6 +153,10 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 											"url" => "/warehouse/index",
 										],
 										[
+											"label" => "Планы счетов",
+											"url" => "/account-book/index",
+										],
+										[
 											"label" => "Блюда",
 											"url" => "/product/index",
 										],
