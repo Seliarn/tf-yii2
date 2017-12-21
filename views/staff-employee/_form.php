@@ -16,7 +16,6 @@ use yii\widgets\ActiveForm;
 	$departmentItems = ArrayHelper::map($department, 'id', 'title');
 	echo $form->field($model, 'department_id')->dropDownList($departmentItems, ['prompt' => $model->attributeLabels('department_id')]);
 
-	echo $form->field($model, 'position_id')->textInput();
 	$positionItems = ArrayHelper::map($position, 'id', 'title');
 	echo $form->field($model, 'position_id')->dropDownList($positionItems, ['prompt' => $model->attributeLabels('position_id')]);
 
