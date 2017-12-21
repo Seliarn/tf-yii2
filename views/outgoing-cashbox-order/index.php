@@ -28,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 			'id',
 			'code',
+			'date:datetime',
 			[
 				'attribute' => 'operation_id',
 				'label' => OutgoingCashboxOrder::$labels['operation_id'],
@@ -76,7 +77,6 @@ $this->params['breadcrumbs'][] = $this->title;
 						return (!$data) ? false : $data->company;
 					}
 			],
-			// 'note:ntext',
 			'amount',
 			[
 				'attribute' => 'currency_id',
@@ -86,7 +86,6 @@ $this->params['breadcrumbs'][] = $this->title;
 						return (!$data) ? false : $data->title;
 					}
 			],
-			'date:datetime',
 			'note:ntext',
 			[
 				'attribute' => 'status',

@@ -28,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 			'id',
 			'code',
+			'date:datetime',
 			[
 				'attribute' => 'operation_id',
 				'label' => IncomeCashboxOrder::$labels['operation_id'],
@@ -86,7 +87,6 @@ $this->params['breadcrumbs'][] = $this->title;
 						return (!$data) ? false : $data->title;
 					}
 			],
-			'date:datetime',
 			'note:ntext',
 			[
 				'attribute' => 'status',

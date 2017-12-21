@@ -101,6 +101,10 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 											"label" => "Номенклатура",
 											"url" => "/item/index",
 										],
+										[
+											"label" => "Поставщики",
+											"url" => "/client/contractor",
+										],
 									]
 								],
 								[
@@ -192,10 +196,6 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 									"url" => "#",
 									"icon" => "users",
 									"items" => [
-										[
-											"label" => "Поставщики",
-											"url" => "/client/contractor",
-										],
 										[
 											"label" => "Клиенты",
 											"url" => "/client/customer",
