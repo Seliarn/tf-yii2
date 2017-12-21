@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\ProductOrderStatus */
 
-$this->title = 'Create Product Order Status';
-$this->params['breadcrumbs'][] = ['label' => 'Product Order Statuses', 'url' => ['index']];
+$this->title = Yii::$app->params['translate']['rus']['btn-create'] . ' ' . $model::$titles['rus']['main'];
+$this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="product-order-status-create">
