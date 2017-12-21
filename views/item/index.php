@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\controllers\search\ItemSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Items';
+$this->title = IncomeCashboxOrder::$titles['rus']['plural'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="item-index">

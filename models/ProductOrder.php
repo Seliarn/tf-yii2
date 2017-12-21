@@ -66,6 +66,13 @@ class ProductOrder extends LoggedActiveRecord
 	{
 		return $this->hasOne(ClientCustomer::className(), ['id' => 'customer_id']);
 	}
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getProductOrderStatus()
+	{
+		return $this->hasOne(ProductOrderStatus::className(), ['id' => 'product_order_status_id']);
+	}
 
 	/**
 	 * @inheritdoc

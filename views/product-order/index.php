@@ -32,10 +32,17 @@ $this->params['breadcrumbs'][] = $this->title;
 				'label' => ProductOrder::$labels['customer_id'],
 				'content' => function ($model) {
 						$data = $model->getCustomer()->one();
-						return (!$data) ? false : $data->email_1;
+						return (!$data) ? false : $data->email;
 					}
 			],
-			// 'product_order_status_id',
+			[
+				'attribute' => 'product_order_status_id',
+				'label' => ProductOrder::$labels['product_order_status_id'],
+				'content' => function ($model) {
+						$data = $model->getProductOrderStatus()->one();
+						return (!$data) ? false : $data->title;
+					}
+			],
 			'note',
 			'client_note',
 			'created:date',

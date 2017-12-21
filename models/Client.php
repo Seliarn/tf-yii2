@@ -11,7 +11,6 @@ use Yii;
  * @property string $first_name
  * @property string $last_name
  * @property string $username
- * @property integer $type
  * @property string $birthday
  * @property string $title
  * @property string $company
@@ -84,7 +83,7 @@ class Client extends LoggedActiveRecord
 	public function rules()
 	{
 		return [
-			[['type', 'status', 'is_contractor', 'is_customer'], 'integer'],
+			[['status', 'is_contractor', 'is_customer'], 'integer'],
 			[['birthday', 'created', 'updated'], 'safe'],
 			[['first_name', 'last_name'], 'string', 'max' => 100],
 			[['username'], 'string', 'max' => 1000],

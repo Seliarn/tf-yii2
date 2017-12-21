@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		'attributes' => [
 //            'id',
 			'code',
+			'date:datetime',
 			[
 				'label' => $model->attributeLabels('operation_id'),
 				'value' => $model->getOperation()->one()->title
@@ -64,7 +65,6 @@ $this->params['breadcrumbs'][] = $this->title;
 				'label' => $model->attributeLabels('currency_id'),
 				'value' => $model->getCurrency()->one()->title
 			],
-			'date:datetime',
 			'note:ntext',
 			'created:datetime',
 			'updated:datetime',

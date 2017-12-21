@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
 	echo $form->field($model, 'phone_2')->textInput(['maxlength' => true]);
 	echo $form->field($model, 'phone_3')->textInput(['maxlength' => true]);
 	echo $form->field($model, 'alt_phones')->textarea(['rows' => 3]);
-	echo $form->field($model, 'address')->textInput(['maxlength' => true]);
+	echo $form->field($model, 'address')->textarea(['row' => 3]);
 	echo $form->field($model, 'birthday')->textInput();
 	echo $form->field($model, 'note')->textarea(['rows' => 3]);
 	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);

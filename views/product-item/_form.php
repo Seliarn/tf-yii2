@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
     echo $form->field($model, 'product_id')->textInput();
     echo $form->field($model, 'item_id')->textInput();
     echo $form->field($model, 'count')->textInput();
-    echo $form->field($model, 'status')->textInput();
+    echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
     echo $form->field($model, 'note')->textarea(['row' => 3]);
      ?>
 

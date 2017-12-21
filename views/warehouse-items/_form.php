@@ -15,12 +15,10 @@ use yii\widgets\ActiveForm;
     echo $form->field($model, 'warehouse_id')->textInput();
     echo $form->field($model, 'item_id')->textInput();
     echo $form->field($model, 'count')->textInput();
-    echo $form->field($model, 'state')->textInput();
+    echo $form->field($model, 'state')->hiddenInput(['value' => 1]);
     echo $form->field($model, 'cost')->textInput();
     echo $form->field($model, 'amount')->textInput();
-    echo $form->field($model, 'created')->textInput();
-    echo $form->field($model, 'updated')->textInput();
-    echo $form->field($model, 'status')->textInput();
+    echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
     echo $form->field($model, 'note')->textarea(['row' => 3]);
      ?>
 

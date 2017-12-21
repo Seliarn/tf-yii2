@@ -36,9 +36,12 @@ $this->params['breadcrumbs'][] = $this->title;
 			'id',
 			[
 				'label' => $model->attributeLabels('customer_id'),
-				'value' => (!$model->getCustomer()->one()) ? '' : $model->getCustomer()->one()->email_1
+				'value' => (!$model->getCustomer()->one()) ? '' : $model->getCustomer()->one()->email
 			],
-//			'product_order_status_id',
+			[
+				'label' => $model->attributeLabels('product_order_status_id'),
+				'value' => (!$model->getProductOrderStatus()->one()) ? '' : $model->getProductOrderStatus()->one()->title
+			],
 			'note',
 			'client_note',
 			'created:date',

@@ -37,33 +37,68 @@ class Item extends LoggedActiveRecord
 		'updated' => 'Изменен',
 		'note' => 'Примечание',
 	];
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'Item';
-    }
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['title'], 'required'],
-            [['group_id', 'measures', 'state', 'status'], 'integer'],
-            [['created', 'updated'], 'safe'],
-            [['title', 'note'], 'string', 'max' => 255],
-        ];
-    }
+	const MEASURES_GRAM = 1;
+	const MEASURES_LITER = 2;
+	const MEASURES_PIECE = 3;
+	const MEASURES_METER = 4;
 
-    /**
-     * @inheritdoc
-     * @return \app\models\aq\ItemQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new \app\models\aq\ItemQuery(get_called_class());
-    }
+	const STATE_NEW = 1;
+
+	protected $_stateAlias = [
+		self::STATE_NEW => 'грамм',
+	];
+
+	protected $_measuresAlias = [
+		self::MEASURES_GRAM => 'грамм',
+		self::MEASURES_LITER => 'литр',
+		self::MEASURES_PIECE => 'штука',
+		self::MEASURES_METER => 'метр',
+	];
+
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName()
+	{
+		return 'Item';
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['title'], 'required'],
+			[['group_id', 'measures', 'state', 'status'], 'integer'],
+			[['created', 'updated'], 'safe'],
+			[['title', 'note'], 'string', 'max' => 255],
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 * @return \app\models\aq\ItemQuery the active query used by this AR class.
+	 */
+	public static function find()
+	{
+		return new \app\models\aq\ItemQuery(get_called_class());
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getMeasuresAlias()
+	{
+		return $this->_measuresAlias[$this->measures];
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getStateAlias()
+	{
+		return $this->_stateAlias[$this->state];
+	}
 }

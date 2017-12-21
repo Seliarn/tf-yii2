@@ -17,10 +17,12 @@ use yii\helpers\ArrayHelper;
 	} else {
 		$form = ActiveForm::begin();
 
-		$customerItems = ArrayHelper::map($customers, 'id', 'email_1');
+		$customerItems = ArrayHelper::map($customers, 'id', 'email');
 		echo $form->field($model, 'customer_id')->dropDownList($customerItems, ['prompt' => $model->attributeLabels('customer_id')]);
 
-		//	echo $form->field($model, 'product_order_status_id')->textInput();
+		$statusItems = ArrayHelper::map($orderStatus, 'id', 'title');
+		echo $form->field($model, 'product_order_status_id')->dropDownList($statusItems);
+
 		echo $form->field($model, 'note')->textarea(['row' => 3]);
 		echo $form->field($model, 'client_note')->textInput(['maxlength' => true]);
 		echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);

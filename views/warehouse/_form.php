@@ -15,13 +15,11 @@ use yii\widgets\ActiveForm;
 
     echo $form->field($model, 'title')->textInput(['maxlength' => true]);
     echo $form->field($model, 'phone')->textInput(['maxlength' => true]);
-    echo $form->field($model, 'alt_phones')->textInput(['maxlength' => true]);
+    echo $form->field($model, 'alt_phones')->textarea(['row' => 3]);
     echo $form->field($model, 'email')->textInput(['maxlength' => true]);
-    echo $form->field($model, 'alt_emails')->textInput(['maxlength' => true]);
-    echo $form->field($model, 'address')->textInput(['maxlength' => true]);
-    echo $form->field($model, 'created')->textInput();
-    echo $form->field($model, 'updated')->textInput();
-    echo $form->field($model, 'status')->textInput();
+    echo $form->field($model, 'alt_emails')->textarea(['row' => 3]);
+    echo $form->field($model, 'address')->textarea(['row' => 3]);
+    echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
     ?>
 
     <div class="form-group">
