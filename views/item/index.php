@@ -29,14 +29,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
 			'id',
 			'title',
-			[
+			/*[
 				'attribute' => 'group_id',
 				'label' => Item::$labels['group_id'],
 				'content' => function ($model) {
 						$data = $model->getGroup()->one();
 						return (!$data) ? false : $data->title;
 					}
-			],
+			],*/
 			[
 				'attribute' => 'measures',
 				'label' => Item::$labels['measures'],
