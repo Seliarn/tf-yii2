@@ -21,12 +21,17 @@ use yii\helpers\ArrayHelper;
 	echo $form->field($model, 'measures')->dropDownList([
 		$model::MEASURES_GRAM => "грамм",
 		$model::MEASURES_LITER => "литр",
-		$model::MEASURES_PIECE => "штука"
+		$model::MEASURES_PIECE => "штука",
+		$model::MEASURES_METER => "метр"
 	]);
 	echo $form->field($model, 'state')->dropDownList([
 		$model::STATE_NEW => "новый"
 	]);
 	echo $form->field($model, 'note')->textarea(['row' => 3]);
+
+	echo Html::img($model->imagePath, ['alt' => $model->title, 'height' => 400]);
+	echo $form->field($uploadImage, 'imageFile')->fileInput();
+
 	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
 	?>
 

@@ -29,7 +29,7 @@ class Product extends LoggedActiveRecord
 
 	static $labels = [
 		'id' => 'ID',
-		'group_id' => 'Group ID',
+		'group_id' => 'Категория',
 		'title' => 'Название',
 		'status' => 'Статус',
 		'created' => 'Создан',

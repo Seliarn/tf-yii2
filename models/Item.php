@@ -16,6 +16,7 @@ use Yii;
  * @property string $updated
  * @property integer $status
  * @property string $note
+ * @property string $imagePath
  */
 class Item extends LoggedActiveRecord
 {
@@ -36,6 +37,7 @@ class Item extends LoggedActiveRecord
 		'created' => 'Создан',
 		'updated' => 'Изменен',
 		'note' => 'Примечание',
+		'imagePath' => 'Изображение',
 	];
 
 	const MEASURES_GRAM = 1;
@@ -73,7 +75,7 @@ class Item extends LoggedActiveRecord
 			[['title'], 'required'],
 			[['group_id', 'measures', 'state', 'status'], 'integer'],
 			[['created', 'updated'], 'safe'],
-			[['title', 'note'], 'string', 'max' => 255],
+			[['title', 'note', 'imagePath'], 'string', 'max' => 255],
 		];
 	}
 

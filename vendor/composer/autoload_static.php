@@ -19,6 +19,7 @@ class ComposerStaticInita9c7d8719f865adfc3b8e06ca6dece8c
         array (
             'yiister\\gentelella\\' => 19,
             'yii\\swiftmailer\\' => 16,
+            'yii\\jui\\' => 8,
             'yii\\gii\\' => 8,
             'yii\\faker\\' => 10,
             'yii\\debug\\' => 10,
@@ -53,7 +54,6 @@ class ComposerStaticInita9c7d8719f865adfc3b8e06ca6dece8c
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\BrowserKit\\' => 29,
-            'Stecman\\Component\\Symfony\\Console\\BashCompletion\\' => 49,
         ),
         'P' => 
         array (
@@ -88,6 +88,10 @@ class ComposerStaticInita9c7d8719f865adfc3b8e06ca6dece8c
         'yii\\swiftmailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer',
+        ),
+        'yii\\jui\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-jui',
         ),
         'yii\\gii\\' => 
         array (
@@ -166,10 +170,6 @@ class ComposerStaticInita9c7d8719f865adfc3b8e06ca6dece8c
         'Symfony\\Component\\BrowserKit\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/browser-kit',
-        ),
-        'Stecman\\Component\\Symfony\\Console\\BashCompletion\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/stecman/symfony-console-completion/src',
         ),
         'Psr\\Log\\' => 
         array (

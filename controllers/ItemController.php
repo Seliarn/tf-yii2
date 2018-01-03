@@ -6,9 +6,11 @@ use app\models\ItemGroup;
 use Yii;
 use app\models\Item;
 use app\controllers\search\ItemSearch;
+use app\models\common\UploadImageForm;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ItemController implements the CRUD actions for Item model.
@@ -65,11 +67,23 @@ class ItemController extends Controller
 	public function actionCreate()
 	{
 		$model = new Item();
+		$uploadImage = new UploadImageForm();
 
-		if ($model->load(Yii::$app->request->post()) && $model->save()) {
+		if ($model->load(Yii::$app->request->post())) {
+			$uploadImage->imageFile = UploadedFile::getInstance($uploadImage, 'imageFile');
+			if ($uploadImage->upload(lcfirst($model->formName()))) {
+				$model->imagePath = $uploadImage->path;
+			}
+
+			$model->save();
+
 			return $this->redirect(['view', 'id' => $model->id]);
 		} else {
-			$params = array_merge(['model' => $model], $this->_prepareForm());
+			$params = array_merge(
+				['model' => $model],
+				$this->_prepareForm(),
+				['uploadImage' => $uploadImage]
+			);
 			return $this->render('create', $params);
 		}
 	}
@@ -83,14 +97,25 @@ class ItemController extends Controller
 	public function actionUpdate($id)
 	{
 		$model = $this->findModel($id);
+		$uploadImage = new UploadImageForm();
 
 		if ($model->load(Yii::$app->request->post())) {
 			$model->updated = time();
-			if ($model->save()) {
-				return $this->redirect(['view', 'id' => $model->id]);
+
+			$uploadImage->imageFile = UploadedFile::getInstance($uploadImage, 'imageFile');
+			if ($uploadImage->upload(lcfirst($model->formName()))) {
+				$model->imagePath = $uploadImage->path;
 			}
+
+			$model->save();
+
+			return $this->redirect(['view', 'id' => $model->id]);
 		} else {
-			$params = array_merge(['model' => $model], $this->_prepareForm());
+			$params = array_merge(
+				['model' => $model],
+				$this->_prepareForm(),
+				['uploadImage' => $uploadImage]
+			);
 			return $this->render('update', $params);
 		}
 	}

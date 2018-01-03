@@ -54,6 +54,11 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 			'created:datetime',
 			'updated:datetime',
+			[
+				'attribute' => 'image',
+				'value' => $model->imagePath,
+				'format' => ['image', ['height' => '400']]
+			],
 		],
 	]) ?>
 

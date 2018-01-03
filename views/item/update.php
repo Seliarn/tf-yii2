@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = Yii::$app->params['translate']['rus']['btn-upda
     <?= $this->render('_form', [
         'model' => $model,
 		'itemGroups' => $itemGroups,
+		'uploadImage' => $uploadImage,
     ]) ?>
 
 </div>
