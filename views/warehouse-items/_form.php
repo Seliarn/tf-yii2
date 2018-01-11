@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
     echo $form->field($model, 'state')->hiddenInput(['value' => 1]);
     echo $form->field($model, 'cost')->textInput();
     echo $form->field($model, 'amount')->textInput();
-    echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
+    echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE])->label(false);
     echo $form->field($model, 'note')->textarea(['row' => 3]);
      ?>
 

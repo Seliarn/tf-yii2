@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
     echo $form->field($model, 'email')->textInput(['maxlength' => true]);
     echo $form->field($model, 'alt_emails')->textarea(['row' => 3]);
     echo $form->field($model, 'address')->textarea(['row' => 3]);
-    echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
+    echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE])->label(false);
     ?>
 
     <div class="form-group">

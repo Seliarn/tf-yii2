@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 	echo $form->field($model, 'code')->textInput();
 	echo $form->field($model, 'title')->textInput();
 	echo $form->field($model, 'note')->textarea(['row' => 3]);
-	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
+	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE])->label(false);
 	?>
 
 	<div class = "form-group">

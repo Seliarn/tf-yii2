@@ -27,7 +27,7 @@ use yii\widgets\ActiveForm;
 	echo $form->field($model, 'address')->textarea(['row' => 3]);
 	echo $form->field($model, 'birthday')->textInput();
 	echo $form->field($model, 'note')->textarea(['rows' => 3]);
-	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
+	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE])->label(false);
 
 	?>
 	<div class = "form-group">

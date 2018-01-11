@@ -22,7 +22,8 @@ class ItemGroup extends LoggedActiveRecord
 		'rus' => [
 			'main' => 'Категория',
 			'plural' => 'Категории'
-		]
+		],
+		'link' => 'item-group'
 	];
 
 	static $labels = [

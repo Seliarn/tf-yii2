@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	<p>
 		<?= Html::a(Yii::$app->params['translate']['rus']['btn-create'], ['create'], ['class' => 'btn btn-success']) ?>
+		<?= Html::a(ItemGroup::$titles['rus']['plural'], [ItemGroup::$titles['link'] . '/index'], ['class' => 'btn btn-success']) ?>
 	</p>
 	<?=
 	GridView::widget([
@@ -29,21 +30,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
 			'id',
 			'title',
-			/*[
+			[
 				'attribute' => 'group_id',
 				'label' => Item::$labels['group_id'],
 				'content' => function ($model) {
 						$data = $model->getGroup()->one();
 						return (!$data) ? false : $data->title;
 					}
-			],*/
+			],
 			[
 				'attribute' => 'measures',
 				'label' => Item::$labels['measures'],
 				'content' => function ($model) {
 						return $model->getMeasuresAlias();
 					}
-			], /*
+			],
 			[
 				'attribute' => 'state',
 				'label' => Item::$labels['state'],
@@ -51,7 +52,6 @@ $this->params['breadcrumbs'][] = $this->title;
 						return $model->getStateAlias();
 					}
 			],
-			'',
 			// 'created',
 			// 'updated',
 			[
@@ -60,8 +60,8 @@ $this->params['breadcrumbs'][] = $this->title;
 				'content' => function ($model) {
 						return $model->getStatusAlias();
 					}
-			],*/
-			// 'note',
+			],
+			// 'note:ntext',
 
 			['class' => 'yii\grid\ActionColumn'],
 		],

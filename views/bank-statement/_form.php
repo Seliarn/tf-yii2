@@ -45,7 +45,7 @@ use yii\helpers\ArrayHelper;
 		echo $form->field($model, 'date')->textInput(['type' => 'datetime-local']);
 
 		echo $form->field($model, 'note')->textarea(['row' => 3]);
-		echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
+		echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE])->label(false);
 	}
 	?>
 	<div class = "form-group">

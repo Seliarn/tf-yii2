@@ -25,7 +25,8 @@ class ProductGroup extends LoggedActiveRecord
 		'rus' => [
 			'main' => 'Категория',
 			'plural' => 'Категории'
-		]
+		],
+		'link' => 'product-group'
 	];
 
 	static $labels = [
