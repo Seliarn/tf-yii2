@@ -18,14 +18,13 @@ use app\models\SubcontoModel;
 
 	echo $form->field($model, 'title')->textInput(['maxlength' => true]);
 
-	echo SubcontoModel::getLink();
 	if (!empty($subcontoModels)) {
 		$subcontoModelItems = ArrayHelper::map($subcontoModels, 'id', 'title');
 		echo $form->field($model, 'subconto_model_id')->dropDownList($subcontoModelItems, ['prompt' => $model->attributeLabels('subconto_model_id')]);
 	} else {
-		echo '<div class="alert alert-warning fade in">Нет доступных субконто. <a href="/subconto-model/create">Создать</a></div>';
+		echo '<div class="alert alert-warning fade in">Нет доступных субконто. <a href="/' . SubcontoModel::$titles['link'] . '/create">Создать</a></div>';
 	}
-	
+
 	echo $form->field($model, 'note')->textarea(['row' => 3]);
 	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE])->label(false);
 	?>

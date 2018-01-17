@@ -13,21 +13,26 @@ use yii\helpers\ArrayHelper;
 <div class = "account-form">
 
 	<?php
-	$form = ActiveForm::begin();
+	if (empty($currency)) {
+		echo '<div class="alert alert-error fade in">Нет доступных валют. <a href="/' . \app\models\Currency::$titles['link'] . '/create">Создать</a></div>';
+	} else {
+		$form = ActiveForm::begin();
 
-	echo $form->field($model, 'title')->textInput(['maxlength' => true]);
-	echo $form->field($model, 'description')->textarea(['rows' => 6]);
-	$items = ArrayHelper::map($currency, 'id', 'title');
-	$params = [
-		'prompt' => 'Выберите валюту'
-	];
-	echo $form->field($model, 'currency_id')->dropDownList($items, $params);
+		echo $form->field($model, 'title')->textInput(['maxlength' => true]);
+		echo $form->field($model, 'description')->textarea(['rows' => 6]);
+		$items = ArrayHelper::map($currency, 'id', 'title');
+		$params = [
+			'prompt' => 'Выберите валюту'
+		];
+		echo $form->field($model, 'currency_id')->dropDownList($items, $params);
 
+		?>
+		<div class = "form-group">
+			<?= Html::submitButton($model->isNewRecord ? Yii::$app->params['translate']['rus']['btn-create'] : Yii::$app->params['translate']['rus']['btn-update'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+		</div>
+
+		<?php ActiveForm::end();
+	}
 	?>
-	<div class = "form-group">
-		<?= Html::submitButton($model->isNewRecord ? Yii::$app->params['translate']['rus']['btn-create'] : Yii::$app->params['translate']['rus']['btn-update'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-	</div>
-
-	<?php ActiveForm::end(); ?>
 
 </div>
