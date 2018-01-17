@@ -21,8 +21,10 @@ class ProductOrder extends LoggedActiveRecord
 	static $titles = [
 		'rus' => [
 			'main' => 'Заказ',
-			'plural' => 'Заказы'
-		]
+			'plural' => 'Заказы',
+			'prompt' => 'Выберите заказ'
+		],
+		'link' => 'product-order'
 	];
 
 	static $labels = [

@@ -29,8 +29,10 @@ class BankStatement extends \app\models\LoggedActiveRecord
 	static $titles = [
 		'rus' => [
 			'main' => 'Банковская выписка',
-			'plural' => 'Банковские выписки'
-		]
+			'plural' => 'Банковские выписки',
+			'prompt' => 'Выберите бонковскую выписку'
+		],
+		'link' => 'bank-statement'
 	];
 
 	static $labels = [

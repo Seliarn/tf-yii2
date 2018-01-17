@@ -21,7 +21,8 @@ class ItemGroup extends LoggedActiveRecord
 	static $titles = [
 		'rus' => [
 			'main' => 'Категория',
-			'plural' => 'Категории'
+			'plural' => 'Категории',
+			'prompt' => 'Выберите категорию'
 		],
 		'link' => 'item-group'
 	];

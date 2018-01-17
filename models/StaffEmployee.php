@@ -33,7 +33,8 @@ class StaffEmployee extends LoggedActiveRecord
 	static $titles = [
 		'rus' => [
 			'main' => 'Сотрудник',
-			'plural' => 'Сотрудники'
+			'plural' => 'Сотрудники',
+			'prompt' => 'Выберите сотрудника'
 		]
 	];
 

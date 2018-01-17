@@ -14,10 +14,10 @@ use yii\helpers\ArrayHelper;
 	<?php
 	$form = ActiveForm::begin();
 	echo $form->field($model, 'title')->textInput(['maxlength' => true]);
-	
+
 	if (!empty($parent)) {
 		$groupItems = ArrayHelper::map($parent, 'id', 'title');
-		echo $form->field($model, 'parent_id')->dropDownList($groupItems, ['prompt' => $model->attributeLabels('parent_id')]);
+		echo $form->field($model, 'parent_id')->dropDownList($groupItems, ['prompt' => $model::$titles['rus']['prompt']])->label($model->attributeLabels('parent_id'));
 	}
 	//    echo $form->field($model, 'count')->textInput();
 	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE])->label(false);

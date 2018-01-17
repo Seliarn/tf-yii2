@@ -23,8 +23,10 @@ class Product extends LoggedActiveRecord
 	static $titles = [
 		'rus' => [
 			'main' => 'Блюдо',
-			'plural' => 'Блюда'
-		]
+			'plural' => 'Блюда',
+			'prompt' => 'Выберите блюдо'
+		],
+		'link' => 'product'
 	];
 
 	static $labels = [

@@ -28,7 +28,8 @@ class WarehouseItems extends LoggedActiveRecord
 		'rus' => [
 			'main' => 'Остатки',
 			'plural' => 'Остатки'
-		]
+		],
+		'link' => 'warehouse-items'
 	];
 
 	static $labels = [

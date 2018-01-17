@@ -31,8 +31,12 @@ use yii\helpers\ArrayHelper;
 			'2' => 'Возврат'
 		]);
 
-		$accountItems = ArrayHelper::map($accounts, 'id', 'title');
-		echo $form->field($model, 'account_id')->dropDownList($accountItems, ['prompt' => $model->attributeLabels('account_id')]);
+		if (!empty($subcontoModels)) {
+			$accountItems = ArrayHelper::map($accounts, 'id', 'title');
+			echo $form->field($model, 'account_id')->dropDownList($accountItems, ['prompt' => $model->attributeLabels('account_id')]);
+		} else {
+			echo '<div class="alert alert-warning fade in">Нет доступных счетов компании. <a href="/account/create">Создать</a></div>';
+		}
 
 		echo $form->field($model, 'amount')->textInput();
 

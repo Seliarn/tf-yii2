@@ -24,7 +24,8 @@ class Item extends LoggedActiveRecord
 		'rus' => [
 			'main' => 'Номенклатура',
 			'plural' => 'Номенклатура'
-		]
+		],
+		'link' => 'item'
 	];
 
 	static $labels = [

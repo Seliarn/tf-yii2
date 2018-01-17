@@ -25,7 +25,8 @@ class ProductItem extends LoggedActiveRecord
 		'rus' => [
 			'main' => 'Состав блюда',
 			'plural' => 'Состав блюда'
-		]
+		],
+		'link' => 'product-item'
 	];
 
 	static $labels = [

@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
+use app\models\SubcontoModel;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\AccountBook */
@@ -17,6 +18,7 @@ use yii\widgets\ActiveForm;
 
 	echo $form->field($model, 'title')->textInput(['maxlength' => true]);
 
+	echo SubcontoModel::getLink();
 	if (!empty($subcontoModels)) {
 		$subcontoModelItems = ArrayHelper::map($subcontoModels, 'id', 'title');
 		echo $form->field($model, 'subconto_model_id')->dropDownList($subcontoModelItems, ['prompt' => $model->attributeLabels('subconto_model_id')]);
@@ -25,7 +27,7 @@ use yii\widgets\ActiveForm;
 	}
 	
 	echo $form->field($model, 'note')->textarea(['row' => 3]);
-	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE]);
+	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE])->label(false);
 	?>
 
 	<div class = "form-group">

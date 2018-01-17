@@ -22,7 +22,8 @@ class Office extends LoggedActiveRecord
 	static $titles = [
 		'rus' => [
 			'main' => 'Офис',
-			'plural' => 'Офисы'
+			'plural' => 'Офисы',
+			'prompt' => 'Выберите офис'
 		]
 	];
 

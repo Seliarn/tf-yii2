@@ -22,8 +22,10 @@ class Account extends LoggedActiveRecord
 	static $titles = [
 		'rus' => [
 			'main' => 'Счет',
-			'plural' => 'Счета'
-		]
+			'plural' => 'Счета',
+			'prompt' => 'Выберите счет'
+		],
+		'link' => 'account'
 	];
 
 	static $labels = [

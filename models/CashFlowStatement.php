@@ -24,8 +24,10 @@ class CashFlowStatement extends LoggedActiveRecord
 	static $titles = [
 		'rus' => [
 			'main' => 'Статья ДДС',
-			'plural' => 'Статьи ДДС'
-		]
+			'plural' => 'Статьи ДДС',
+			'prompt' => 'Выберите статью ДДС'
+		],
+		'link' => 'cash-flow-statement'
 	];
 
 	static $labels = [

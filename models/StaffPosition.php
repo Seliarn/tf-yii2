@@ -18,7 +18,8 @@ class StaffPosition extends LoggedActiveRecord
 	static $titles = [
 		'rus' => [
 			'main' => 'Должность',
-			'plural' => 'Должности'
+			'plural' => 'Должности',
+			'prompt' => 'Выберите должность'
 		]
 	];
 	static $labels = [

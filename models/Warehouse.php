@@ -23,8 +23,10 @@ class Warehouse extends LoggedActiveRecord
 	static $titles = [
 		'rus' => [
 			'main' => 'Склад',
-			'plural' => 'Склады'
-		]
+			'plural' => 'Склады',
+			'prompt' => 'Выберите склад'
+		],
+		'link' => 'warehouse'
 	];
 
 	static $labels = [

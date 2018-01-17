@@ -22,8 +22,10 @@ class Currency extends LoggedActiveRecord
 	static $titles = [
 		'rus' => [
 			'main' => 'Валюта',
-			'plural' => 'Валюты'
-		]
+			'plural' => 'Валюты',
+			'prompt' => 'Выберите валюту'
+		],
+		'link' => 'currency'
 	];
 
 	static $labels = [

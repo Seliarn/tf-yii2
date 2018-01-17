@@ -22,8 +22,10 @@ class SubcontoModel extends LoggedActiveRecord
 	static $titles = [
 		'rus' => [
 			'main' => 'План счетов',
-			'plural' => 'Планы счетов'
-		]
+			'plural' => 'Планы счетов',
+			'prompt' => 'Выберите план счетов'
+		],
+		'link' => 'subconto-model'
 	];
 
 	static $labels = [

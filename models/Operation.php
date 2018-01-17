@@ -22,8 +22,10 @@ class Operation extends LoggedActiveRecord
 	static $titles = [
 		'rus' => [
 			'main' => 'Операция',
-			'plural' => 'Операции'
-		]
+			'plural' => 'Операции',
+			'prompt' => 'Выберите операцию'
+		],
+		'link' => 'operation'
 	];
 
 	static $labels = [

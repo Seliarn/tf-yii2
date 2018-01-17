@@ -14,9 +14,9 @@ use yii\helpers\ArrayHelper;
 	<?php
 	$form = ActiveForm::begin();
 	echo $form->field($model, 'title')->textInput(['maxlength' => true]);
-	if (!empty($itemGroups)) {
+	if (!empty($itemGroups)) {		
 		$groupItems = ArrayHelper::map($itemGroups, 'id', 'title');
-		echo $form->field($model, 'group_id')->dropDownList($groupItems, ['prompt' => $model->attributeLabels('group_id')]);
+		echo $form->field($model, 'group_id')->dropDownList($groupItems, ['prompt' => $itemGroups[0]::$titles['rus']['prompt']])->label($model->attributeLabels('group_id'));
 	}
 	echo $form->field($model, 'measures')->dropDownList([
 		$model::MEASURES_GRAM => "грамм",

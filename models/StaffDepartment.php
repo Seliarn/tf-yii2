@@ -24,7 +24,8 @@ class StaffDepartment extends LoggedActiveRecord
 	static $titles = [
 		'rus' => [
 			'main' => 'Подразделение',
-			'plural' => 'Подразделения'
+			'plural' => 'Подразделения',
+			'prompt' => 'Выберите подразделение'
 		]
 	];
 

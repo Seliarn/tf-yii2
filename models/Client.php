@@ -37,7 +37,8 @@ class Client extends LoggedActiveRecord
 			'main' => 'Контрагент',
 			'plural' => 'Контрагенты',
 			'customer' => 'Клиенты',
-			'contractor' => 'Поставщики'
+			'contractor' => 'Поставщики',
+			'prompt' => 'Выберите контрагента'
 		],
 		'link' => 'client'
 	];
