@@ -11,10 +11,17 @@ use yii\widgets\ActiveForm;
 
 <div class = "cash-flow-statement-form">
 
-	<?php $form = ActiveForm::begin();
+	<?php
+	if (!$model->isNewRecord) {
+		echo $model->getAttributeLabel('created') . ' ' . Yii::$app->formatter->asDate($model->created, 'long') . '<br>';
+		echo $model->getAttributeLabel('updated') . ' ' . Yii::$app->formatter->asDate($model->updated, 'long');
+	}
+	$form = ActiveForm::begin();
 
-	$groupItems = ArrayHelper::map($cfsGroup, 'id', 'title');
-	echo $form->field($model, 'group_id')->dropDownList($groupItems, ['prompt' => $model->attributeLabels('group_id')]);
+	if (!empty($cfsGroup)) {
+		$groupItems = ArrayHelper::map($cfsGroup, 'id', 'title');
+		echo $form->field($model, 'group_id')->dropDownList($groupItems, ['prompt' => $cfsGroup[0]::$titles['rus']['prompt']])->label($model->attributeLabels('group_id'));
+	}
 
 	echo $form->field($model, 'title')->textInput(['maxlength' => true]);
 	echo $form->field($model, 'note')->textarea(['row' => 3]);

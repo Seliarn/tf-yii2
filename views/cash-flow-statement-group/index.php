@@ -30,13 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
 			[
 				'attribute' => 'parent_id',
 				'label' => CashFlowStatementGroup::$labels['parent_id'],
-				'content' => function ($data) {
-						return $data->getParent()->one()->title;
+				'content' => function ($model) {
+						$data = $model->getParent()->one();
+						return (!$data) ? false : $data->title;
 					}
 			],
 			'title',
-			'created:data',
-			'updated:data',
+			'created:date',
+			'updated:date',
 			[
 				'attribute' => 'status',
 				'label' => CashFlowStatementGroup::$labels['status'],

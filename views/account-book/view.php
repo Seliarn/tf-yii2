@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
 			[
 				'label' => $model->attributeLabels('subconto_model_id'),
-				'value' => (!$model->getSubcontoModel()->one()) ? '' : $model->getSubcontoModel()->one()->title
+				'value' => (!$subconto = $model->getSubcontoModel()->one()) ? '' : $subconto->title
 			],
             'created:date',
             'updated:date',

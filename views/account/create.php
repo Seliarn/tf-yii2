@@ -7,8 +7,8 @@ use yii\helpers\Html;
 /* @var $model app\models\Account */
 /* @var $currency app\models\Currency */
 
-$this->title = 'Создать новый счет';
-$this->params['breadcrumbs'][] = ['label' => 'Счета', 'url' => ['index']];
+$this->title = Yii::$app->params['translate']['rus']['btn-create'] . ' ' . $model::$titles['rus']['main'];
+$this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="account-create">

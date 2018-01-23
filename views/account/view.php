@@ -11,11 +11,11 @@ $this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], '
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<div class="account-view">
+<div class = "account-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+	<h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
+	<p>
 		<?php
 		echo Html::a(Yii::$app->params['translate']['rus']['btn-back-to-list'], ['index'], ['class' => 'btn btn-primary']);
 		echo Html::a(Yii::$app->params['translate']['rus']['btn-update'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']);
@@ -28,19 +28,20 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 		]);
 		?>
-    </p>
+	</p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'title',
-            'description:ntext',
+	<?=
+	DetailView::widget([
+		'model' => $model,
+		'attributes' => [
+			'id',
+			'title',
+			'description:ntext',
 			[
-				'label' => 'Валюта',
+				'label' => $model->attributeLabels('currency_id'),
 				'value' => $model->getCurrency()->one()->title
 			]
-        ],
-    ]) ?>
+		],
+	]) ?>
 
 </div>

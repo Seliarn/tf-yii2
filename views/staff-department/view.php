@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
 			[
 				'label' => $model->attributeLabels('parent_id'),
-				'value' => $model->getParent()->one()->title
+				'value' => (!$model->getParent()->one()) ? '' : $model->getParent()->one()->title
 			],
 			[
 				'label' => $model->attributeLabels('office_id'),

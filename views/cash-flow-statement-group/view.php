@@ -10,11 +10,11 @@ $this->title = $model::$titles['rus']['main'] . ': ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="cash-flow-statement-group-view">
+<div class = "cash-flow-statement-group-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+	<h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
+	<p>
 		<?php
 		echo Html::a(Yii::$app->params['translate']['rus']['btn-back-to-list'], ['index'], ['class' => 'btn btn-primary']);
 		echo Html::a(Yii::$app->params['translate']['rus']['btn-update'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']);
@@ -27,25 +27,27 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 		]);
 		?>
-    </p>
+	</p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
+	<?=
+	DetailView::widget([
+		'model' => $model,
+		'attributes' => [
+			'id',
 			[
 				'label' => $model->attributeLabels('parent_id'),
-				'value' => $model->getParent()->one()->title
+				'value' => (!$parent = $model->getParent()->one()) ? '' : $parent->title
+
 			],
-            'title',
-            'created:date',
-            'updated:date',
+			'title',
+			'created:date',
+			'updated:date',
 			[
 				'label' => $model->attributeLabels('status'),
 				'value' => $model->getStatusAlias()
 			],
-            'note',
-        ],
-    ]) ?>
+			'note',
+		],
+	]) ?>
 
 </div>

@@ -11,7 +11,12 @@ use yii\widgets\ActiveForm;
 
 <div class = "staff-employee-form">
 
-	<?php $form = ActiveForm::begin();
+	<?php
+	if (!$model->isNewRecord) {
+		echo $model->getAttributeLabel('created') . ' ' . Yii::$app->formatter->asDate($model->created, 'long') . '<br>';
+		echo $model->getAttributeLabel('updated') . ' ' . Yii::$app->formatter->asDate($model->updated, 'long');
+	}
+	$form = ActiveForm::begin();
 
 	$departmentItems = ArrayHelper::map($department, 'id', 'title');
 	echo $form->field($model, 'department_id')->dropDownList($departmentItems, ['prompt' => $model->attributeLabels('department_id')]);

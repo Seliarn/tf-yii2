@@ -29,15 +29,24 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'warehouse_id',
-            'item_id',
+			[
+				'label' => $model->attributeLabels('warehouse_id'),
+				'value' => (!$model->getWarehouse()->one()) ? '' : $model->getWarehouse()->one()->title
+			],
+			[
+				'label' => $model->attributeLabels('item_id'),
+				'value' => (!$model->getItem()->one()) ? '' : $model->getItem()->one()->title
+			],
             'count',
             'state',
             'cost',
             'amount',
-            'created',
-            'updated',
-            'status',
+            'created:datetime',
+            'updated:datetime',
+			[
+				'label' => $model->attributeLabels('status'),
+				'value' => $model->getStatusAlias()
+			],
             'note',
         ],
     ]) ?>

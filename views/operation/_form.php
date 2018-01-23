@@ -10,7 +10,13 @@ use yii\widgets\ActiveForm;
 
 <div class = "operation-form">
 
-	<?php $form = ActiveForm::begin();
+	<?php
+	if (!$model->isNewRecord) {
+		echo $model->getAttributeLabel('created') . ' ' . Yii::$app->formatter->asDate($model->created, 'long') . '<br>';
+		echo $model->getAttributeLabel('updated') . ' ' . Yii::$app->formatter->asDate($model->updated, 'long');
+	}
+
+	$form = ActiveForm::begin();
 
 	echo $form->field($model, 'title')->textInput(['maxlength' => true]);
 

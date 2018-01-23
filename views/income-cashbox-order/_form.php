@@ -26,6 +26,11 @@ use yii\helpers\ArrayHelper;
 		echo '<div class="alert alert-error fade in">Нет доступных валют. <a href="/currency/create">Создать</a></div>';
 	} else {
 
+		if (!$model->isNewRecord) {
+			echo $model->getAttributeLabel('created') . ' ' . Yii::$app->formatter->asDate($model->created, 'long') . '<br>';
+			echo $model->getAttributeLabel('updated') . ' ' . Yii::$app->formatter->asDate($model->updated, 'long');
+		}
+
 		$form = ActiveForm::begin();
 
 		echo $form->field($model, 'code')->textInput(['maxlength' => true]);

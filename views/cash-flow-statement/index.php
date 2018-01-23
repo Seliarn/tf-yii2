@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\CashFlowStatement;
+use app\models\CashFlowStatementGroup;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\controllers\search\CashFlowStatementSearch */
@@ -18,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	<p>
 		<?= Html::a(Yii::$app->params['translate']['rus']['btn-create'] . ' ' . CashFlowStatement::$titles['rus']['main'], ['create'], ['class' => 'btn btn-success']) ?>
+		<?= Html::a(CashFlowStatementGroup::$titles['rus']['plural'], [CashFlowStatementGroup::$titles['link'] . '/index'], ['class' => 'btn btn-success']) ?>
 	</p>
 	<?=
 	GridView::widget([
@@ -30,8 +32,9 @@ $this->params['breadcrumbs'][] = $this->title;
 			[
 				'attribute' => 'group_id',
 				'label' => CashFlowStatement::$labels['group_id'],
-				'content' => function ($data) {
-						return $data->getGroup()->one()->title;
+				'content' => function ($model) {
+						$data = $model->getGroup()->one();
+						return (!$data) ? false : $data->title;
 					}
 			],
 			'title',

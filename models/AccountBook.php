@@ -24,7 +24,8 @@ class AccountBook extends LoggedActiveRecord
 		'rus' => [
 			'main' => 'План счетов',
 			'plural' => 'Планы счетов'
-		]
+		],
+		'link' => 'account-book'
 	];
 
 	static $labels = [

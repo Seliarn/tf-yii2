@@ -17,6 +17,11 @@ use yii\helpers\ArrayHelper;
 	} else if (empty($employers)) {
 		echo '<div class="alert alert-error fade in">Нет доступных сотрудников. <a href="/staff-employee/create">Создать</a></div>';
 	} else {
+		if (!$model->isNewRecord) {
+			echo $model->getAttributeLabel('created') . ' ' . Yii::$app->formatter->asDate($model->created, 'long') . '<br>';
+			echo $model->getAttributeLabel('updated') . ' ' . Yii::$app->formatter->asDate($model->updated, 'long');
+		}
+
 		$form = ActiveForm::begin();
 
 		echo $form->field($model, 'code')->textInput(['maxlength' => true]);
@@ -31,12 +36,8 @@ use yii\helpers\ArrayHelper;
 			'2' => 'Возврат'
 		]);
 
-		if (!empty($accounts)) {
-			$accountItems = ArrayHelper::map($accounts, 'id', 'title');
-			echo $form->field($model, 'account_id')->dropDownList($accountItems, ['prompt' => $model->attributeLabels('account_id')]);
-		} else {
-			echo '<div class="alert alert-warning fade in">Нет доступных счетов компании. <a href="/' . \app\models\Account::$titles['link'] . '/create">Создать</a></div>';
-		}
+		$accountItems = ArrayHelper::map($accounts, 'id', 'title');
+		echo $form->field($model, 'account_id')->dropDownList($accountItems, ['prompt' => $model->attributeLabels('account_id')]);
 
 		echo $form->field($model, 'amount')->textInput();
 
@@ -53,7 +54,7 @@ use yii\helpers\ArrayHelper;
 	}
 	?>
 	<div class = "form-group">
-		<?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Изменить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+		<?= Html::submitButton($model->isNewRecord ? Yii::$app->params['translate']['rus']['btn-create'] : Yii::$app->params['translate']['rus']['btn-update'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 	</div>
 
 	<?php ActiveForm::end(); ?>

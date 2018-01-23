@@ -35,11 +35,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
 			[
 				'label' => $model->attributeLabels('group_id'),
-				'value' => $model->getGroup()->one()->title
+				'value' =>  (!$group = $model->getGroup()->one()) ? '' : $group->title
 			],
             'title',
-            'created:date',
-            'updated:date',
+            'created:datetime',
+            'updated:datetime',
 			[
 				'label' => $model->attributeLabels('status'),
 				'value' => $model->getStatusAlias()

@@ -14,6 +14,7 @@ use yii\widgets\ActiveForm;
 		echo $model->getAttributeLabel('created') . ' ' . Yii::$app->formatter->asDate($model->created, 'long') . '<br>';
 		echo $model->getAttributeLabel('updated') . ' ' . Yii::$app->formatter->asDate($model->updated, 'long');
 	}
+	
 	$form = ActiveForm::begin();
 
 	echo $form->field($model, 'code')->textInput();
@@ -23,7 +24,7 @@ use yii\widgets\ActiveForm;
 	?>
 
 	<div class = "form-group">
-		<?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Изменить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+		<?= Html::submitButton($model->isNewRecord ? Yii::$app->params['translate']['rus']['btn-create'] : Yii::$app->params['translate']['rus']['btn-update'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 	</div>
 
 	<?php

@@ -15,6 +15,12 @@ use yii\helpers\ArrayHelper;
 	if (empty($customers)) {
 		echo '<div class="alert alert-error fade in">Нет доступных клиентов. <a href="/client-customer/create">Создать</a></div>';
 	} else {
+
+		if (!$model->isNewRecord) {
+			echo $model->getAttributeLabel('created') . ' ' . Yii::$app->formatter->asDate($model->created, 'long') . '<br>';
+			echo $model->getAttributeLabel('updated') . ' ' . Yii::$app->formatter->asDate($model->updated, 'long');
+		}
+
 		$form = ActiveForm::begin();
 
 		$customerItems = ArrayHelper::map($customers, 'id', 'email_1');

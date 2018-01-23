@@ -5,17 +5,23 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\WarehouseItems */
 
-$this->title = 'Update Warehouse Items: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Warehouse Items', 'url' => ['index']];
+$this->title = Yii::$app->params['translate']['rus']['btn-update'] . ' ' . $model::$titles['rus']['main'] . ': ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = Yii::$app->params['translate']['rus']['btn-update'];
 ?>
-<div class="warehouse-items-update">
+<div class = "warehouse-items-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+	<h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+	<p>
+		<?php
+		echo Html::a(Yii::$app->params['translate']['rus']['btn-back-to-list'], ['index'], ['class' => 'btn btn-primary']);
+		?>
+	</p>
+	<?=
+	$this->render('_form', [
+		'model' => $model,
+	]) ?>
 
 </div>

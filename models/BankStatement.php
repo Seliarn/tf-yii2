@@ -88,7 +88,7 @@ class BankStatement extends \app\models\LoggedActiveRecord
 	public function rules()
 	{
 		return [
-			[['code', 'flow_type', 'payment_type', 'amount', 'author_id'], 'required'],
+			[['code', 'flow_type', 'payment_type', 'amount', 'author_id', 'account_id'], 'required'],
 			[['flow_type', 'payment_type', 'account_id', 'author_id', 'status'], 'integer'],
 			[['amount', 'amount_vat', 'vat'], 'number'],
 			[['created', 'updated'], 'safe'],

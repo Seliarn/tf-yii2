@@ -13,6 +13,12 @@ $this->params['breadcrumbs'][] = Yii::$app->params['translate']['rus']['btn-upda
 <div class = "income-cashbox-order-update">
 
 	<h1><?= Html::encode($this->title) ?></h1>
+
+	<p>
+		<?php
+		echo Html::a(Yii::$app->params['translate']['rus']['btn-back-to-list'], ['index'], ['class' => 'btn btn-primary']);
+		?>
+	</p>
 	<?=
 	$this->render('_form', [
 		'model' => $model,

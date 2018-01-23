@@ -10,13 +10,19 @@ $this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], '
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::$app->params['translate']['rus']['btn-update'];
 ?>
-<div class="cash-flow-statement-update">
+<div class = "cash-flow-statement-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+	<h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
-        'model' => $model,
+	<p>
+		<?php
+		echo Html::a(Yii::$app->params['translate']['rus']['btn-back-to-list'], ['index'], ['class' => 'btn btn-primary']);
+		?>
+	</p>
+	<?=
+	$this->render('_form', [
+		'model' => $model,
 		'cfsGroup' => $cfsGroup,
-    ]) ?>
+	]) ?>
 
 </div>
