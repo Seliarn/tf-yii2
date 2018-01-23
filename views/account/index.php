@@ -2,12 +2,13 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Account;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\controllers\search\AccountSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Счета';
+$this->title = Account::$titles['rus']['plural'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class = "account-index">
@@ -30,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			'description:ntext',
 			[
 				'attribute' => 'currency_id',
-				'label' => $model->attributeLabels('currency_id'),
+				'label' => Account::$labels['currency_id'],
 				'content' => function ($data) {
 						return $data->getCurrency()->one()->title;
 					}
