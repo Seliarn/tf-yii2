@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			'title',
 			[
 				'label' => $model->attributeLabels('group_id'),
-				'value' => (!$model->getGroup()->one()) ? '' : $model->getGroup()->one()->title
+				'value' => (!$group = $model->getGroup()->one()) ? '' : $group->title
 			],
 			[
 				'label' => $model->attributeLabels('measures'),

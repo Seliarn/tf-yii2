@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			'title',
 			[
 				'label' => $model->attributeLabels('parent_id'),
-				'value' => (!$model->getParent()->one()) ? '' : $model->getParent()->one()->title
+				'value' => (!$parent = $model->getParent()->one()) ? '' : $parent->title
 			],
 //			'count',
 			'created:datetime',
