@@ -8,9 +8,9 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="warehouse-form">
+<div class = "warehouse-form">
 
-    <?php
+	<?php
 
 	if (!$model->isNewRecord) {
 		echo '<div class = "model-property-date">' .
@@ -21,19 +21,19 @@ use yii\widgets\ActiveForm;
 
 	$form = ActiveForm::begin();
 
-    echo $form->field($model, 'title')->textInput(['maxlength' => true]);
-    echo $form->field($model, 'phone')->textInput(['maxlength' => true]);
-    echo $form->field($model, 'alt_phones')->textarea(['row' => 3]);
-    echo $form->field($model, 'email')->textInput(['maxlength' => true]);
-    echo $form->field($model, 'alt_emails')->textarea(['row' => 3]);
-    echo $form->field($model, 'address')->textarea(['row' => 3]);
-    echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE])->label(false);
-    ?>
+	echo $form->field($model, 'title')->textInput(['maxlength' => true]);
+	echo $form->field($model, 'phone')->textInput(['maxlength' => true]);
+	echo $form->field($model, 'alt_phones')->textarea(['row' => 3]);
+	echo $form->field($model, 'email')->textInput(['maxlength' => true]);
+	echo $form->field($model, 'alt_emails')->textarea(['row' => 3]);
+	echo $form->field($model, 'address')->textarea(['row' => 3]);
+	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE])->label(false);
+	?>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::$app->params['translate']['rus']['btn-create'] : Yii::$app->params['translate']['rus']['btn-update'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+	<div class = "form-group">
+		<?= Html::submitButton($model->isNewRecord ? Yii::$app->params['translate']['rus']['btn-create'] : Yii::$app->params['translate']['rus']['btn-update'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+	</div>
 
-    <?php ActiveForm::end(); ?>
+	<?php ActiveForm::end(); ?>
 
 </div>

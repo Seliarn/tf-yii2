@@ -27,7 +27,8 @@ class WarehouseItems extends LoggedActiveRecord
 	static $titles = [
 		'rus' => [
 			'main' => 'Остатки',
-			'plural' => 'Остатки'
+			'plural' => 'Остатки',
+			'prompt' => 'Выберите остатки'
 		],
 		'link' => 'warehouse-items'
 	];
@@ -45,53 +46,57 @@ class WarehouseItems extends LoggedActiveRecord
 		'updated' => 'Изменен',
 		'note' => 'Примечание',
 	];
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'Warehouse_Items';
-    }
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['warehouse_id', 'item_id'], 'required'],
-            [['warehouse_id', 'item_id', 'count', 'state', 'status'], 'integer'],
-            [['cost', 'amount'], 'number'],
-            [['created', 'updated'], 'safe'],
-            [['note'], 'string', 'max' => 255],
-            [['item_id'], 'exist', 'skipOnError' => true, 'targetClass' => Item::className(), 'targetAttribute' => ['item_id' => 'id']],
-            [['warehouse_id'], 'exist', 'skipOnError' => true, 'targetClass' => Warehouse::className(), 'targetAttribute' => ['warehouse_id' => 'id']],
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName()
+	{
+		return 'Warehouse_Items';
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['warehouse_id', 'item_id'], 'required'],
+			[['warehouse_id', 'item_id', 'count', 'state', 'status'], 'integer'],
+			[['cost', 'amount'], 'number'],
+			[['count', 'cost', 'amount'], 'default', 'value' => 0],
+			[['state', 'status'], 'default', 'value' => 1],
+			[['updated'], 'default', 'value' => time()],
+			[['created', 'updated'], 'safe'],
+			[['note'], 'string', 'max' => 255],
+			[['item_id'], 'exist', 'skipOnError' => true, 'targetClass' => Item::className(), 'targetAttribute' => ['item_id' => 'id']],
+			[['warehouse_id'], 'exist', 'skipOnError' => true, 'targetClass' => Warehouse::className(), 'targetAttribute' => ['warehouse_id' => 'id']],
+		];
+	}
 
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getItem()
-    {
-        return $this->hasOne(Item::className(), ['id' => 'item_id']);
-    }
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getItem()
+	{
+		return $this->hasOne(Item::className(), ['id' => 'item_id']);
+	}
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getWarehouse()
-    {
-        return $this->hasOne(Warehouse::className(), ['id' => 'warehouse_id']);
-    }
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getWarehouse()
+	{
+		return $this->hasOne(Warehouse::className(), ['id' => 'warehouse_id']);
+	}
 
-    /**
-     * @inheritdoc
-     * @return \app\models\aq\WarehouseItemsQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new \app\models\aq\WarehouseItemsQuery(get_called_class());
-    }
+	/**
+	 * @inheritdoc
+	 * @return \app\models\aq\WarehouseItemsQuery the active query used by this AR class.
+	 */
+	public static function find()
+	{
+		return new \app\models\aq\WarehouseItemsQuery(get_called_class());
+	}
 }

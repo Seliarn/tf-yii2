@@ -22,6 +22,8 @@ $this->params['breadcrumbs'][] = Yii::$app->params['translate']['rus']['btn-upda
 	<?=
 	$this->render('_form', [
 		'model' => $model,
+		'warehouse' => $warehouse,
+		'items' => $items,
 	]) ?>
 
 </div>

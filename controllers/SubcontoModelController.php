@@ -84,13 +84,15 @@ class SubcontoModelController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
+		if ($model->load(Yii::$app->request->post())) {
+			$model->updated = time();
+			if ($model->save()) {
+				return $this->redirect(['view', 'id' => $model->id]);
+			}
+		} else {
+			$params = array_merge(['model' => $model], $this->_prepareForm());
+			return $this->render('update', $params);
+		}
     }
 
     /**

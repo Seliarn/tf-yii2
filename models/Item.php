@@ -22,8 +22,9 @@ class Item extends LoggedActiveRecord
 {
 	static $titles = [
 		'rus' => [
-			'main' => 'Номенклатура',
-			'plural' => 'Номенклатура'
+			'main' => 'Ингредиенты',
+			'plural' => 'Ингредиенты',
+			'prompt' => 'Выберите ингредиент'
 		],
 		'link' => 'item'
 	];

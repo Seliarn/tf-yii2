@@ -98,7 +98,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 											"url" => "/warehouse-items/index",
 										],
 										[
-											"label" => "Номенклатура",
+											"label" => "Ингредиенты",
 											"url" => "/item/index",
 										],
 										[
