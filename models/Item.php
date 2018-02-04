@@ -90,8 +90,9 @@ class Item extends LoggedActiveRecord
 			[['group_id', 'measures', 'state', 'status',
 				'losses_clear', 'losses_cook', 'losses_stew', 'losses_fry', 'losses_bake', 'weight'], 'integer'],
 			[['created', 'updated'], 'safe'],
-			[['measures', 'state', 'status'], 'defalut', 'value' => 1],
-			[['losses_clear', 'losses_cook', 'losses_stew', 'losses_fry', 'losses_bake', 'weight'], 'defalut', 'value' => 0],
+			[['measures', 'state', 'status'], 'default', 'value' => 1],
+			[['updated'], 'default', 'value' => time()],
+			[['losses_clear', 'losses_cook', 'losses_stew', 'losses_fry', 'losses_bake', 'weight'], 'default', 'value' => 0],
 			[['title', 'note', 'imagePath'], 'string', 'max' => 255],
 		];
 	}
