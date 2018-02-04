@@ -87,7 +87,7 @@ class Item extends LoggedActiveRecord
 	{
 		return [
 			[['title'], 'required'],
-			[['group_id', 'measures', 'state', 'status', 
+			[['group_id', 'measures', 'state', 'status',
 				'losses_clear', 'losses_cook', 'losses_stew', 'losses_fry', 'losses_bake', 'weight'], 'integer'],
 			[['created', 'updated'], 'safe'],
 			[['measures', 'state', 'status'], 'defalut', 'value' => 1],
