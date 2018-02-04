@@ -17,6 +17,12 @@ use Yii;
  * @property integer $status
  * @property string $note
  * @property string $imagePath
+ * @property integer $losses_clear
+ * @property integer $losses_cook
+ * @property integer $losses_fry
+ * @property integer $losses_stew
+ * @property integer $losses_bake
+ * @property integer $weight
  */
 class Item extends LoggedActiveRecord
 {
@@ -40,6 +46,12 @@ class Item extends LoggedActiveRecord
 		'updated' => 'Изменен',
 		'note' => 'Примечание',
 		'imagePath' => 'Изображение',
+		'losses_clear' => '% потерь при очистке',
+		'losses_cook' => '% потерь при варке',
+		'losses_fry' => '% потерь при жарке',
+		'losses_stew' => '% потерь при тушении',
+		'losses_bake' => '% потерь при запекании',
+		'weight' => 'Вес',
 	];
 
 	const MEASURES_GRAM = 1;
@@ -75,8 +87,11 @@ class Item extends LoggedActiveRecord
 	{
 		return [
 			[['title'], 'required'],
-			[['group_id', 'measures', 'state', 'status'], 'integer'],
+			[['group_id', 'measures', 'state', 'status', 
+				'losses_clear', 'losses_cook', 'losses_stew', 'losses_fry', 'losses_bake', 'weight'], 'integer'],
 			[['created', 'updated'], 'safe'],
+			[['measures', 'state', 'status'], 'defalut', 'value' => 1],
+			[['losses_clear', 'losses_cook', 'losses_stew', 'losses_fry', 'losses_bake', 'weight'], 'defalut', 'value' => 0],
 			[['title', 'note', 'imagePath'], 'string', 'max' => 255],
 		];
 	}

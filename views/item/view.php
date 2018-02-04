@@ -47,6 +47,12 @@ $this->params['breadcrumbs'][] = $this->title;
 				'label' => $model->attributeLabels('state'),
 				'value' => $model->getStateAlias()
 			],
+			'losses_clear',
+			'losses_cook',
+			'losses_fry',
+			'losses_bake',
+			'losses_stew',
+			'weight',
 			'note',
 			[
 				'label' => $model->attributeLabels('status'),

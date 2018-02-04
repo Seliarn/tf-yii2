@@ -34,6 +34,14 @@ use yii\helpers\ArrayHelper;
 	echo $form->field($model, 'state')->dropDownList([
 		$model::STATE_NEW => "новый"
 	]);
+	
+	echo $form->field($model, 'losses_clear')->textInput();
+	echo $form->field($model, 'losses_cook')->textInput();
+	echo $form->field($model, 'losses_fry')->textInput();
+	echo $form->field($model, 'losses_stew')->textInput();
+	echo $form->field($model, 'losses_bake')->textInput();
+	echo $form->field($model, 'weight')->textInput();
+
 	echo $form->field($model, 'note')->textarea(['row' => 3]);
 
 	echo Html::img($model->imagePath, ['alt' => $model->title, 'height' => 400]);

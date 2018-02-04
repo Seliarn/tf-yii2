@@ -46,12 +46,26 @@ $this->params['breadcrumbs'][] = $this->title;
 					}
 			],
 			[
+				'label' => 'Потери',
+				'content' => function ($model) {
+						return $model->losses_clear  . '% | '
+							$model->losses_clear  . '% | '
+							$model->losses_cook  . '% | '
+							$model->losses_fry  . '% | '
+							$model->losses_stew  . '% | '
+							$model->losses_bake  . '%'
+					}
+			],
+			
+			/*[
 				'attribute' => 'state',
 				'label' => Item::$labels['state'],
 				'content' => function ($model) {
 						return $model->getStateAlias();
 					}
 			],
+			*/
+			'weight',
 			// 'created',
 			// 'updated',
 			[
