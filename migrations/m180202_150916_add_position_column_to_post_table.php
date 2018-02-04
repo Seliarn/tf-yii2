@@ -12,21 +12,13 @@ class m180202_150916_add_position_column_to_post_table extends Migration
      */
     public function up()
     {
-        $this->addColumn('Item', 'ingredients_losses_clear', $this->integer());
-        $this->addColumn('Item', 'ingredients_losses_cook', $this->integer());
-        $this->addColumn('Item', 'ingredients_losses_fry', $this->integer());
-        $this->addColumn('Item', 'ingredients_losses_stew', $this->integer());
-        $this->addColumn('Item', 'ingredients_losses_bake', $this->integer());
+        $this->addColumn('Item', 'losses_clear', $this->integer(3)->defaultValue(0));
+        $this->addColumn('Item', 'losses_cook', $this->integer(3)->defaultValue(0));
+        $this->addColumn('Item', 'losses_fry', $this->integer(3)->defaultValue(0));
+        $this->addColumn('Item', 'losses_stew', $this->integer(3)->defaultValue(0));
+        $this->addColumn('Item', 'losses_bake', $this->integer(3)->defaultValue(0));
+        $this->addColumn('Item', 'weight', $this->integer(5)->defaultValue(0));
 
-		$this->createTable('news', [
-			'id' => Schema::TYPE_PK,
-			'title' => Schema::TYPE_STRING . ' NOT NULL',
-			'ingredients_losses_clear' => Schema::TYPE_TEXT,
-			'ingredients_losses_cook' => Schema::TYPE_TEXT,
-			'ingredients_losses_fry' => Schema::TYPE_TEXT,
-			'ingredients_losses_stew' => Schema::TYPE_TEXT,
-			'ingredients_losses_bake' => Schema::TYPE_TEXT,
-		]);
     }
 
     /**
@@ -34,6 +26,11 @@ class m180202_150916_add_position_column_to_post_table extends Migration
      */
     public function down()
     {
-        $this->dropColumn('post', 'position');
+        $this->dropColumn('Item', 'losses_clear');
+        $this->dropColumn('Item', 'losses_cook');
+        $this->dropColumn('Item', 'losses_fry');
+        $this->dropColumn('Item', 'losses_stew');
+        $this->dropColumn('Item', 'losses_bake');
+        $this->dropColumn('Item', 'weight');
     }
 }
