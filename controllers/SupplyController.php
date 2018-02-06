@@ -4,6 +4,9 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Supply;
+use app\models\Account;
+use app\models\Warehouse;
+use app\models\Client;
 use app\controllers\search\SupplySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -14,114 +17,132 @@ use yii\filters\VerbFilter;
  */
 class SupplyController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function behaviors()
+	{
+		return [
+			'verbs' => [
+				'class' => VerbFilter::className(),
+				'actions' => [
+					'delete' => ['POST'],
+				],
+			],
+		];
+	}
 
-    /**
-     * Lists all Supply models.
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        $searchModel = new SupplySearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+	/**
+	 * Lists all Supply models.
+	 * @return mixed
+	 */
+	public function actionIndex()
+	{
+		$searchModel = new SupplySearch();
+		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
+		return $this->render('index', [
+			'searchModel' => $searchModel,
+			'dataProvider' => $dataProvider,
+		]);
+	}
 
-    /**
-     * Displays a single Supply model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
+	/**
+	 * Displays a single Supply model.
+	 * @param integer $id
+	 * @return mixed
+	 * @throws NotFoundHttpException if the model cannot be found
+	 */
+	public function actionView($id)
+	{
+		return $this->render('view', [
+			'model' => $this->findModel($id),
+		]);
+	}
 
-    /**
-     * Creates a new Supply model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Supply();
+	/**
+	 * Creates a new Supply model.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
+	 * @return mixed
+	 */
+	public function actionCreate()
+	{
+		$model = new Supply();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
+		if ($model->load(Yii::$app->request->post()) && $model->save()) {
+			return $this->redirect(['view', 'id' => $model->id]);
+		} else {
+			$params = array_merge(['model' => $model], $this->_prepareForm());
+			return $this->render('create', $params);
+		}
+	}
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
-    }
+	/**
+	 * Updates an existing Supply model.
+	 * If update is successful, the browser will be redirected to the 'view' page.
+	 * @param integer $id
+	 * @return mixed
+	 * @throws NotFoundHttpException if the model cannot be found
+	 */
+	public function actionUpdate($id)
+	{
+		$model = $this->findModel($id);
 
-    /**
-     * Updates an existing Supply model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
+		if ($model->load(Yii::$app->request->post())) {
+			$model->updated = time();
+			if ($model->save()) {
+				return $this->redirect(['view', 'id' => $model->id]);
+			}
+		} else {
+			$params = array_merge(['model' => $model], $this->_prepareForm());
+			return $this->render('update', $params);
+		}
+	}
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
+	/**
+	 * Deletes an existing Supply model.
+	 * If deletion is successful, the browser will be redirected to the 'index' page.
+	 * @param integer $id
+	 * @return mixed
+	 * @throws NotFoundHttpException if the model cannot be found
+	 */
+	public function actionDelete($id)
+	{
+		$this->findModel($id)->delete();
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
-    }
+		return $this->redirect(['index']);
+	}
 
-    /**
-     * Deletes an existing Supply model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
+	/**
+	 * Finds the Supply model based on its primary key value.
+	 * If the model is not found, a 404 HTTP exception will be thrown.
+	 * @param integer $id
+	 * @return Supply the loaded model
+	 * @throws NotFoundHttpException if the model cannot be found
+	 */
+	protected function findModel($id)
+	{
+		if (($model = Supply::findOne($id)) !== null) {
+			return $model;
+		}
 
-        return $this->redirect(['index']);
-    }
+		throw new NotFoundHttpException('The requested page does not exist.');
+	}
 
-    /**
-     * Finds the Supply model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Supply the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Supply::findOne($id)) !== null) {
-            return $model;
-        }
+	/**
+	 * Prepare form
+	 * @return array
+	 */
+	protected function _prepareForm()
+	{
+		$accounts = Account::find()->all();
+		$contractors = Client::find()->where(['is_contractor' => 1])->all();
+		$warehouse = Warehouse::find()->all();
 
-        throw new NotFoundHttpException('The requested page does not exist.');
-    }
+		return [
+			'accounts' => $accounts,
+			'contractors' => $contractors,
+			'warehouse' => $warehouse,
+		];
+	}
 }

@@ -78,8 +78,8 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 									"icon" => "archive",
 									"items" => [
 										[
-											"label" => "Закупка товара",
-											"url" => "#",
+											"label" => "Поставки",
+											"url" => "/supply/index",
 										],
 										[
 											"label" => "Реализация товара",

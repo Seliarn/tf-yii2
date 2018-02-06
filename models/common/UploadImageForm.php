@@ -48,8 +48,9 @@ class UploadImageForm extends Model
 			$fileName = self::_generateFileHashName();
 		}
 		if ($this->validate() && !empty($this->imageFile)) {
-			if (FileHelper::createDirectory('uploads/' . $savePath, 0777)) {
-				$path = '/uploads/' . $savePath . '/' . $fileName . '.' . $this->imageFile->extension;
+			if (FileHelper::createDirectory('uploads/' . $savePath)) {
+				$path = 'uploads/' . $savePath . '/' . $fileName . '.' . $this->imageFile->extension;
+
 				if ($this->imageFile->saveAs($path)) {
 					$this->path = $path;
 				} else {

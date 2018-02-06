@@ -17,52 +17,82 @@ use Yii;
  * @property int $updated
  * @property int $status
  */
-class Supply extends \yii\db\ActiveRecord
+class Supply extends LoggedActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'Supply';
-    }
+	static $titles = [
+		'rus' => [
+			'main' => 'Поставка',
+			'plural' => 'Поставки',
+			'prompt' => 'Выберите поставку'
+		],
+		'link' => 'supply'
+	];
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['date', 'contractor_id', 'warehouse_id', 'account_id', 'created', 'updated', 'status'], 'integer'],
-            [['contractor_id', 'warehouse_id', 'note'], 'required'],
-            [['note'], 'string', 'max' => 255],
-        ];
-    }
+	static $labels = [
+		'id' => 'ID',
+		'date' => 'Дата закупки',
+		'contractor_id' => 'Поставщик',
+		'warehouse_id' => 'Склад',
+		'account_id' => 'Счет',
+		'status' => 'Статус',
+		'created' => 'Создан',
+		'updated' => 'Изменен',
+		'note' => 'Примечание',
+	];
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'date' => 'Date',
-            'contractor_id' => 'Contractor ID',
-            'warehouse_id' => 'Warehouse ID',
-            'account_id' => 'Account ID',
-            'note' => 'Note',
-            'created' => 'Created',
-            'updated' => 'Updated',
-            'status' => 'Status',
-        ];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName()
+	{
+		return 'Supply';
+	}
 
-    /**
-     * @inheritdoc
-     * @return \app\models\aq\SupplyQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new \app\models\aq\SupplyQuery(get_called_class());
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			[['contractor_id', 'warehouse_id', 'account_id', 'status'], 'integer'],
+			[['contractor_id', 'warehouse_id'], 'required'],
+			[['date', 'created', 'updated'], 'safe'],
+			[['status'], 'default', 'value' => 1],
+			[['created', 'updated'], 'default', 'value' => time()],
+			[['note'], 'string', 'max' => 255],
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 * @return \app\models\aq\SupplyQuery the active query used by this AR class.
+	 */
+	public static function find()
+	{
+		return new \app\models\aq\SupplyQuery(get_called_class());
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getAccount()
+	{
+		return $this->hasOne(Account::className(), ['id' => 'account_id']);
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getWarehouse()
+	{
+		return $this->hasOne(Warehouse::className(), ['id' => 'warehouse_id']);
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getContractor()
+	{
+		return $this->hasOne(Client::className(), ['id' => 'contractor_id']);
+	}
 }

@@ -2,36 +2,56 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\Account;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Supply */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="supply-form">
+<div class = "supply-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+	<?php
+	if (empty($warehouse)) {
+		echo '<div class="alert alert-error fade in">Нет доступных складов. <a href="/warehouse/create">Создать</a></div>';
+	} else if (empty($contractors)) {
+		echo '<div class="alert alert-error fade in">Нет доступных поставщиков. <a href="/client/create">Создать</a></div>';
+	} else {
 
-    <?= $form->field($model, 'date')->textInput() ?>
+		if (!$model->isNewRecord) {
+			echo '<div class = "model-property-date">' .
+				'<label>' . $model->getAttributeLabel('created') . ':</label> ' . Yii::$app->formatter->asDate($model->created, 'long') . '<br>' .
+				'<label>' . $model->getAttributeLabel('updated') . ':</label> ' . Yii::$app->formatter->asDate($model->updated, 'long') .
+				'</div>';
+		}
 
-    <?= $form->field($model, 'contractor_id')->textInput() ?>
+		$form = ActiveForm::begin();
 
-    <?= $form->field($model, 'warehouse_id')->textInput() ?>
+		echo $form->field($model, 'date')->textInput(['type' => 'datetime-local']);
 
-    <?= $form->field($model, 'account_id')->textInput() ?>
+		if (!empty($accounts)) {
+			$accountItems = ArrayHelper::map($accounts, 'id', 'title');
+			echo $form->field($model, 'account_id')->dropDownList($accountItems);
+		} else {
+			echo '<div class="alert alert-warning fade in">Нет доступных счетов. <a href="/' . Account::$titles['link'] . '/create">Создать</a></div>';
+		}
 
-    <?= $form->field($model, 'note')->textInput(['maxlength' => true]) ?>
+		$warehouseItems = ArrayHelper::map($warehouse, 'id', 'title');
+		echo $form->field($model, 'warehouse_id')->dropDownList($warehouseItems, ['prompt' => $warehouse[0]::$titles['rus']['prompt']])->label($model->attributeLabels('warehouse_id'));
 
-    <?= $form->field($model, 'created')->textInput() ?>
+		$contractorItems = ArrayHelper::map($contractors, 'id', 'company');
+		echo $form->field($model, 'contractor_id')->dropDownList($contractorItems, ['prompt' => $model->attributeLabels('contractor_id')]);
 
-    <?= $form->field($model, 'updated')->textInput() ?>
+		echo $form->field($model, 'note')->textarea(['row' => 3]);
 
-    <?= $form->field($model, 'status')->textInput() ?>
+		?>
+		<div class = "form-group">
+			<?= Html::submitButton($model->isNewRecord ? Yii::$app->params['translate']['rus']['btn-create'] : Yii::$app->params['translate']['rus']['btn-update'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+		</div>
 
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
+		<?php ActiveForm::end();
+	}
+	?>
 
 </div>

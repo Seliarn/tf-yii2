@@ -54,11 +54,11 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 			[
 				'label' => $model->attributeLabels('subconto_id'),
-				'value' => (!$model->getSubconto()->one()) ? '' : $model->getSubconto()->one()->username
+				'value' => (!$subconto = $model->getSubconto()->one()) ? '' : $subconto->username
 			],
 			[
 				'label' => $model->attributeLabels('contractor_id'),
-				'value' => (!$model->getContractor()->one()) ? '' : $model->getContractor()->one()->company
+				'value' => (!$contractor = $model->getContractor()->one()) ? '' : $contractor->company
 			],
 			'amount',
 			[

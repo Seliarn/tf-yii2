@@ -17,12 +17,12 @@ use Yii;
  * @property integer $status
  * @property string $note
  * @property string $imagePath
- * @property integer $losses_clear
- * @property integer $losses_cook
- * @property integer $losses_fry
- * @property integer $losses_stew
- * @property integer $losses_bake
- * @property integer $weight
+ * @property float $losses_clear
+ * @property float $losses_cook
+ * @property float $losses_fry
+ * @property float $losses_stew
+ * @property float $losses_bake
+ * @property float $weight
  */
 class Item extends LoggedActiveRecord
 {
@@ -87,8 +87,9 @@ class Item extends LoggedActiveRecord
 	{
 		return [
 			[['title'], 'required'],
-			[['group_id', 'measures', 'state', 'status',
-				'losses_clear', 'losses_cook', 'losses_stew', 'losses_fry', 'losses_bake', 'weight'], 'integer'],
+			[['group_id', 'measures', 'state', 'status'], 'integer'],
+			[['losses_clear', 'losses_cook', 'losses_stew', 'losses_fry', 'losses_bake', 'weight'], 'number',
+				'integerOnly' => false, 'min' => 0, 'max' => 100],
 			[['created', 'updated'], 'safe'],
 			[['measures', 'state', 'status'], 'default', 'value' => 1],
 			[['updated'], 'default', 'value' => time()],

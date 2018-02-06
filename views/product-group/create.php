@@ -10,13 +10,20 @@ $this->title = Yii::$app->params['translate']['rus']['btn-create'] . ' ' . $mode
 $this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="product-group-create">
+<div class = "product-group-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+	<h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
-        'model' => $model,
-        'productGroups' => $productGroups,
-    ]) ?>
+	<p>
+		<?php
+		echo Html::a(Yii::$app->params['translate']['rus']['btn-back-to-list'], ['index'], ['class' => 'btn btn-primary']);
+		?>
+	</p>
+
+	<?=
+	$this->render('_form', [
+		'model' => $model,
+		'productGroups' => $productGroups,
+	]) ?>
 
 </div>

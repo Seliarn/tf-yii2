@@ -34,7 +34,7 @@ use yii\helpers\ArrayHelper;
 	echo $form->field($model, 'state')->dropDownList([
 		$model::STATE_NEW => "новый"
 	]);
-	
+
 	echo $form->field($model, 'losses_clear')->textInput();
 	echo $form->field($model, 'losses_cook')->textInput();
 	echo $form->field($model, 'losses_fry')->textInput();
@@ -44,10 +44,11 @@ use yii\helpers\ArrayHelper;
 
 	echo $form->field($model, 'note')->textarea(['row' => 3]);
 
-	echo Html::img($model->imagePath, ['alt' => $model->title, 'height' => 400]);
+	if (!empty($model->imagePath)) {
+		echo Html::img('/' . $model->imagePath, ['alt' => $model->title, 'height' => 400]);
+	}
 	echo $form->field($uploadImage, 'imageFile')->fileInput();
 
-	echo $form->field($model, 'status')->hiddenInput(['value' => $model::STATUS_ACTIVE])->label(false);
 	?>
 
 	<div class = "form-group">
