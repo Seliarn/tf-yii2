@@ -41,6 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			[
 				'attribute' => 'measures',
 				'label' => Item::$labels['measures'],
+				'filter' => Item::$measuresAlias,
 				'content' => function ($model) {
 						return $model->getMeasuresAlias();
 					}

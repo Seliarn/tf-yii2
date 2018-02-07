@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
+use app\models\Item;
+use app\models\SupplyItem;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Supply */
@@ -56,5 +59,39 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 		],
 	]) ?>
+	<hr>
+	<?=
+	GridView::widget([
+		'dataProvider' => $supplyItemsDataProvider,
+		'showFooter' => TRUE,
+		'columns' => [
+			'id',
+			[
+				'attribute' => 'item_id',
+				'label' => Item::$labels['title'],
+				'content' => function ($model) {
+						$data = $model->getItem()->one();
+						return (!$data) ? false : $data->title;
+					}
+			],
+			[
+				'attribute' => 'measures',
+				'label' => SupplyItem::$labels['measures'],
+				'content' => function ($model) {
+						return Item::$measuresAlias[$model->measures];
+					}
+			],
+			'count',
+			'cost',
+			[
+				'attribute' => 'cost',
+				'footer' => $totalAmount
+			],
+			'note',
+			//'created',
+			//'updated',
+			//'status',
+		],
+	])?>
 
 </div>

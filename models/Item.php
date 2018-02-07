@@ -61,11 +61,11 @@ class Item extends LoggedActiveRecord
 
 	const STATE_NEW = 1;
 
-	protected $_stateAlias = [
+	static $stateAlias = [
 		self::STATE_NEW => 'новый',
 	];
 
-	protected $_measuresAlias = [
+	static $measuresAlias = [
 		self::MEASURES_GRAM => 'грамм',
 		self::MEASURES_LITER => 'литр',
 		self::MEASURES_PIECE => 'штука',
@@ -120,7 +120,7 @@ class Item extends LoggedActiveRecord
 	 */
 	public function getMeasuresAlias()
 	{
-		return $this->_measuresAlias[$this->measures];
+		return self::$measuresAlias[$this->measures];
 	}
 
 	/**
@@ -128,6 +128,6 @@ class Item extends LoggedActiveRecord
 	 */
 	public function getStateAlias()
 	{
-		return $this->_stateAlias[$this->state];
+		return self::$stateAlias[$this->state];
 	}
 }

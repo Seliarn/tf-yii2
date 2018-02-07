@@ -95,4 +95,21 @@ class Supply extends LoggedActiveRecord
 	{
 		return $this->hasOne(Client::className(), ['id' => 'contractor_id']);
 	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getItems()
+	{
+		return $this->hasMany(SupplyItem::className(), ['supply_id' => 'id']);
+	}
+
+	/**
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getTotalAmount()
+	{
+		$query = (new \yii\db\Query())->from(SupplyItem::tableName())->where(['supply_id' => $this->id]);
+		return $query->sum('cost');
+	}
 }

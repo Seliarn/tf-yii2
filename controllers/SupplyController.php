@@ -4,10 +4,12 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Supply;
+use app\models\SupplyItem;
 use app\models\Account;
 use app\models\Warehouse;
 use app\models\Client;
 use app\controllers\search\SupplySearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -55,8 +57,17 @@ class SupplyController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$model = $this->findModel($id);
+
+		$itemsDataProvider = new ActiveDataProvider([
+			'query' => SupplyItem::find()->where(['supply_id' => $model->id])->orderBy('id DESC')
+		]);
+
+
 		return $this->render('view', [
-			'model' => $this->findModel($id),
+			'model' => $model,
+			'supplyItemsDataProvider' => $itemsDataProvider,
+			'totalAmount' => $model->getTotalAmount()
 		]);
 	}
 
