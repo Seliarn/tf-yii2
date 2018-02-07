@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Account;
+use yii\web\View;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Supply */
@@ -26,7 +27,9 @@ use app\models\Account;
 				'</div>';
 		}
 
-		$form = ActiveForm::begin();
+		$form = ActiveForm::begin([
+			'id' => 'supply-item-form'
+		]);
 
 		echo $form->field($model, 'date')->textInput(['type' => 'datetime-local']);
 
@@ -49,7 +52,6 @@ use app\models\Account;
 		<div class = "form-group">
 			<?= Html::submitButton($model->isNewRecord ? Yii::$app->params['translate']['rus']['btn-create'] : Yii::$app->params['translate']['rus']['btn-update'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
 		</div>
-
 		<?php ActiveForm::end();
 	}
 	?>

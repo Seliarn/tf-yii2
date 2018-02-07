@@ -8,6 +8,7 @@ use app\models\SupplyItem;
 use app\models\Account;
 use app\models\Warehouse;
 use app\models\Client;
+use app\models\Item;
 use app\controllers\search\SupplySearch;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -105,7 +106,7 @@ class SupplyController extends Controller
 				return $this->redirect(['view', 'id' => $model->id]);
 			}
 		} else {
-			$params = array_merge(['model' => $model], $this->_prepareForm());
+			$params = array_merge(['model' => $model], $this->_prepareForm($model->id));
 			return $this->render('update', $params);
 		}
 	}
@@ -141,19 +142,28 @@ class SupplyController extends Controller
 	}
 
 	/**
-	 * Prepare form
+	 * @param int|null $supplyId
 	 * @return array
 	 */
-	protected function _prepareForm()
+	protected function _prepareForm($supplyId = null)
 	{
 		$accounts = Account::find()->all();
 		$contractors = Client::find()->where(['is_contractor' => 1])->all();
 		$warehouse = Warehouse::find()->all();
+		$items = Item::find()->all();
+		$newSupplyItem = new SupplyItem();
+		$supplyItem = null;
+		if (isset($supplyId)) {
+			$supplyItem = SupplyItem::find()->where(['supply_id' => $supplyId])->all();
+		}
 
 		return [
 			'accounts' => $accounts,
 			'contractors' => $contractors,
 			'warehouse' => $warehouse,
+			'newSupplyItem' => $newSupplyItem,
+			'supplyItem' => $supplyItem,
+			'items' => $items,
 		];
 	}
 }
