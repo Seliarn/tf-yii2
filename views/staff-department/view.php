@@ -10,11 +10,11 @@ $this->title = $model::$titles['rus']['main'] . ': ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="staff-department-view">
+<div class = "staff-department-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+	<h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
+	<p>
 		<?php
 		echo Html::a(Yii::$app->params['translate']['rus']['btn-back-to-list'], ['index'], ['class' => 'btn btn-primary']);
 		echo Html::a(Yii::$app->params['translate']['rus']['btn-update'], ['update', 'id' => $model->id], ['class' => 'btn btn-primary']);
@@ -27,13 +27,14 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 		]);
 		?>
-    </p>
+	</p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'title',
+	<?=
+	DetailView::widget([
+		'model' => $model,
+		'attributes' => [
+			'id',
+			'title',
 			[
 				'label' => $model->attributeLabels('parent_id'),
 				'value' => (!$model->getParent()->one()) ? '' : $model->getParent()->one()->title
@@ -42,12 +43,14 @@ $this->params['breadcrumbs'][] = $this->title;
 				'label' => $model->attributeLabels('office_id'),
 				'value' => $model->getOffice()->one()->title
 			],
-            'note',
+			'note',
+			'created:datetime',
+			'updated:datetime',
 			[
 				'label' => $model->attributeLabels('status'),
 				'value' => $model->getStatusAlias()
 			],
-        ],
-    ]) ?>
+		],
+	]) ?>
 
 </div>

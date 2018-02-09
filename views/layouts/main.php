@@ -34,14 +34,14 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 <div class = "main_container">
 
 <div class = "col-md-3 left_col">
-	<div class = "left_col scroll-view">
+<div class = "left_col scroll-view">
 
-		<div class = "navbar nav_title" style = "border: 0;">
-			<a href = "/" class = "site_title"><i class = "fa fa-paw"></i> <span>TOP Food</span></a>
-		</div>
-		<div class = "clearfix"></div>
+<div class = "navbar nav_title" style = "border: 0;">
+	<a href = "/" class = "site_title"><i class = "fa fa-paw"></i> <span>TOP Food</span></a>
+</div>
+<div class = "clearfix"></div>
 
-		<!-- menu prile quick info --
+<!-- menu prile quick info --
 		<div class = "profile">
 			<div class = "profile_pic">
 				<img src = "http://placehold.it/128x128" alt = "..." class = "img-circle profile_img">
@@ -54,190 +54,199 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 		</div>
 		<!-- /menu prile quick info -->
 
-		<br/>
+<br/>
 
-		<!-- sidebar menu -->
-		<div id = "sidebar-menu" class = "main_menu_side hidden-print main_menu">
+<!-- sidebar menu -->
+<div id = "sidebar-menu" class = "main_menu_side hidden-print main_menu">
 
-			<div class = "menu_section">
-				<?=
-				(Yii::$app->user->isGuest) ? '' :
-					\yiister\gentelella\widgets\Menu::widget(
-						[
-							"items" => [
-								["label" => "Главная", "url" => "/", "icon" => "home"],
+	<div class = "menu_section">
+		<?=
+		(Yii::$app->user->isGuest) ? '' :
+			\yiister\gentelella\widgets\Menu::widget(
+				[
+					"items" => [
+						["label" => "Главная", "url" => "/", "icon" => "home"],
 //								["label" => "Gii", "url" => ["/gii"], "icon" => "files-o"],
+						[
+							"label" => "Заказы",
+							"url" => "/product-order/index",
+							"icon" => "calendar-check-o"
+						],
+						[
+							"label" => "Финансы",
+							"url" => "#",
+							"icon" => "file-text",
+							"items" => [
 								[
-									"label" => "Заказы",
-									"url" => "/product-order/index",
-									"icon" => "calendar-check-o"
+									"label" => "Поступление ДС",
+									"url" => "/income-cashbox-order/index"
 								],
 								[
-									"label" => "Склад",
-									"url" => "#",
-									"icon" => "archive",
-									"items" => [
-										[
-											"label" => "Поставки",
-											"url" => "/supply/index",
-										],
-										[
-											"label" => "Реализация товара",
-											"url" => "#",
-										],
-										[
-											"label" => "Инвентаризация",
-											"url" => "#",
-										],
-										[
-											"label" => "Списание",
-											"url" => "#",
-										],
-										[
-											"label" => "Остатки",
-											"url" => "/warehouse-items/index",
-										],
-										[
-											"label" => "Ингредиенты",
-											"url" => "/item/index",
-										],
-										[
-											"label" => "Поставщики",
-											"url" => "/client/contractor",
-										],
-									]
+									"label" => "Списание ДС",
+									"url" => "/outgoing-cashbox-order/index"
 								],
 								[
-									"label" => "Финансы",
-									"url" => "#",
-									"icon" => "file-text",
-									"items" => [
-										[
-											"label" => "Поступление ДС",
-											"url" => "/income-cashbox-order/index"
-										],
-										[
-											"label" => "Списание ДС",
-											"url" => "/outgoing-cashbox-order/index"
-										],
-										[
-											"label" => "Банковские выписки",
-											"url" => "/bank-statement/index",
-										],
+									"label" => "Банковские выписки",
+									"url" => "/bank-statement/index",
+								],
 
-									],
+							],
+						],
+						[
+							"label" => "Меню",
+							"url" => "#",
+							"icon" => "list-alt",
+							"items" => [
+								[
+									"label" => "Тех. карты",
+									"url" => "/product/index",
 								],
 								[
-									"label" => "Справочник",
+									"label" => "Ингредиенты",
+									"url" => "/item/index",
+								],
+								[
+									"label" => "Цеха",
+									"url" => "/staff-department/index",
+								],
+
+							],
+						],
+						[
+							"label" => "Склад",
+							"url" => "#",
+							"icon" => "archive",
+							"items" => [
+								[
+									"label" => "Поставки",
+									"url" => "/supply/index",
+								],
+								[
+									"label" => "Реализация товара",
 									"url" => "#",
-									"icon" => "book",
-									"items" => [
-										[
-											"label" => "Счета",
-											"url" => "/account/index",
-										],
-										[
-											"label" => "Операции",
-											"url" => "/operation/index",
-										],
-										[
-											"label" => "Валюты",
-											"url" => "/currency/index",
-										],
-										[
-											"label" => "Статьи ДДС",
-											"url" => "/cash-flow-statement/index",
-										],
-										[
-											"label" => "Контрагенты",
-											"url" => "/client/index",
-										],
-										[
-											"label" => "Склады",
-											"url" => "/warehouse/index",
-										],
-										[
-											"label" => "Планы счетов",
-											"url" => "/account-book/index",
-										],
-										[
-											"label" => "Блюда",
-											"url" => "/product/index",
-										],
-										[
-											"label" => "Статусы заказов",
-											"url" => "/product-order-status/index",
-										],
+								],
+								[
+									"label" => "Инвентаризация",
+									"url" => "#",
+								],
+								[
+									"label" => "Списание",
+									"url" => "#",
+								],
+								[
+									"label" => "Остатки",
+									"url" => "/warehouse-items/index",
+								],
+								[
+									"label" => "Поставщики",
+									"url" => "/client/contractor",
+								],
+							]
+						],
+
+						[
+							"label" => "Справочник",
+							"url" => "#",
+							"icon" => "book",
+							"items" => [
+								[
+									"label" => "Счета",
+									"url" => "/account/index",
+								],
+								[
+									"label" => "Операции",
+									"url" => "/operation/index",
+								],
+								[
+									"label" => "Валюты",
+									"url" => "/currency/index",
+								],
+								[
+									"label" => "Статьи ДДС",
+									"url" => "/cash-flow-statement/index",
+								],
+								[
+									"label" => "Контрагенты",
+									"url" => "/client/index",
+								],
+								[
+									"label" => "Склады",
+									"url" => "/warehouse/index",
+								],
+								[
+									"label" => "Планы счетов",
+									"url" => "/account-book/index",
+								],
+								[
+									"label" => "Статусы заказов",
+									"url" => "/product-order-status/index",
+								],
 //										[
 //											"label" => "Группы статей ДДС",
 //											"url" => "/cash-flow-statement-group/index",
 //										],
 
-										[
-											"label" => "Офисы",
-											"url" => "/office/index",
-										],
-										[
-											"label" => "Сотрудники",
-											"url" => "/staff-employee/index",
-										],
-										[
-											"label" => "Должности",
-											"url" => "/staff-position/index",
-										],
-										[
-											"label" => "Подразделения",
-											"url" => "/staff-department/index",
-										],
-									],
+								[
+									"label" => "Офисы",
+									"url" => "/office/index",
 								],
 								[
-									"label" => "CRM",
-									"url" => "#",
-									"icon" => "users",
-									"items" => [
-										[
-											"label" => "Клиенты",
-											"url" => "/client/customer",
-										],
-									],
+									"label" => "Сотрудники",
+									"url" => "/staff-employee/index",
 								],
 								[
-									"label" => "Франчайзи",
-									"url" => "#",
-									"icon" => "code-fork"
-								],
-								[
-									"label" => "Настройки",
-									"url" => "#",
-									"icon" => "cogs"
+									"label" => "Должности",
+									"url" => "/staff-position/index",
 								],
 							],
-						]
-					)
-				?>
-			</div>
-
-		</div>
-		<!-- /sidebar menu -->
-
-		<!-- /menu footer buttons --
-		<div class = "sidebar-footer hidden-small">
-			<a data-toggle = "tooltip" data-placement = "top" title = "Settings">
-				<span class = "glyphicon glyphicon-cog" aria-hidden = "true"></span>
-			</a>
-			<a data-toggle = "tooltip" data-placement = "top" title = "FullScreen">
-				<span class = "glyphicon glyphicon-fullscreen" aria-hidden = "true"></span>
-			</a>
-			<a data-toggle = "tooltip" data-placement = "top" title = "Lock">
-				<span class = "glyphicon glyphicon-eye-close" aria-hidden = "true"></span>
-			</a>
-			<a data-toggle = "tooltip" data-placement = "top" title = "Logout">
-				<span class = "glyphicon glyphicon-off" aria-hidden = "true"></span>
-			</a>
-		</div>
-		<!-- /menu footer buttons -->
+						],
+						[
+							"label" => "CRM",
+							"url" => "#",
+							"icon" => "users",
+							"items" => [
+								[
+									"label" => "Клиенты",
+									"url" => "/client/customer",
+								],
+							],
+						],
+						[
+							"label" => "Франчайзи",
+							"url" => "#",
+							"icon" => "code-fork"
+						],
+						[
+							"label" => "Настройки",
+							"url" => "#",
+							"icon" => "cogs"
+						],
+					],
+				]
+			)
+		?>
 	</div>
+
+</div>
+<!-- /sidebar menu -->
+
+<!-- /menu footer buttons --
+<div class = "sidebar-footer hidden-small">
+	<a data-toggle = "tooltip" data-placement = "top" title = "Settings">
+		<span class = "glyphicon glyphicon-cog" aria-hidden = "true"></span>
+	</a>
+	<a data-toggle = "tooltip" data-placement = "top" title = "FullScreen">
+		<span class = "glyphicon glyphicon-fullscreen" aria-hidden = "true"></span>
+	</a>
+	<a data-toggle = "tooltip" data-placement = "top" title = "Lock">
+		<span class = "glyphicon glyphicon-eye-close" aria-hidden = "true"></span>
+	</a>
+	<a data-toggle = "tooltip" data-placement = "top" title = "Logout">
+		<span class = "glyphicon glyphicon-off" aria-hidden = "true"></span>
+	</a>
+</div>
+<!-- /menu footer buttons -->
+</div>
 </div>
 
 <!-- top navigation -->

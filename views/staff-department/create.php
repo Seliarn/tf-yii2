@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\StaffDepartment */
 
-$this->title = Yii::$app->params['translate']['rus']['btn-create'] . ' ' . $model::$titles['rus']['main'];
+$this->title = Yii::$app->params['translate']['rus']['btn-create'];
 $this->params['breadcrumbs'][] = ['label' => $model::$titles['rus']['plural'], 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -43,10 +43,10 @@ $this->params['breadcrumbs'][] = $this->title;
 				'label' => $model->attributeLabels('measures'),
 				'value' => $model->getMeasuresAlias()
 			],
-			[
+			/*			[
 				'label' => $model->attributeLabels('state'),
 				'value' => $model->getStateAlias()
-			],
+			],*/
 			'losses_clear',
 			'losses_cook',
 			'losses_fry',
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			'created:datetime',
 			'updated:datetime',
 			[
-				'attribute' => 'image',
+				'attribute' => 'imagePath',
 				'value' => '/' . $model->imagePath,
 				'format' => ['image', ['height' => '400']]
 			],

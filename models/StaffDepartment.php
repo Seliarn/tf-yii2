@@ -12,6 +12,8 @@ use Yii;
  * @property integer $parent_id
  * @property integer $office_id
  * @property string $note
+ * @property int $created
+ * @property int $updated
  * @property integer $status
  *
  * @property StaffDepartment $parent
@@ -33,8 +35,10 @@ class StaffDepartment extends LoggedActiveRecord
 		'id' => 'ID',
 		'title' => 'Название',
 		'parent_id' => 'Подразделение',
-		'office_id' => 'Франчайз',
+		'office_id' => 'Оффис',
 		'note' => 'Примечание',
+		'created' => 'Создан',
+		'updated' => 'Изменен',
 		'status' => 'Статус',
 	];
 
@@ -57,6 +61,8 @@ class StaffDepartment extends LoggedActiveRecord
 			[['title'], 'string', 'max' => 255],
 			[['note'], 'string', 'max' => 255],
 			[['status'], 'default', 'value' => 1],
+			[['created', 'updated'], 'safe'],
+			[['created', 'updated'], 'default', 'value' => time()],
 			[['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => StaffDepartment::className(), 'targetAttribute' => ['parent_id' => 'id']],
 			[['office_id'], 'exist', 'skipOnError' => true, 'targetClass' => Office::className(), 'targetAttribute' => ['office_id' => 'id']],
 		];

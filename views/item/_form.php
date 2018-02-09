@@ -31,9 +31,12 @@ use yii\helpers\ArrayHelper;
 		$model::MEASURES_PIECE => "штука",
 		$model::MEASURES_METER => "метр"
 	]);
+
+	/*
 	echo $form->field($model, 'state')->dropDownList([
 		$model::STATE_NEW => "новый"
 	]);
+	*/
 
 	echo $form->field($model, 'losses_clear')->textInput();
 	echo $form->field($model, 'losses_cook')->textInput();

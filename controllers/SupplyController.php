@@ -152,9 +152,9 @@ class SupplyController extends Controller
 		$warehouse = Warehouse::find()->all();
 		$items = Item::find()->all();
 		$newSupplyItem = new SupplyItem();
-		$supplyItem = null;
+		$supplyItems = null;
 		if (isset($supplyId)) {
-			$supplyItem = SupplyItem::find()->where(['supply_id' => $supplyId])->all();
+			$supplyItems = SupplyItem::find()->where(['supply_id' => $supplyId])->all();
 		}
 
 		return [
@@ -162,7 +162,7 @@ class SupplyController extends Controller
 			'contractors' => $contractors,
 			'warehouse' => $warehouse,
 			'newSupplyItem' => $newSupplyItem,
-			'supplyItem' => $supplyItem,
+			'supplyItems' => $supplyItems,
 			'items' => $items,
 		];
 	}

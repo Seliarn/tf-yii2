@@ -19,14 +19,10 @@ $this->params['breadcrumbs'][] = Yii::$app->params['translate']['rus']['btn-upda
 		'model' => $model,
 		'contractors' => $contractors,
 		'warehouse' => $warehouse,
-		'accounts' => $accounts
+		'accounts' => $accounts,
+		'newSupplyItem' => $newSupplyItem,
+		'items' => $items,
+		'supplyItems' => $supplyItems,
 	]) ?>
 	<hr/>
-	
-	<?=
-	$this->render('/supply-item/_form', [
-		'model' => $newSupplyItem,
-		'supply' => $model,
-		'items' => $items,
-	]) ?>
 </div>
