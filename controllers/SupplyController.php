@@ -99,7 +99,7 @@ class SupplyController extends Controller
 	public function actionUpdate($id)
 	{
 		$model = $this->findModel($id);
-
+//		var_dump(Yii::$app->request->post());die;
 		if ($model->load(Yii::$app->request->post())) {
 			$model->updated = time();
 			if ($model->save()) {

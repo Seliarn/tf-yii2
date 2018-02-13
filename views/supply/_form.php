@@ -64,45 +64,31 @@ use app\models\SupplyItem;
 			$itemsArray = ArrayHelper::map($items, 'id', 'title');
 			foreach ($supplyItems as $row) {
 				?>
-				<div class = "supply-item-form row align-top" data-id = "<?= $row->id ?>">
+				<div class = "supply-item-fields row align-top" data-id = "<?= $row->id ?>">
 
 					<div class = "col-md-4">
-						<?= $form->field($row, 'item_id')->dropDownList($itemsArray, ['prompt' => Item::$titles['rus']['prompt'], 'name' => 'count[' . $row->id . ']'])->label($row->attributeLabels('item_id')) ?>
+						<?= $form->field($row, 'item_id')->dropDownList($itemsArray, ['prompt' => Item::$titles['rus']['prompt'], 'name' => 'item_id[' . $row->id . ']'])->label($row->attributeLabels('item_id')) ?>
 					</div>
 					<div class = "col-md-1">
 						<?= $form->field($row, 'count')->textInput(['name' => 'count[' . $row->id . ']']) ?>
 					</div>
 					<div class = "col-md-1">
-						<?= $form->field($row, 'cost')->textInput(['name' => 'count[' . $row->id . ']']) ?>
+						<?= $form->field($row, 'cost')->textInput(['name' => 'cost[' . $row->id . ']']) ?>
 					</div>
 					<div class = "col-md-4">
-						<?= $form->field($row, 'note')->textarea(['row' => 3, 'name' => 'count[' . $row->id . ']']) ?>
+						<?= $form->field($row, 'note')->textarea(['row' => 3, 'name' => 'note[' . $row->id . ']']) ?>
 					</div>
 					<div class = "form-group col-md-2">
-						<a href = "#" class = "supply-item-btn-delete">
+						<a href = "#" class = "supply-item-btn-delete">x</a>
 					</div>
+
 				</div>
 			<?php
 			}
 			?>
 		</div>
-		<button id = "add-new-supply-item" type = "button">Добавить ингредиент</button>
-		<div class = "new-supply-item-form row align-top hide">
+		<button id = "new-supply-item-btn-add" type = "button">Добавить ингредиент</button>
 
-			<div class = "col-md-4">
-				<?= $form->field($newSupplyItem, 'item_id')->dropDownList($itemsArray, ['class' => 'supply-item-input', 'prompt' => $items[0]::$titles['rus']['prompt']])->label($newSupplyItem->attributeLabels('item_id')) ?>
-			</div>
-			<div class = "col-md-1">
-				<?= $form->field($newSupplyItem, 'count')->textInput(['class' => 'supply-item-input']) ?>
-			</div>
-			<div class = "col-md-1">
-				<?= $form->field($newSupplyItem, 'cost')->textInput(['class' => 'supply-item-input']) ?>
-			</div>
-			<div class = "col-md-4">
-				<?= $form->field($newSupplyItem, 'note')->textarea(['row' => 3, 'class' => 'supply-item-input']) ?>
-			</div>
-
-		</div>
 		<hr/>
 		<div class = "form-group">
 			<?= Html::submitButton($model->isNewRecord ? Yii::$app->params['translate']['rus']['btn-create'] : Yii::$app->params['translate']['rus']['btn-update'], ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
@@ -111,7 +97,23 @@ use app\models\SupplyItem;
 
 		<?php
 		ActiveForm::end();
+		?>
+		<div class = "new-supply-item-fields row align-top hide">
 
+			<div class = "col-md-4">
+				<?= $form->field($newSupplyItem, 'item_id')->dropDownList($itemsArray, ['name' => 'new-item_id', 'class' => 'supply-item-input', 'prompt' => $items[0]::$titles['rus']['prompt']])->label($newSupplyItem->attributeLabels('item_id')) ?>
+			</div>
+			<div class = "col-md-1">
+				<?= $form->field($newSupplyItem, 'count')->textInput(['name' => 'new-count', 'class' => 'supply-item-input']) ?>
+			</div>
+			<div class = "col-md-1">
+				<?= $form->field($newSupplyItem, 'cost')->textInput(['name' => 'new-cost', 'class' => 'supply-item-input']) ?>
+			</div>
+			<div class = "col-md-4">
+				<?= $form->field($newSupplyItem, 'note')->textarea(['name' => 'new-note', 'row' => 3, 'class' => 'supply-item-input']) ?>
+			</div>
+		</div>
+		<?php
 		$this->registerJsFile('@web/js/views/supply/update.js', ['depends' => 'yii\web\JqueryAsset']);
 		}
 		?>
